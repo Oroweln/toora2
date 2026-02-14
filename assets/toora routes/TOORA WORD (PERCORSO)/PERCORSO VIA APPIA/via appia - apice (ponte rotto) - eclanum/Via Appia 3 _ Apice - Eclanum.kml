@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="1hTXKp6joILl907X9GhtLYMk0-MEKENt_">
+	<name>Via Appia 3 | Apice - Eclanum</name>
+	<gx:CascadingStyle kml:id="__managed_style_0971CB6027368267EE3D">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_542A3C9098368267EE40">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_427D5EA068368267EE40">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_3B750F5090368267EE40">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_427D5EA068368267EE40</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_542A3C9098368267EE40</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_4FFDCC25F6368267EE3C">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_20D169E532368267EE40">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2006&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_385A3C4DA8368267EE3C">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_4FFDCC25F6368267EE3C</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0971CB6027368267EE3D</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_11907EB05A368267EE40">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2006&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_05CA569A4D368267EE40">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_11907EB05A368267EE40</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_20D169E532368267EE40</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="535A14C93A000001">
+		<name>POI 0 - La Via Appia da Ponte Rotto ad Aeclanum</name>
+		<LookAt>
+			<longitude>14.9334538</longitude>
+			<latitude>41.0861104</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>772.8284037917155</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_05CA569A4D368267EE40</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>14.9334538,41.0861104,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="535A14C93B000002">
+		<name>itinerrio Appia 3</name>
+		<LookAt>
+			<longitude>15.00940158700803</longitude>
+			<latitude>41.05470191924</latitude>
+			<altitude>412.6318904747023</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>912.71170500273</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_3B750F5090368267EE40</styleUrl>
+		<LineString>
+			<coordinates>
+				14.93315324257863,41.08595713524232,178.7221867562928 14.93303895603806,41.08570344419764,178.6750555437064 14.93309913635879,41.08542698508513,178.7150931249733 14.93353251978462,41.08520905711598,179.3795426556525 14.93410920256401,41.08494168102391,180.2486030842507 14.93427723919284,41.08486032817895,179.9992119340646 14.9355438094643,41.0856705749813,183.2239653668995 14.9374801836986,41.08675601856826,187.6409758844246 14.93820360944884,41.08713441741112,195.3437029446737 14.93911615734783,41.08755126875208,208.3004288885167 14.93961918027914,41.08769899609185,214.2707073365201 14.93988030672844,41.08773647959194,218.5933712289998 14.94065139647745,41.08782094877806,225.2411078234713 14.94135325174256,41.08792038954194,231.2359123377369 14.94244741590247,41.08804437370674,238.6517840704103 14.94322661908363,41.08814947773082,242.1280166461745 14.94405237276716,41.08827691312049,242.7618487336133 14.94447705157698,41.08840160581328,242.7648657754724 14.94486654270827,41.08795219417556,240.8744053197036 14.94510349378493,41.08743218339671,236.6470667498855 14.94511660001771,41.08711220509628,232.9347107057 14.94507387063863,41.08696950074861,230.8865284984525 14.94508898172969,41.0868169702125,229.3527797238911 14.94572808561946,41.08608890451367,222.9940454759427 14.94564919162504,41.08596941614685,224.3517844819022 14.94550266929967,41.08590991055668,225.4221622409939 14.94526710291129,41.08576163847907,227.3934938706332 14.94515768691599,41.08556416120052,230.5844028845463 14.94527769044121,41.08514840619271,239.5751200509862 14.94528071023352,41.08495744840717,243.870022123629 14.9452270173786,41.08470591443415,245.6339847252694 14.94520127241018,41.08435618716602,247.7399146328899 14.94522949678039,41.08403783003794,248.8225247024861 14.94528477674613,41.08367517512348,249.6800048475878 14.9453780132142,41.08324663733261,250.5057958853841 14.94554178467015,41.0826833155628,251.0912979730373 14.94561869175783,41.08236432256081,252.3073480814825 14.94584168441803,41.08176288012019,253.8592180012423 14.94607530542577,41.08137135958879,253.5322772716252 14.94625288748029,41.08088840806728,251.7496628576354 14.94613353396975,41.08050194498586,250.3667842226957 14.94601853814459,41.0802466900976,249.0440954395134 14.94581656586363,41.07995022293534,248.1874479621176 14.94564849864393,41.07973629521289,248.62220254036 14.94559091695921,41.0797000633446,248.7526381489404 14.94569827219014,41.07957904217449,249.0828788472669 14.9461061924525,41.07931993605426,251.6098014580935 14.94666771034227,41.07899785648478,253.8597468364237 14.94756423039425,41.07847743517726,256.6403895431954 14.94812409792948,41.07813317343968,257.9273760695194 14.94896606118607,41.07761796459125,259.3212628800943 14.94964832414968,41.07719218767209,261.4836408859703 14.95035935382282,41.07676623906212,262.0955247374592 14.95163023901798,41.07600503135129,266.9405338204793 14.95230003977865,41.07564317988454,269.8070463697251 14.95533514989667,41.07414417722182,273.8564505290633 14.95629465567985,41.0735742739827,270.796176720717 14.95735469940495,41.07314864715353,267.1646611978004 14.95907946046277,41.07312724953716,264.3509747970521 14.95901473123391,41.07234794934784,259.5967573870673 14.95988335119881,41.07171078787223,256.9982425980969 14.96085929385905,41.07105751666407,256.6632716932372 14.9611565149348,41.07073946452353,260.0300036586995 14.96147082684658,41.06988173571559,271.3234710600941 14.96226716326175,41.06908526633052,274.1842812507686 14.96274159287183,41.0685584920946,277.9087566302229 14.96275363443909,41.06794429329974,278.8422944425055 14.96323740829459,41.06749798616215,281.4904447027553 14.96430619661687,41.06708143574815,288.6867906688575 14.96518433266375,41.06667705729188,296.0017802027394 14.96710651849891,41.06556286484329,310.9825859294943 14.96840924769761,41.06479286163592,324.5926036165815 14.96938809628317,41.06366787074005,347.6616875512427 14.97161566294242,41.06316538242369,354.2620981501899 14.97252471718984,41.06294502158791,353.837063701728 14.9733304951901,41.06265843072217,356.9279034346493 14.97425542884547,41.06209939380187,360.5006235700037 14.97478234845869,41.06190740756941,362.9322112498768 14.97532071088985,41.06212077094595,367.9938785986767 14.97643216128259,41.06203265425645,372.6153164507592 14.97766402769517,41.06183920251532,378.4224533279495 14.97894128373142,41.06143791828782,385.9515316295781 14.98022934531859,41.06114241397282,398.6082895105198 14.98104051422616,41.06095676250667,404.2410107665832 14.98157701273102,41.06094881649157,406.2810808649821 14.98361024114081,41.06112667978634,415.0249901324808 14.98470801275335,41.06132558435413,416.8750498766414 14.98556141825142,41.06135084274755,416.0624505822837 14.98660292889906,41.06124962450587,415.5544060469392 14.98815276470547,41.06108680117298,415.0205946034657 14.98959838406229,41.06093541325151,414.099879318463 14.99113962173832,41.0606992921821,410.4271438171966 14.9923126775824,41.06055442301614,409.3882987845176 14.99374829057365,41.06037995124474,408.5309237548652 14.99509244664633,41.06015174831852,409.9923004669379 14.99620559272387,41.06000817657391,413.1663928183071 14.99788105408364,41.05982254536056,425.7577818352661 14.99991737727091,41.05952817433869,442.5752981406691 15.00076083371716,41.05943446406093,443.7688582763894 15.00279216127869,41.05907765114675,443.8269021546242 15.00429743826805,41.05878094688126,443.0465050718634 15.00569081793963,41.05842728887151,436.2860960315738 15.00657190599867,41.05818956248486,431.4963892806319 15.00734021509505,41.05794146219563,430.2820238783791 15.00803598304932,41.05764336991206,428.2149412215944 15.00882315494309,41.0573062445128,428.2862888904944 15.00971709284923,41.05677477669953,430.0444780220179 15.01018126431167,41.05635534971665,430.5526015484997 15.01076724188248,41.05589199028731,428.0196136015426 15.01127714347041,41.05547744401203,427.4071255466495 15.01172432081323,41.05514638959369,427.0358357439386 15.01127016978169,41.05547744294421,427.4078761520165 15.01175234769272,41.0551464124269,426.9879079866931 15.01182858959909,41.05505165793883,427.1677174428927 15.01158495196736,41.05484133163366,426.97575342385 15.01093095483509,41.05478884363509,425.9666236084437 15.01046594901458,41.05456533008044,423.5161013421528 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="0CE903BBE73681EA7CD5">
+		<name>POI 1 – Il Ponte Rotto sul fiume Calore</name>
+		<LookAt>
+			<longitude>14.94425388940028</longitude>
+			<latitude>41.08470893599038</latitude>
+			<altitude>244.2838056413759</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>6704.138044368012</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_385A3C4DA8368267EE3C</styleUrl>
+		<Point>
+			<coordinates>14.93297114764091,41.08596704857788,180.7695092321958</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0467B30A4B3681EB37EE">
+		<name>POI 2 - Ponte medievale</name>
+		<LookAt>
+			<longitude>14.93696143388163</longitude>
+			<latitude>41.08592690066633</latitude>
+			<altitude>187.0300917380806</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>1187.242952587403</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_385A3C4DA8368267EE3C</styleUrl>
+		<Point>
+			<coordinates>14.93456739230447,41.08698889190217,180.864710582145</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="02742AB9B43681EBC747">
+		<name>POI 3 – Marmo tra le masserie</name>
+		<LookAt>
+			<longitude>14.93843912961277</longitude>
+			<latitude>41.08677634516372</latitude>
+			<altitude>194.3787621646027</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>2130.167863590759</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_385A3C4DA8368267EE3C</styleUrl>
+		<Point>
+			<coordinates>14.94550302135939,41.08259001061907,251.0700720240227</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08C000BC053681EC8178">
+		<name>POI 4 - Ara funeraria in località Iscalonga</name>
+		<LookAt>
+			<longitude>14.94244606892674</longitude>
+			<latitude>41.08283527602382</latitude>
+			<altitude>237.780945273164</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>4033.378078359528</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_385A3C4DA8368267EE3C</styleUrl>
+		<Point>
+			<coordinates>14.9519899908556,41.07581670296329,268.8421870903776</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="09BABE0EB13681ED0062">
+		<name>POI 5 - Basoli reimpiegati in una casa colonica, località Cifurio</name>
+		<LookAt>
+			<longitude>14.95411061529657</longitude>
+			<latitude>41.0708184705296</latitude>
+			<altitude>258.5112077049775</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>11387.24579248577</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_385A3C4DA8368267EE3C</styleUrl>
+		<Point>
+			<coordinates>14.95979973658791,41.07149231091014,260.0117486028838</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0045D5C7633681ED65F2">
+		<name>POI 6 - Insediamenti rustici e aree di necropoli lungo la strada </name>
+		<LookAt>
+			<longitude>14.95411061529657</longitude>
+			<latitude>41.0708184705296</latitude>
+			<altitude>258.5112077049775</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>11387.24579248577</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_385A3C4DA8368267EE3C</styleUrl>
+		<Point>
+			<coordinates>14.97570356856127,41.06199530319626,368.2553334856202</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="02384A202E3681EE003D">
+		<name>POI 7 - Via Appia in ingresso ad Aeclanum</name>
+		<LookAt>
+			<longitude>14.99864578677745</longitude>
+			<latitude>41.05826535198256</latitude>
+			<altitude>447.5929254774399</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>2323.064268656017</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_385A3C4DA8368267EE3C</styleUrl>
+		<Point>
+			<coordinates>15.01071523568301,41.05470266407882,426.5328350398479</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08C53446C63681EE2E9A">
+		<name>POI 8 – Aeclanum</name>
+		<LookAt>
+			<longitude>14.99864578677745</longitude>
+			<latitude>41.05826535198256</latitude>
+			<altitude>447.5929254774399</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>2323.064268656017</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_385A3C4DA8368267EE3C</styleUrl>
+		<Point>
+			<coordinates>15.0103685131393,41.05447010517585,424.1135215186082</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="065815CA723681EE58BD">
+		<name>POI 9 – Lungo le strade della storia</name>
+		<LookAt>
+			<longitude>14.99864578677745</longitude>
+			<latitude>41.05826535198256</latitude>
+			<altitude>447.5929254774399</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>2323.064268656017</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_385A3C4DA8368267EE3C</styleUrl>
+		<Point>
+			<coordinates>15.0103685131393,41.05447010517585,423.1924278575985</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>

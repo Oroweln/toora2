@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>4 Imperatori</name>
+	<visibility>0</visibility>
+	<gx:CascadingStyle kml:id="__managed_style_21272FE063367C62901F">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2396&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0D55A6E8D7367C62901F">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_175C2318A5367C62901F</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_21272FE063367C62901F</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_175C2318A5367C62901F">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2396&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2074C66E03367C62901E">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_13909DA9A4367C62901E">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_02AA4AA68B367C62901E">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_13909DA9A4367C62901E</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2074C66E03367C62901E</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="04CCF179CD27045619E9">
+		<name>Statua di Traiano</name>
+		<LookAt>
+			<longitude>14.78256755107863</longitude>
+			<latitude>41.12940758649984</latitude>
+			<altitude>159.0676600813558</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>216.3867629507877</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_02AA4AA68B367C62901E</styleUrl>
+		<Point>
+			<coordinates>14.78242157133376,41.1293714734752,158.8836681396934</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="048139A79A270456EA18">
+		<name>Incontro con Gladiatore</name>
+		<LookAt>
+			<longitude>14.78082481147097</longitude>
+			<latitude>41.13021057170397</latitude>
+			<altitude>153.8687948910191</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>170.6321190082599</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_02AA4AA68B367C62901E</styleUrl>
+		<Point>
+			<coordinates>14.78096538898676,41.13028553836312,154.3545510596683</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="046EAC4C272704577F79">
+		<name>Incontro Traiano. e De Cebalo</name>
+		<LookAt>
+			<longitude>14.77892231578438</longitude>
+			<latitude>41.13192910418795</latitude>
+			<altitude>152.3095714803463</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>319.5089552190621</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_02AA4AA68B367C62901E</styleUrl>
+		<Point>
+			<coordinates>14.7789993802647,41.13246725721994,138.5260695492066</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="09AB1ECAF7270458AE71">
+		<name>Impertore Domiziano</name>
+		<LookAt>
+			<longitude>14.77724045192535</longitude>
+			<latitude>41.13151866450919</latitude>
+			<altitude>140.9221964645731</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>121.7597518766524</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_02AA4AA68B367C62901E</styleUrl>
+		<Point>
+			<coordinates>14.77715532955784,41.13166171163989,141.2254588564985</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="019E2D7E5E27045AF7CF">
+		<name>Mascherone Teatro Romano | Adriano</name>
+		<LookAt>
+			<longitude>14.77635806952847</longitude>
+			<latitude>41.13149416132529</latitude>
+			<altitude>150.6980088445695</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>24.99919932345165</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_02AA4AA68B367C62901E</styleUrl>
+		<Point>
+			<coordinates>14.77635270427059,41.13150382213689,150.4738044649098</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0672B88AAC27045CD134">
+		<name>Reimpiego</name>
+		<LookAt>
+			<longitude>14.77578790758479</longitude>
+			<latitude>41.13175630535429</latitude>
+			<altitude>138.408682417516</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>58.02857925388709</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_02AA4AA68B367C62901E</styleUrl>
+		<Point>
+			<coordinates>14.77578790758241,41.13172998500659,137.4612785925039</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08D0DD702927045F164B">
+		<name>Il Gladiatore Filemazione</name>
+		<LookAt>
+			<longitude>14.77467026863596</longitude>
+			<latitude>41.13160198850407</latitude>
+			<altitude>135.041157434113</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>173.7820242940506</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_02AA4AA68B367C62901E</styleUrl>
+		<Point>
+			<coordinates>14.77470132130927,41.13170030832646,134.8006478812654</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0FFC855E4F27046394F7">
+		<name>Lucinius | Vestali</name>
+		<LookAt>
+			<longitude>14.77143326853965</longitude>
+			<latitude>41.13166442443381</latitude>
+			<altitude>129.5191783262254</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>104.087168440019</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_02AA4AA68B367C62901E</styleUrl>
+		<Point>
+			<coordinates>14.77141383849444,41.1318009210494,120.5674606852478</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="09DFF3664B270466EE92">
+		<name>Lucilius Schiniero gamba sinistra</name>
+		<LookAt>
+			<longitude>14.78253327336794</longitude>
+			<latitude>41.12835386993345</latitude>
+			<altitude>170.3795502522069</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>633.0514401005349</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0D55A6E8D7367C62901F</styleUrl>
+		<Point>
+			<coordinates>14.78255451225035,41.12899537915273,160.2911706900388</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="049A31F7312704F62A36">
+		<name>percorso 4 imperatori</name>
+		<LookAt>
+			<longitude>14.78247301038458</longitude>
+			<latitude>41.1294892075141</latitude>
+			<altitude>158.714714560579</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>275.628173829573</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_02AA4AA68B367C62901E</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						14.78204295312929,41.12959597660456,157.5313766062825 14.78103364045479,41.13017322842767,154.4044474145044 14.78025664861964,41.13049407765139,151.8009569449666 14.77929713168645,41.13071252540558,148.2018064228964 14.77889948131408,41.13082167158333,146.0760679491751 14.77831462480958,41.13108969826934,144.3250518220634 14.77778845485641,41.13132891290199,142.2265467404161 14.77707809292953,41.13152061321158,140.5194423096505 14.77528315887128,41.13183966354802,135.8182730899612 14.77502022188536,41.13186703607793,135.1500471624556 14.77490360564483,41.13171246399968,135.2496286344842 14.77478039972271,41.13176368127611,134.8016188601638 14.77483979279015,41.13181083539853,134.6426343581585 14.77436905214569,41.13197278437975,132.2303301834867 14.77419001577532,41.13204241023311,131.1603093628202 14.77393222103882,41.13214508435571,130.0723911349169 14.77374544092666,41.13187891957492,129.6191540890555 14.77349942759194,41.13152308195941,128.4258091595521 14.77336713324486,41.1313612961354,125.7443829511808 14.77326063183225,41.13124469705033,125.2212711414535 14.77287115713502,41.13145679824265,126.1125264895601 14.77140643103212,41.13180905625066,120.6643588036378 14.77188296749652,41.13168300555937,121.8474643340317 14.77221648796153,41.13160566029505,123.2151441931174 14.77250375222049,41.13153700164143,123.8166843264945 14.77281315273558,41.13146854308386,126.0111291578715 14.77313510101955,41.13129573693801,125.0657771669555 14.77324750326634,41.13123387655974,124.7109550641508 14.77320075849381,41.13115255874306,124.1882425247875 14.77324494227606,41.13113320635355,123.8637178462918 14.77351680676486,41.13099128464421,124.1301549876737 14.77411186544737,41.1316540964842,130.9900190771083 14.77415188956023,41.13171366768059,131.2045054699828 14.77436338701013,41.13196939646051,132.1749821908021 14.77482548755006,41.13180032211642,134.6689619834 14.7746011765096,41.13156015885669,134.7731474484463 14.77459041556944,41.13157585947692,134.6868826955546 14.77469362937074,41.13169879278632,134.6448319451277 14.77459778376725,41.13159500317659,134.6500237174817 14.77462894088897,41.13157553807849,135.5273627081177 14.77479558706198,41.13176422156602,134.6940133326615 14.77489956324698,41.13171016071011,135.129401220699 14.77494594717641,41.1317652778324,135.1948430041481 14.77509537694208,41.13175288376721,135.5236100759697 14.77514156840679,41.1318460880256,135.4577314830467 14.77554456107756,41.1317740052242,136.5680556917555 14.77578959693407,41.1317360790287,137.2114559757369 14.77639212106096,41.13163678467364,138.7813654098238 14.77632391718919,41.1314884912421,139.4981325342184 14.77635932032983,41.13154926047143,139.3300127223244 14.77641853716253,41.13163783720384,138.9690243977387 14.77653876045754,41.1316378612858,139.1545473259873 14.77704668793744,41.13154762706522,140.5194592585529 14.77710491236098,41.13166908898467,140.9415823309033 14.77715522018989,41.13166343984466,141.1426192158397 14.77720514689705,41.13165663246333,141.2557321364855 14.77716247005611,41.13153689439837,140.5194202623552 14.77739012270776,41.131443951776,141.4639821113108 14.77771453645159,41.13135052311558,142.3015217064453 14.77808378749933,41.13169154964165,141.6012173420047 14.77900655488321,41.13246579261241,138.3632247155945 14.778895606264,41.13227827117458,138.9016479623596 14.77827691155754,41.13178933650943,141.4466681644887 14.77778654468745,41.13136161807065,142.2193266947011 14.7783059337276,41.13110678982078,144.1388767196834 14.77869808002242,41.13093763313665,145.0010078651545 14.77897800606407,41.13080664718795,146.9471779911053 14.77918334592772,41.13074853486776,147.3037543428029 14.77976264082501,41.13061615751771,149.7293309722632 14.78029633943875,41.1304679197974,151.8087368575904 14.78048316239156,41.13040000599307,152.853683380569 14.78064467836761,41.13040359373366,153.2505530706467 14.7808573598756,41.13032399480699,153.8095929250193 14.78095741812622,41.13028624526518,154.0947796451014 14.78094578511037,41.13022985598221,154.1259029849995 14.78105052766734,41.13019105915377,154.4277455362491 14.78129771346929,41.13006089976375,155.2386629056131 14.7815811380417,41.12990018002293,156.1216477495193 14.78196398620459,41.12961384932349,156.8865017890067 14.78242396756146,41.12937651335555,158.5644170720435 14.78204295312929,41.12959597660456,157.5313766062825 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="07C962CE732704F6E0F9">
+		<name>fine percorso 4 imperatori da aggiungere al n. 1</name>
+		<LookAt>
+			<longitude>14.78247301037047</longitude>
+			<latitude>41.12948920749297</latitude>
+			<altitude>158.7147334235007</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>275.6281738295729</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_02AA4AA68B367C62901E</styleUrl>
+		<LineString>
+			<coordinates>
+				14.78242995295909,41.12937929917076,158.7393773257305 14.78266876070451,41.12924286727846,159.3022302177376 14.7826781930425,41.12911002144625,159.4575871778796 14.78255634792459,41.12900854995232,160.008004041525 
+			</coordinates>
+		</LineString>
+	</Placemark>
+</Document>
+</kml>

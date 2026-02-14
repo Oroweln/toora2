@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="1GUE3Nf0Fe-JC2Y4QEuc3PGxwsr8EWeRX">
+	<name>Via Appia 1 | Percorso Urbano</name>
+	<gx:CascadingStyle kml:id="__managed_style_2146BA75C6368267BB1E">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1F03D8DF65368267BB1E">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_095065012A368267BB1E">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1F03D8DF65368267BB1E</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2146BA75C6368267BB1E</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_53568F8D8B368267BB1D">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_4A505ECFA9368267BB1D">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_3FE6593530368267BB1D">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_4A505ECFA9368267BB1D</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_53568F8D8B368267BB1D</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_2A31103221368267BB20">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_18D1D862E5368267BB20">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_03357F21A0368267BB20">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_18D1D862E5368267BB20</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2A31103221368267BB20</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="535F78E67A000001">
+		<name>Itinerario Appia 1</name>
+		<LookAt>
+			<longitude>14.78306899886467</longitude>
+			<latitude>41.13054495023763</latitude>
+			<altitude>155.4544627386957</altitude>
+			<heading>38.60667848905057</heading>
+			<tilt>37.85215957749772</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>675.5232784025429</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03357F21A0368267BB20</styleUrl>
+		<LineString>
+			<coordinates>
+				14.76299552186323,41.12889379305744,116.2039810129589 14.76350747870771,41.12922737015298,116.282188102575 14.76383413632377,41.12949481646456,115.9312467056963 14.76435160865921,41.13007105116998,115.4203771514517 14.76475221065976,41.13061120343762,115.0459030742213 14.76499220197446,41.1309262386326,113.5005168671974 14.765142072668,41.13113347823977,108.6540123423795 14.76547704266448,41.13152438891265,107.5461815490836 14.7656774801325,41.1317578363774,114.3650440960276 14.76581729944325,41.13194272948528,112.6846724387315 14.7660303422075,41.13218291376022,112.579607663607 14.76612722622611,41.13219313021686,112.7482990146736 14.76622048421786,41.13200050233725,112.8823766850684 14.7663884387439,41.13182338700681,112.4307986030425 14.7669831650763,41.13156281753226,113.3030380026433 14.76748722666447,41.13137242102818,113.5005304534806 14.76703708845227,41.13263648414719,116.0089627736826 14.7686401491666,41.13262387691422,116.7361785052945 14.7689998978846,41.13267715030694,117.6505534564204 14.76908683677492,41.13270782513495,118.118302029212 14.76929454849653,41.1328058177852,119.0060520370279 14.76942707777002,41.1329182108644,119.981893004134 14.7695220233993,41.13305247596525,120.9995381908906 14.76968018679308,41.13324727689984,122.516491173216 14.76980829340106,41.13337674270673,123.6703622885469 14.76996407708566,41.13352147468397,124.9508502214487 14.770075369926,41.1336600514563,125.8384656198109 14.77007382253692,41.13367843662075,125.7641930606631 14.76946366392421,41.13391993351852,125.7014982867428 14.76918775357302,41.13399520559182,125.6869123181845 14.76898096324864,41.1341103634356,125.6096288822154 14.76874937579588,41.13421529695617,126.0033458345305 14.7685163359218,41.13391028090019,123.3612254649809 14.76843003799092,41.13378184439077,121.6032809926539 14.76874752330738,41.13423401813473,126.3210544597714 14.76932035181215,41.13398148333616,125.6839387159339 14.76954017720882,41.13389153061912,125.7389559807987 14.77006772214951,41.13359794274323,125.6445304876904 14.77019330411014,41.13351754526176,125.4323087177287 14.7703251329014,41.13354622845374,125.928664069943 14.77036669221147,41.13355462973217,125.8564131650163 14.77096904305118,41.13324508216952,125.0420414138262 14.77115813697564,41.13314862726504,124.5837558980789 14.7714297141035,41.13305378597963,124.1965228480625 14.77187320097269,41.1328554819976,124.0121241309936 14.77272643639433,41.13239814184353,125.4913879332724 14.77310468883498,41.1322921216063,126.4696598081373 14.77370659978276,41.13217600368083,128.9459964878651 14.77398480625037,41.13212626267426,130.1427719340761 14.77415613575231,41.13212270798195,130.8038717867159 14.77441803281069,41.13198915895953,132.2644198939529 14.77466608186607,41.13192311353199,133.315143553817 14.77502939828736,41.13186205591365,135.1722872898829 14.77541680474935,41.13178952982322,136.2431666903699 14.77570924016861,41.13182112753159,137.0011290721337 14.77662138436632,41.13161751533637,139.3494950719193 14.77743547346018,41.13145716783956,141.4200107564125 14.77795238715157,41.13126464927282,143.2615412387902 14.77832799459232,41.13111833266672,144.0418784621188 14.77895950834187,41.13080816487657,146.4330198178754 14.7796432642345,41.13065227623054,149.4469585706807 14.78022524839216,41.13050694221291,151.6415253306032 14.78080864116158,41.13030413011447,153.86301984074 14.78112279768869,41.13014311471165,154.8854504194638 14.78160294378005,41.12995727056686,156.1031795755077 14.7820718076596,41.12968686013865,157.4788683137191 14.7823754386092,41.12952853519521,158.5639696923168 14.78275417982295,41.12931448650016,159.5393436019369 14.7830291981514,41.1290943877169,160.4184912516725 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="535F78E67B000002">
+		<name>POI 0 - La Via Appia a Benevento</name>
+		<LookAt>
+			<longitude>14.76383465236468</longitude>
+			<latitude>41.12957747072409</latitude>
+			<altitude>131.2031374809325</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>822.3740447653108</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_3FE6593530368267BB1D</styleUrl>
+		<Point>
+			<coordinates>14.76302750265972,41.12890642842517,118.7547336787917</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="535F78E67B000003">
+		<name>POI 1 - Strada glareata e recinto funerario</name>
+		<LookAt>
+			<longitude>14.76501502005077</longitude>
+			<latitude>41.12967525487836</latitude>
+			<altitude>116.6181409191319</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>2067.264600611525</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_3FE6593530368267BB1D</styleUrl>
+		<Point>
+			<coordinates>14.76378227487663,41.12935139612349,118.6191755519696</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="535F78E67B000004">
+		<name>POI 2 - Muro di contenimento della Via Appia</name>
+		<LookAt>
+			<longitude>14.76501502005077</longitude>
+			<latitude>41.12967525487836</latitude>
+			<altitude>116.6181409191319</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>2067.264600611525</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_3FE6593530368267BB1D</styleUrl>
+		<Point>
+			<coordinates>14.76357561814444,41.12930545035918,118.3868467208511</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="535F78E67B000005">
+		<name>POI 3 – Monumento funerario</name>
+		<LookAt>
+			<longitude>14.76501502005077</longitude>
+			<latitude>41.12967525487836</latitude>
+			<altitude>116.6181409191319</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>2067.264600611525</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_3FE6593530368267BB1D</styleUrl>
+		<Point>
+			<coordinates>14.7643034226528,41.12991256646419,117.8543314447286</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="009912EFB73681CA4ED4">
+		<name>POI 4 - Ponte Leproso </name>
+		<LookAt>
+			<longitude>14.76651262291265</longitude>
+			<latitude>41.13158044257914</latitude>
+			<altitude>114.6100866863547</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>1045.173261420568</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_095065012A368267BB1E</styleUrl>
+		<Point>
+			<coordinates>14.76543965472697,41.13140690692796,118.1807637864921</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="03C4A255B73681CC1A6F">
+		<name>POI 5 - Ipotesi dell’ingresso in città </name>
+		<LookAt>
+			<longitude>14.76564380068371</longitude>
+			<latitude>41.13154352507669</latitude>
+			<altitude>114.3565868412628</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>1045.426731647167</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_095065012A368267BB1E</styleUrl>
+		<Point>
+			<coordinates>14.76616686720485,41.13216976002183,114.7244089814285</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0358D8CF713681D08F68">
+		<name>POI 6 - Anfiteatro </name>
+		<LookAt>
+			<longitude>14.76665196849021</longitude>
+			<latitude>41.13244731817502</latitude>
+			<altitude>118.4121201444475</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>486.3237004351687</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_095065012A368267BB1E</styleUrl>
+		<Point>
+			<coordinates>14.76744437690633,41.13246389648031,118.1366157561554</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="042D5B6AD93681D20645">
+		<name>POI 7 - Criptoportico dei Santi Quaranta </name>
+		<LookAt>
+			<longitude>14.76626533253476</longitude>
+			<latitude>41.13425367235001</latitude>
+			<altitude>115.6249065995745</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>1528.956511545111</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_095065012A368267BB1E</styleUrl>
+		<Point>
+			<coordinates>14.76748643461369,41.1339227280559,125.4765747636935</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="014D150D063681D44320">
+		<name>POI 9 - Teatro </name>
+		<LookAt>
+			<longitude>14.77218419256927</longitude>
+			<latitude>41.13182855723106</latitude>
+			<altitude>130.1497159719861</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>1791.805321948486</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_095065012A368267BB1E</styleUrl>
+		<Point>
+			<coordinates>14.77193345208251,41.13076903441355,119.701006199811</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="025BB336203681D4B0F4">
+		<name>POI 10 - Arco del Sacramento con area delle terme</name>
+		<LookAt>
+			<longitude>14.77359703693799</longitude>
+			<latitude>41.13141044240722</latitude>
+			<altitude>130.4352708797775</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>909.3922092224238</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_095065012A368267BB1E</styleUrl>
+		<Point>
+			<coordinates>14.77361309455834,41.13109354732723,127.5750511520273</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="030C885F543681D3D015">
+		<name>POI 11 - Area del Foro</name>
+		<LookAt>
+			<longitude>14.76816353176226</longitude>
+			<latitude>41.13252533029983</latitude>
+			<altitude>143.8355549823608</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>1778.11941307853</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_095065012A368267BB1E</styleUrl>
+		<Point>
+			<coordinates>14.77261521726722,41.13224458122438,127.5314588210451</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="01C2B1BD543681D74C54">
+		<name>POI 12 - Urbanistica della città romana</name>
+		<LookAt>
+			<longitude>14.77274978757046</longitude>
+			<latitude>41.13215366189361</latitude>
+			<altitude>128.210933694514</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>666.1844210029086</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_095065012A368267BB1E</styleUrl>
+		<Point>
+			<coordinates>14.77355911522731,41.13222027913971,131.0252305202902</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="066282A8983681D84D5E">
+		<name>POI 13 - Arco di Traiano</name>
+		<LookAt>
+			<longitude>14.77374215306044</longitude>
+			<latitude>41.13173888050378</latitude>
+			<altitude>132.1030173857822</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>2169.714596143167</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_095065012A368267BB1E</styleUrl>
+		<Point>
+			<coordinates>14.7791850548276,41.13251487209204,153.5249924889902</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0DDCC338B13681DB2F51">
+		<name>POI 14 - Via Traiana</name>
+		<LookAt>
+			<longitude>14.77908291369964</longitude>
+			<latitude>41.13264885767856</latitude>
+			<altitude>139.9013105630699</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>306.0952440759866</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_095065012A368267BB1E</styleUrl>
+		<Point>
+			<coordinates>14.77963296762141,41.13278305262525,137.8285163128892</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="09A35B6F443681DBBA2E">
+		<name>POI 15 - I miliari di Piazza Castello</name>
+		<LookAt>
+			<longitude>14.78166743300849</longitude>
+			<latitude>41.12931158379151</latitude>
+			<altitude>183.8318744652222</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>436.3562728554098</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_095065012A368267BB1E</styleUrl>
+		<Point>
+			<coordinates>14.78237201838316,41.12925381738921,160.4455094629934</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="099091CF203681DC2640">
+		<name>POI 16 - Rocca dei Rettori con Castellum Aquae e punto di uscita della via Appia </name>
+		<LookAt>
+			<longitude>14.78166743300849</longitude>
+			<latitude>41.12931158379151</latitude>
+			<altitude>183.8318744652222</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>436.3562728554098</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_095065012A368267BB1E</styleUrl>
+		<Point>
+			<coordinates>14.78189845863092,41.12912847491182,162.3965057284439</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>

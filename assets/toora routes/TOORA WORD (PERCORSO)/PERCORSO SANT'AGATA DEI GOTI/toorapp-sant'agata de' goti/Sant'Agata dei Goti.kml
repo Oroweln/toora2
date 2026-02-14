@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Sant&apos;Agata dei Goti</name>
+	<gx:CascadingStyle kml:id="__managed_style_58BA02BACB28E84DF657">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=fbc02d&amp;id=2396&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1CF0C6806928E84DF656">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_47C45CEA6B28E84DF657">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=fbc02d&amp;id=2396&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1938552FD028E84DF657">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2978416E8D28E84DF657">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_3F89C3C5CF28E84DF657">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_47C45CEA6B28E84DF657</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_58BA02BACB28E84DF657</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_077C6D45D828E84DF657">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1938552FD028E84DF657</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2978416E8D28E84DF657</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_2C1268B8B328E84DF656">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_03B070E87728E84DF656">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1CF0C6806928E84DF656</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2C1268B8B328E84DF656</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_2D8E86C50B28E84DF655">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2006&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_18ECAD74CE28E84DF655">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2006&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_05A58B220128E84DF655">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_18ECAD74CE28E84DF655</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2D8E86C50B28E84DF655</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="06466AB2562780E93850">
+		<name>Inizio Tour con prentazione</name>
+		<LookAt>
+			<longitude>14.50208565082154</longitude>
+			<latitude>41.0889346540127</latitude>
+			<altitude>145.8509587775725</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>183.8280997829497</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_05A58B220128E84DF655</styleUrl>
+		<Point>
+			<coordinates>14.5022709362474,41.08911739568132,143.4204716094953</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="089F1AA5962770CF58E8">
+		<name>2 Castello Ducale</name>
+		<LookAt>
+			<longitude>14.50383361304144</longitude>
+			<latitude>41.08847236566339</latitude>
+			<altitude>151.0119525302215</altitude>
+			<heading>0.558965498898693</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>108.131508873903</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<coordinates>14.50389589797551,41.08848424749632,151.188876749376</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="05B436EC532770DB5736">
+		<name>3 VILLA COMUNALE ‘DEL BOSCHETTO’ E BELVEDERE</name>
+		<LookAt>
+			<longitude>14.50414778535009</longitude>
+			<latitude>41.08867362693415</latitude>
+			<altitude>150.8672765389547</altitude>
+			<heading>0.0001147682663602797</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>221.2451586181851</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<coordinates>14.50494342152064,41.08843823251295,148.9054105827928</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0157B90AFA2780F11079">
+		<name>4 Piazza Ludovico Viscardi Chiesa Sant&apos;Angelo Demunculanis</name>
+		<gx:mid>/g/11ckwzs0g8</gx:mid>
+		<gx:fid>0x133a4e6e4c3f7ab9:0xb032d8dfc17f26f1</gx:fid>
+		<LookAt>
+			<longitude>14.5037488</longitude>
+			<latitude>41.0893969</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>772.7861514775921</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>14.5037488,41.0893969,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0E2F30778B2780F27932">
+		<name>5 Piazza del Carmine | Museo Diocesano</name>
+		<gx:mid>/g/11hbfg4_x1</gx:mid>
+		<gx:fid>0x133a4e6fa9c91277:0xd3bc33749faf5816</gx:fid>
+		<LookAt>
+			<longitude>14.5045988</longitude>
+			<latitude>41.09007620000001</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>772.7774178738885</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>14.5045988,41.0900762,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0084DC5C072780F38720">
+		<name>6 Piazza Trento | La Chiesa di Santa Maria di Costantinopoli, Convento Monache Redentoriste. Palazzo Mustilli</name>
+		<gx:mid>/g/1t_fqldb</gx:mid>
+		<gx:fid>0x133a4e6e56e8644b:0x670339d90b1fc388</gx:fid>
+		<LookAt>
+			<longitude>14.5038656</longitude>
+			<latitude>41.0900323</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>772.7779822892053</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>14.5038656,41.0900323,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="06899AAF982770D643C9">
+		<name>7 Portale del convento delle Suore Redentoriste</name>
+		<LookAt>
+			<longitude>14.5041085009737</longitude>
+			<latitude>41.09007804490445</latitude>
+			<altitude>149.1706401045773</altitude>
+			<heading>0.0004990524235350763</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30.00017002196828</gx:fovy>
+			<range>121.7186000489892</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<coordinates>14.5040184800348,41.0900777398724,148.158023932465</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08953C2D892780FF0B2B">
+		<name>8 Portici di Via Roma</name>
+		<LookAt>
+			<longitude>14.50453160854814</longitude>
+			<latitude>41.09010283607181</latitude>
+			<altitude>148.3754511285493</altitude>
+			<heading>0.0004989808476797551</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30.00039863145607</gx:fovy>
+			<range>381.4509967976483</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<coordinates>14.50375299238853,41.09048987264884,141.8658897331822</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0483FF316C2770EA7776">
+		<name>9 Chiesa di San Francesco</name>
+		<gx:mid>/g/11dxm97tcy</gx:mid>
+		<gx:fid>0x133a4e6efc013fdb:0x78daa9c9d5030ccf</gx:fid>
+		<LookAt>
+			<longitude>14.5040126</longitude>
+			<latitude>41.090566</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>772.7711205639264</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>14.5041293,41.0905395,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="04759E758F2770EDC8F0">
+		<name>10 Palazzo San Francesco | Sala Consiliare</name>
+		<gx:mid>/g/1v3sqjb5</gx:mid>
+		<gx:fid>0x133a4e6e3600901b:0xa70b2c237a1735e6</gx:fid>
+		<LookAt>
+			<longitude>14.5041633</longitude>
+			<latitude>41.09077769999999</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>772.7683987414172</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>14.5041843200434,41.09085468674264,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0632EB4DD12770E87E11">
+		<name>11 Piazzetta dei Miracoli</name>
+		<gx:mid>/g/11ffv6lmg0</gx:mid>
+		<gx:fid>0x133a4fee0f24a5c1:0xaa3b348684de7845</gx:fid>
+		<LookAt>
+			<longitude>14.504448</longitude>
+			<latitude>41.09123</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>772.7625834960642</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>14.50460014538061,41.09110385668031,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="01CA3765D82770E77D0C">
+		<name>12 Piazza Duomo</name>
+		<gx:mid>/g/11h7sxprxy</gx:mid>
+		<gx:fid>0x133a4f688bfca68d:0xdf510eb752441130</gx:fid>
+		<LookAt>
+			<longitude>14.5040985</longitude>
+			<latitude>41.0918322</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>772.7548409072585</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>14.50403737729278,41.09170109374281,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0480D5609D2781057064">
+		<name>13 Ingresso al Triggio</name>
+		<LookAt>
+			<longitude>14.50461317537103</longitude>
+			<latitude>41.0925690848329</latitude>
+			<altitude>144.1441565765346</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>34.99999387860181</gx:fovy>
+			<range>69.21553730487177</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<coordinates>14.50446666044802,41.09264027699168,142.5881161746548</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0EC9914CA72770E1B765">
+		<name>14 Piazza della Torricella con Giardini del Belvedere</name>
+		<gx:mid>/g/11c5bh8nm0</gx:mid>
+		<gx:fid>0x133a4e693b0d0251:0x27b5339a9bcee1a</gx:fid>
+		<LookAt>
+			<longitude>14.5036859</longitude>
+			<latitude>41.09355350000001</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>772.732709409708</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>14.50359095501161,41.09353051854752,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0B12027DEF27810AC103">
+		<name>15 Finestra Catalana | Belvedere</name>
+		<gx:mid>/g/11h9xwl_wh</gx:mid>
+		<gx:fid>0x133a4e6927669f93:0x6477a93bc236686c</gx:fid>
+		<LookAt>
+			<longitude>14.5043327</longitude>
+			<latitude>41.093493</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>772.7334872955909</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_077C6D45D828E84DF657</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>14.50434171554354,41.09357910799786,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="01CD41E7502770DD7DE7">
+		<name>16 Porta San Marco | Chiesa Madonna delle Grazie</name>
+		<gx:mid>/g/11g00x_n8s</gx:mid>
+		<gx:fid>0x133a4e6f0af99031:0x508f118c0d838713</gx:fid>
+		<LookAt>
+			<longitude>14.5056227</longitude>
+			<latitude>41.0902346</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>772.7753813466966</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_077C6D45D828E84DF657</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>14.50563170489088,41.0903070291728,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08C68D56762770CC4DEC">
+		<name>17 Chiesa di San Menna</name>
+		<LookAt>
+			<longitude>14.50359579341107</longitude>
+			<latitude>41.08842626366951</latitude>
+			<altitude>149.7826545521623</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30.00076174193105</gx:fovy>
+			<range>143.5932243055504</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_077C6D45D828E84DF657</styleUrl>
+		<Point>
+			<coordinates>14.50359389536749,41.08846667693967,149.7292582242904</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0DB35E837A27810EE388">
+		<name>16 Vico dei Fiori</name>
+		<LookAt>
+			<longitude>14.50566983739863</longitude>
+			<latitude>41.09022435944657</latitude>
+			<altitude>137.9091865543451</altitude>
+			<heading>17.06615386110678</heading>
+			<tilt>42.96486333838898</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>295.7122126475952</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_077C6D45D828E84DF657</styleUrl>
+		<Point>
+			<coordinates>14.50553282681265,41.09016815020599,141.6676502240559</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0ECE5726CA2770CA08CA">
+		<name>18 Chiesa dell&apos;Annunziata</name>
+		<LookAt>
+			<longitude>14.50339492996586</longitude>
+			<latitude>41.08760859497388</latitude>
+			<altitude>149.5797934837747</altitude>
+			<heading>48.67800079664283</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>499.3862245927448</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_3F89C3C5CF28E84DF657</styleUrl>
+		<Point>
+			<coordinates>14.5038244,41.087425,146.6357111649384</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="02C1AAF44327816AF091">
+		<name>Itinerario a piedi</name>
+		<LookAt>
+			<longitude>14.50408758204623</longitude>
+			<latitude>41.08757675381074</latitude>
+			<altitude>145.0157798599771</altitude>
+			<heading>0.5499488430650178</heading>
+			<tilt>0.2020637154119317</tilt>
+			<gx:fovy>30.00085818042171</gx:fovy>
+			<range>295.4249494811302</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03B070E87728E84DF656</styleUrl>
+		<LineString>
+			<coordinates>
+				14.50225557441114,41.08913726473277,143.7204361765796 14.50378193446577,41.08876272211099,150.6745001396788 14.50384069108304,41.08883092511917,150.918897796045 14.50404226082985,41.08875539989566,151.7927364754653 14.5039403765684,41.08862571841883,151.807390659784 14.50389780150497,41.08849846004136,151.099067070894 14.50397551089465,41.08865747083843,151.8006572998014 14.50442616299559,41.0884877305851,147.4518041644013 14.50461966371278,41.08839890487988,145.2315394788496 14.50471847148732,41.08849637809006,144.5308614873766 14.50481004819565,41.08846312761337,143.3039199103744 14.50494532791834,41.08844152562606,141.1912474928255 14.50470819786189,41.08851946525662,144.5692764867356 14.50475792526968,41.088625120435,144.642425376514 14.50447057974433,41.08872143347949,148.2502240445893 14.50410809937812,41.08884946125044,151.4645013326612 14.50398287972664,41.08893835441202,150.9801629079035 14.50403880481416,41.0891015070286,149.7582476686131 14.50408925445484,41.08923679750313,149.0253505194703 14.50407044774867,41.08926869023468,148.8842771623524 14.50410983061454,41.0894104389964,148.7195284222257 14.50397880849099,41.08943717245265,148.8018918620083 14.50380585869848,41.08948735260079,147.5713031262135 14.50375016183932,41.08940164665055,147.0366811090127 14.50382706018577,41.08952279940654,147.7542291348844 14.50389970947199,41.08957364076837,148.4435542857864 14.50395206000916,41.08967499538966,148.8452927528666 14.50417643474001,41.08960189551352,148.9133981480775 14.50423342646277,41.08973527448553,149.1738068827253 14.5042483475444,41.08987399868706,149.8131226566299 14.50396731429174,41.08994827929769,147.9253505350183 14.50381495752381,41.09000469528781,145.3906253234369 14.50386084876634,41.09003558596054,145.8362734780623 14.50401286753333,41.09007831741928,147.9078005668427 14.50425315302074,41.09003566132254,150.1501711098835 14.50441273635411,41.09005420884635,149.4781625695865 14.50459688480186,41.09011587013751,147.9004002142867 14.50459825604338,41.09007491323816,147.9047497290334 14.50444031453015,41.09007942044973,149.2107765188399 14.50439315501678,41.09004803652712,149.6111308783659 14.50426826129837,41.09007396862558,150.1953514360349 14.50428130033948,41.09037016085565,148.6514731069828 14.50429069488046,41.09046459357755,147.8828702053854 14.50416169519357,41.09047442955482,147.1413200127248 14.50406642171638,41.09047516283965,146.1795858289103 14.50385784237119,41.09051273230214,143.1183627490493 14.50377804477437,41.09052750933848,141.8585508955736 14.50421522127564,41.09045977055281,147.5901295613465 14.50418767275945,41.09052039907302,147.0071359254042 14.50417724846466,41.09054374127952,146.6725257841791 14.50425308581334,41.09062917301846,146.385655599966 14.50427106108629,41.09067514424949,146.0861009256196 14.50425769000201,41.0908459322006,145.1046836323828 14.504186989821,41.09086278888716,144.6994213242402 14.50421521948319,41.09094824221901,144.7222414193153 14.504215601059,41.09110286856402,144.4043179627392 14.50459499357762,41.09111944540173,145.074455861117 14.50421363241625,41.09116080288147,144.1645560044907 14.50417773681572,41.09121536247934,143.9849766281213 14.5041623894472,41.09155805647215,143.5540009562915 14.50402945505845,41.09159160170422,142.9547402218297 14.50403654414403,41.0917406463118,143.1971217128106 14.50405603233421,41.09180959135954,142.9607335127466 14.50414655194086,41.09182922618312,143.2773644079103 14.50411094605392,41.09195412312997,142.7314211038711 14.50411428436882,41.0920543828199,142.3705231357079 14.50416821290808,41.09218786821786,142.3073416138105 14.50423840092088,41.09231994545972,142.635564700981 14.50430055326129,41.0924284497952,142.6762212531667 14.50436821326337,41.09250826355891,142.6724153948728 14.50442724319702,41.09259440217355,142.4353705305834 14.50447056865927,41.09265026292737,142.369674768234 14.50435443870074,41.09278253952487,140.1015671293645 14.50409437976666,41.09301851001887,135.7397610898586 14.50388279883202,41.09315418933969,133.1774214011443 14.50366307428329,41.09328717729934,130.3490721216482 14.50354780699843,41.0933771056033,128.7696053342989 14.50361024877902,41.09343079287483,129.2936084107127 14.50366627911984,41.09347851033018,129.7044499308688 14.50359472568029,41.093535260838,129.14564080565 14.5037122732596,41.0935271742948,130.1610827567463 14.50377850045471,41.09360419858503,130.5232901418575 14.50383815426926,41.09367355417519,130.6375300959066 14.503926706928,41.09367124210234,130.3322705901836 14.50406916482464,41.09364182134595,130.5624089924539 14.50414663452306,41.0936159597213,131.358112743473 14.50421258620228,41.09358161233077,132.4523507348505 14.50427598355157,41.0935594504057,133.2469556223599 14.50431707374975,41.09356338516626,133.456826920056 14.50434337927147,41.09358399454806,133.3948835309739 14.50442375276333,41.09358797535472,132.7119506145689 14.50455973192878,41.09344144905822,132.3553674470953 14.50477273192304,41.0932530187543,133.4077808252511 14.50488440122347,41.09307755929004,137.8651899889977 14.50490204195115,41.0930477456168,138.7065831698338 14.50446570966704,41.09266741938934,142.2029469095342 14.50451416028083,41.09259000669918,143.2703184431686 14.50483193428424,41.09225615375439,146.3415875029223 14.50481189705354,41.09208444709035,145.6768334521995 14.50465540930067,41.09208140761537,145.2196821449521 14.50456853774746,41.09194132366342,144.6072078079046 14.50442631156317,41.09189056629989,144.0715656721826 14.50413189618467,41.09187619663384,143.0953682999737 14.50406088957034,41.0916731839333,143.2478026983792 14.50411592580307,41.0915305511553,143.3701838040085 14.50424054670365,41.09112918260222,144.3797964643768 14.50417510719718,41.09087026302672,144.7778420059594 14.50455815792949,41.09073626032245,145.9973733094764 14.50476353797478,41.09064381559386,146.129138813455 14.50502986179862,41.09057075763246,145.5130131274263 14.50533768090058,41.09046678150084,144.3081205560235 14.50551047245509,41.09042249314359,142.3121127630977 14.50555658340291,41.09035361072787,141.6197556019419 14.50553520105226,41.09017776516217,141.5208018009198 14.50525455511858,41.09015264470835,144.2734726281286 14.50495010773386,41.09015817583202,145.8123434739028 14.50491607735139,41.0900482831769,145.8118243007699 14.50455504640237,41.09007473314553,148.2073502276751 14.50427898054798,41.09000789067248,150.1417435768816 14.50418108527807,41.08960096583996,148.8931003145109 14.50414173944757,41.08948616641529,148.7247897344511 14.50407896289837,41.08932835848116,148.8211086099516 14.50407370362688,41.0892077035274,149.1242078626913 14.50400314102204,41.08901623181503,150.4101707055801 14.50392229613118,41.08875910268061,151.9234605138784 14.50390887141014,41.08860600985039,151.7415542757252 14.50384444465673,41.08843168947878,150.938458577991 14.50360879179131,41.08846326974015,149.7986314638558 14.50384028962681,41.08841381952252,150.8673941598958 14.50377919035241,41.08825159989437,150.9452555151019 14.50369729676532,41.08801122304184,149.7110362751701 14.50363700936724,41.08784594313279,149.2073639540205 14.50368821342464,41.0877657337892,148.5061438975741 14.50397902389596,41.08759287404847,146.3035559553289 14.5038181572734,41.08743904196977,146.6301148699285 
+			</coordinates>
+		</LineString>
+	</Placemark>
+</Document>
+</kml>

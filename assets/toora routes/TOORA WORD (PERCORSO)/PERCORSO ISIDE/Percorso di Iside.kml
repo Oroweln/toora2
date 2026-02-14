@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="1v2Kn4UyJefhnxpCgtZn89rtt5eKRr1oh">
+	<name>Percorso di Iside</name>
+	<gx:CascadingStyle kml:id="__managed_style_176194483A36352E0652">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0A20B7E82A36352E0652">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_176194483A36352E0652</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_034397AF5836352E0653</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_00BD1B73C036346EFF76">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_19457B192F36346EFF74">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_034397AF5836352E0653">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0E95C7C08036346EFF74">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_19457B192F36346EFF74</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_00BD1B73C036346EFF76</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="53121E55D6000001">
+		<name>Toro Apis</name>
+		<LookAt>
+			<longitude>14.7701484853163</longitude>
+			<latitude>41.13371487613929</latitude>
+			<altitude>125.8414357533437</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>74.63366620240777</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0E95C7C08036346EFF74</styleUrl>
+		<Point>
+			<coordinates>14.77015933895938,41.13378677627959,125.9048490123467</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="53121E55D6000002">
+		<name>Ritrovamento Obelisco</name>
+		<LookAt>
+			<longitude>14.77454724606595</longitude>
+			<latitude>41.13173012309799</latitude>
+			<altitude>154.7515906148249</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>165.1165340998159</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0E95C7C08036346EFF74</styleUrl>
+		<Point>
+			<coordinates>14.77459523011558,41.13190388009867,133.6899766017745</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="53121E55D6000003">
+		<name>Obelisco</name>
+		<LookAt>
+			<longitude>14.77716202510941</longitude>
+			<latitude>41.13146926757597</latitude>
+			<altitude>140.7389023261935</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>270.353438944876</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0E95C7C08036346EFF74</styleUrl>
+		<Point>
+			<coordinates>14.7771673717097,41.13166457990857,141.3499903913865</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0152445E0336352E064C">
+		<name>Corso Garibaldi - Palazzo Collenea</name>
+		<LookAt>
+			<longitude>14.77855532543407</longitude>
+			<latitude>41.13090391288378</latitude>
+			<altitude>158.8050786575506</altitude>
+			<heading>357.1351997198887</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>154.1752470132451</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0A20B7E82A36352E0652</styleUrl>
+		<Point>
+			<coordinates>14.77843496456344,41.13095849126193,159.0697719222416</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="53121E55D6000005">
+		<name>Parte Mancante Obelisco del Museo del Sannio</name>
+		<LookAt>
+			<longitude>14.77975418778552</longitude>
+			<latitude>41.1304373049129</latitude>
+			<altitude>163.030113564404</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>268.9902716161305</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0E95C7C08036346EFF74</styleUrl>
+		<Point>
+			<coordinates>14.77872905659401,41.13076852247142,145.7441878020712</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="53121E55D6000004">
+		<name>Parte bassa Sfinge</name>
+		<LookAt>
+			<longitude>14.78007296833356</longitude>
+			<latitude>41.13152702053522</latitude>
+			<altitude>165.5342594759098</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>78.78821032684756</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0E95C7C08036346EFF74</styleUrl>
+		<Point>
+			<coordinates>14.78008846868946,41.13164564556614,160.6657204744727</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08FB63FB0736352F5A9E">
+		<name>Piazza Santa Sofia - Museo del Sannio</name>
+		<LookAt>
+			<longitude>14.78063681009142</longitude>
+			<latitude>41.1303154637566</latitude>
+			<altitude>155.495985901661</altitude>
+			<heading>357.1351976400791</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>419.1007355528563</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0A20B7E82A36352E0652</styleUrl>
+		<Point>
+			<coordinates>14.78119368394328,41.13040887702225,156.7397938689275</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="53121E55D6000006">
+		<name>Museo Arcos</name>
+		<LookAt>
+			<longitude>14.78222061729431</longitude>
+			<latitude>41.12925235239047</latitude>
+			<altitude>177.3870880336944</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>581.9359796692879</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0E95C7C08036346EFF74</styleUrl>
+		<Point>
+			<coordinates>14.78121243990385,41.12982436375336,180.1356005013203</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="53121E55D6000007">
+		<name>Percorso di Iside</name>
+		<LookAt>
+			<longitude>14.78088591200358</longitude>
+			<latitude>41.13008277496645</latitude>
+			<altitude>165.5269219818408</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>116.0192863104203</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0E95C7C08036346EFF74</styleUrl>
+		<LineString>
+			<coordinates>
+				14.7701573015527,41.13378764892774,125.7641757892208 14.77004292329484,41.13367904886254,125.7641627843581 14.77007763327105,41.13363307284594,125.7928163631791 14.77005905762277,41.13360459551798,125.698821638996 14.77019900264056,41.13351118691613,125.4255279953178 14.77027012011294,41.13354394668921,125.759501309932 14.77036012297446,41.13353423850722,125.9480669389322 14.77058527155602,41.13341484031945,125.5701394885201 14.77074380585892,41.13333638575092,125.3120328508212 14.7709119607937,41.13326232550177,125.1330897224715 14.7710751120755,41.13317874654459,124.7314429415833 14.77125380082928,41.133099280244,124.3987014433793 14.77137508229799,41.13304017797751,124.3753839961228 14.77144836919883,41.13301920739897,124.2655179977008 14.77154146491643,41.13296954778026,123.9446970851534 14.77167303593761,41.13290733050065,124.4365234560812 14.77176480877981,41.13287090666612,125.0312315138959 14.77197447837092,41.13277373510727,124.7834104296252 14.77206661162093,41.1327199720754,125.8015500515582 14.77214081454378,41.13267788054942,124.3846702178733 14.77226954519194,41.13261658238829,124.6051456817685 14.77238176116779,41.13255846321493,124.7468317754497 14.77272601891414,41.13238987604536,125.5294259896631 14.77291036600185,41.1323086643283,126.1281743130113 14.77312388549162,41.13224024386858,127.4935053860923 14.77346952345493,41.13216746848159,129.085254029177 14.77382303610952,41.13210665887959,130.4575669438171 14.77402428817719,41.13207178256481,130.0307812469316 14.77429924232301,41.13198670772599,131.9497461789948 14.77453215700069,41.13190788470066,133.7376242252334 14.77458832804495,41.13190495847996,133.2459415542899 14.77463705158257,41.13185911660585,134.46399340578 14.77476720768001,41.13186610107194,133.6565577987618 14.77483410724148,41.13198423911425,133.6271286205659 14.77493986994352,41.1319640004299,134.1377874982977 14.77500310997067,41.13201998175025,134.440708651048 14.7751138823806,41.13199546228952,134.8528341994572 14.77510629769272,41.13195386395841,134.8896929837233 14.77519200850165,41.13193521503294,135.3272782182397 14.77520342641239,41.13188801802452,135.5633142189506 14.77551569065035,41.13183257767135,136.444002239717 14.77581272907697,41.13177748839148,137.2755301832131 14.77614378502233,41.13171795417465,138.1870015472816 14.77647271898464,41.13164034640139,139.2113809046143 14.77692044702634,41.13155063493233,140.0841345133468 14.77705747399994,41.13155588172192,140.5412695096981 14.77709561210969,41.131645503862,140.8429463377171 14.77710485141224,41.13167388982254,140.9539237999221 14.7771706869178,41.13166653936371,141.1667074073978 14.77721070947785,41.13164983727945,141.1967869093649 14.77716864044703,41.13150964273356,140.5723016726776 14.77734295511365,41.13146733933978,141.1641019419291 14.77741262211976,41.13143488837901,141.5165334558689 14.77755219614899,41.13140124218553,142.0561041352672 14.77765625728912,41.13136728318465,142.2856461698707 14.77804478889708,41.13122707045088,143.2681947970419 14.77816172873018,41.13117042362545,143.759969912429 14.77834020541613,41.13108787733518,144.1220939040171 14.77851846019998,41.13101736812236,144.5690637844463 14.77889561596125,41.13082996891328,146.0659548413867 14.77905737059951,41.13078726553644,147.0991525481464 14.77919250004782,41.13100388946921,148.028992616639 14.77942747163581,41.13125095281715,149.2415916719258 14.77954552114474,41.13136251934063,150.0228798105907 14.77965706102297,41.13143145524696,150.3444627645227 14.7798224401311,41.13152769070216,150.7324104199336 14.77998963542063,41.13159823279508,150.8229535746117 14.78009472663472,41.13164518152168,151.4109189683013 14.7797328590282,41.13148467428223,150.0736805291704 14.77948487074693,41.13131152346548,149.0040110845318 14.77927160517267,41.13108422697615,148.4931912877153 14.77903749655302,41.13076033861623,146.7359871829449 14.77874095130478,41.1307753998863,145.4690853960407 14.77919641728557,41.13073083960007,147.3756598641525 14.77942726418249,41.13067165148956,148.7101254750066 14.77987731179703,41.13056460742234,150.1516043580791 14.7804426315435,41.13042191900279,153.4295429446381 14.78094841244624,41.13020066305196,154.2056730969966 14.78131491212265,41.13003781038892,155.3665487193833 14.78130394303827,41.12995654597471,155.4197896498644 14.78125736867123,41.12988573008595,155.42747603018 14.78121532218493,41.12982906436426,155.8439927250237 
+			</coordinates>
+		</LineString>
+	</Placemark>
+</Document>
+</kml>

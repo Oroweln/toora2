@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Percorso Magico Benevento</name>
+	<gx:CascadingStyle kml:id="__managed_style_487839A3C134378A3300">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2396&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_39ED39C46934378A3300">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2396&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_2C2D7D2D5F34378A3300">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_39ED39C46934378A3300</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_487839A3C134378A3300</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_10F17609AD34378A3300">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_0182A1CA1A34378A3300">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_026B73123D34378A32FF">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_0182A1CA1A34378A3300</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_10F17609AD34378A3300</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="0094B1E79526CD2CD695">
+		<name>Partenza Tour | Giardini Rocca dei Rettori</name>
+		<LookAt>
+			<longitude>14.78220624228279</longitude>
+			<latitude>41.12880261161805</latitude>
+			<altitude>171.4058587641458</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>400.2511356767355</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<Point>
+			<coordinates>14.78151467282127,41.12884134300447,160.7402313326737</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0CC4E0279B26CD300B58">
+		<name>seconda tappa | vico Cecia</name>
+		<LookAt>
+			<longitude>14.78040425596848</longitude>
+			<latitude>41.12976369694459</latitude>
+			<altitude>166.4677729831182</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>59.51152841612384</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<Point>
+			<coordinates>14.78019834888812,41.12981425423729,157.8486545269617</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="089B2E07C526CD31627D">
+		<name>Terza Tappa | Campanile Santa Sofia</name>
+		<LookAt>
+			<longitude>14.78162179450885</longitude>
+			<latitude>41.12968038681885</latitude>
+			<altitude>182.5595222049674</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>389.0304889850813</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<Point>
+			<coordinates>14.78090196103435,41.13037874600879,154.2059198986805</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="01F067800F26CD322148">
+		<name>Quarta Tappa | Ultima Strega di Benevento</name>
+		<LookAt>
+			<longitude>14.78117120592988</longitude>
+			<latitude>41.1301689516336</latitude>
+			<altitude>154.8853662775917</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>416.7046353310434</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<Point>
+			<coordinates>14.78033438487295,41.13050511122527,152.2738413474878</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0CF111B1BD2CFE26A5F6">
+		<name>Palazzo Collenea | Degustazione</name>
+		<LookAt>
+			<longitude>14.7784603489636</longitude>
+			<latitude>41.13014454505932</latitude>
+			<altitude>163.7384252532716</altitude>
+			<heading>105.1092166714691</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>544.618422268104</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<Point>
+			<coordinates>14.77913901936945,41.13040206497013,154.9848814270676</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="02674B715B26CD32B29F">
+		<name>Quinta tappa | Obelisco</name>
+		<LookAt>
+			<longitude>14.77780691559187</longitude>
+			<latitude>41.13104081858141</latitude>
+			<altitude>142.8314845805605</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>428.7585167196812</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<Point>
+			<coordinates>14.77714308508513,41.13161736889707,141.8640568967061</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="063A623CE326CD383804">
+		<name>Sesta Fermata | Duomo</name>
+		<LookAt>
+			<longitude>14.77670522296724</longitude>
+			<latitude>41.13117322432802</latitude>
+			<altitude>158.9317481057005</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>602.8720270397754</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<Point>
+			<coordinates>14.77458365526356,41.13190749670481,133.6379496654716</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0B5802395226CD3E9444">
+		<name>Settima Tappa | Calata Olivella</name>
+		<LookAt>
+			<longitude>14.773796575728</longitude>
+			<latitude>41.13044304797333</latitude>
+			<altitude>132.6412052392977</altitude>
+			<heading>342.9656791636262</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>95.4892525367177</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<Point>
+			<coordinates>14.77357834180351,41.1304295685066,122.6739478478661</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0FF25D7EBC26CD493AA7">
+		<name>Ottava tappa</name>
+		<LookAt>
+			<longitude>14.77339110347391</longitude>
+			<latitude>41.13048371156422</latitude>
+			<altitude>122.2174512116161</altitude>
+			<heading>-15.71924754077465</heading>
+			<tilt>37.46955233719618</tilt>
+			<gx:fovy>30.00050596716921</gx:fovy>
+			<range>251.1617840574036</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<Point>
+			<coordinates>14.77353300331077,41.13013208661246,119.9386718809456</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="06EE116EF926CD411292">
+		<name>Nona Tappa</name>
+		<LookAt>
+			<longitude>14.77274023649499</longitude>
+			<latitude>41.13000231188169</latitude>
+			<altitude>125.6104593529724</altitude>
+			<heading>155.1016279370906</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>84.79008444745887</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<Point>
+			<coordinates>14.77299037684423,41.13006781440378,118.4091726408558</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="01731B86E326CD41FDDD">
+		<name>Ultima Tappa | Teatro Romano</name>
+		<LookAt>
+			<longitude>14.77123023656704</longitude>
+			<latitude>41.13027842163824</latitude>
+			<altitude>116.4925145563201</altitude>
+			<heading>155.1007081825588</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>94.85445285665264</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<Point>
+			<coordinates>14.77169146765708,41.13037782738677,116.5526401815024</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="033B161BE826CD42A91F">
+		<name>Rientro | Arco del Sacramento</name>
+		<LookAt>
+			<longitude>14.77317369388507</longitude>
+			<latitude>41.13121870549575</latitude>
+			<altitude>136.3659596878562</altitude>
+			<heading>155.1020558541423</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>167.4874866263235</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<Point>
+			<coordinates>14.77379395195366,41.13131833336068,127.528264595482</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0F8F0C3FB026CD4B884D">
+		<name>Fine Percorso Magico</name>
+		<LookAt>
+			<longitude>14.78223674756285</longitude>
+			<latitude>41.12955861052925</latitude>
+			<altitude>158.1849487837665</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>30</gx:fovy>
+			<range>981.257137349312</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_2C2D7D2D5F34378A3300</styleUrl>
+		<Point>
+			<coordinates>14.77782433997634,41.13138793125209,157.4779701337791</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="060DBC575F2CFE22796A">
+		<name>Da Rocca Rettori a Vico della Ceca</name>
+		<LookAt>
+			<longitude>14.78008622680314</longitude>
+			<latitude>41.12959220590015</latitude>
+			<altitude>161.9516651499057</altitude>
+			<heading>105.1095311164512</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>68.47913861801317</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<LineString>
+			<coordinates>
+				14.78184466792897,41.1291195672293,0 14.78221100512881,41.1294986914087,0 14.78210473427079,41.12955479228343,0 14.78175535468895,41.12919393952463,0 14.78126669073097,41.12945989299406,0 14.78095477381232,41.12958938709745,0 14.78066698514402,41.12964528933976,0 14.78065480017566,41.12959202780907,0 14.780435802665,41.12961743616989,0 14.78016844215323,41.12963079103192,0 14.78009166960649,41.12976518002865,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="04DD9F6CEA2CFE2448C9">
+		<name>Da vico Cecia a Campanile Santa sofia</name>
+		<LookAt>
+			<longitude>14.77995336758607</longitude>
+			<latitude>41.12980594280216</latitude>
+			<altitude>168.9387847126625</altitude>
+			<heading>105.1099430024996</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>346.7029080614884</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<LineString>
+			<coordinates>
+				14.78009935481918,41.12976121310063,0 14.78018069857359,41.12978983874025,0 14.78043284614569,41.12985138685651,0 14.78046250957045,41.12996614347436,0 14.78053432456792,41.13014753013285,0 14.78059136577651,41.13025321866947,0 14.78069121323491,41.13036544500565,0 14.78089184958043,41.13038354819192,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="0E724C41082CFE2559A7">
+		<name>Da Campanile SSofia a Ultima Strega</name>
+		<LookAt>
+			<longitude>14.77995336758607</longitude>
+			<latitude>41.12980594280216</latitude>
+			<altitude>168.9387847126625</altitude>
+			<heading>105.1099430024996</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>346.7029080614884</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<LineString>
+			<coordinates>
+				14.78087057136554,41.13039547842018,0 14.78059873976625,41.13039011106011,0 14.78050851355956,41.13038784153367,0 14.78032633089171,41.13045371929294,0 14.78033607961434,41.1304901927217,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="0B32BB78BE2CFE2794B4">
+		<name>Da ultima strega a Palazzo Collenea</name>
+		<LookAt>
+			<longitude>14.77888018013491</longitude>
+			<latitude>41.13046990883264</latitude>
+			<altitude>164.8688432848576</altitude>
+			<heading>105.1092166719925</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>249.4504196534763</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<LineString>
+			<coordinates>
+				14.78032215926307,41.13047582652508,0 14.77990661628806,41.13058297482253,0 14.77929810588789,41.13071518286055,0 14.77926901519222,41.13067238120825,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="03384C598B2CFE287E29">
+		<name>Da palazzo Collenea a Obelisco</name>
+		<LookAt>
+			<longitude>14.77755255930823</longitude>
+			<latitude>41.13132608502151</latitude>
+			<altitude>152.9089191520254</altitude>
+			<heading>105.1074608100684</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>157.9629418894183</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<LineString>
+			<coordinates>
+				14.77924782484828,41.13067233916944,0 14.77892837172535,41.13080196727313,0 14.77821172523206,41.13111056068154,0 14.77777038669814,41.13132821987229,0 14.7774767857829,41.13142056153391,0 14.77713516349002,41.13150778485319,0 14.77711485561197,41.13155217695051,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="0DD1AFBE002CFE29A9B0">
+		<name>Da Obelisco a Duomo</name>
+		<LookAt>
+			<longitude>14.77473509462334</longitude>
+			<latitude>41.13194765002375</latitude>
+			<altitude>135.7879230548783</altitude>
+			<heading>105.1058970769966</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>150.4830090800351</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<LineString>
+			<coordinates>
+				14.77710470882512,41.13153449164967,0 14.77620487404273,41.13169635073638,0 14.77553306014971,41.13180705108129,0 14.77503505565945,41.13186483805649,0 14.7749079043337,41.13171666116795,0 14.77479078122748,41.13175212434263,0 14.77482290236875,41.13184822066279,0 14.77463419914147,41.13189642268082,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="04732E33D52CFE2AC3D7">
+		<name>Da Duomo a Calata Olivella</name>
+		<LookAt>
+			<longitude>14.77362826682874</longitude>
+			<latitude>41.13060878811007</latitude>
+			<altitude>135.2717538486074</altitude>
+			<heading>105.1051474209025</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>94.58533195608653</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<LineString>
+			<coordinates>
+				14.77459831745425,41.13193543140372,0 14.77442260676345,41.13197636721405,0 14.77426321947936,41.13182961597563,0 14.77409586008404,41.1316177339032,0 14.7738936906048,41.13138974053069,0 14.77374721483153,41.13120790996277,0 14.77359849167184,41.13105509843898,0 14.77352224656044,41.13097432897447,0 14.77365256288599,41.13089038159237,0 14.77379023073407,41.1308271666631,0 14.77390768756843,41.13076035932577,0 14.77385124468914,41.13068773329429,0 14.77385154592019,41.13064657728302,0 14.77375462859757,41.13060621400486,0 14.7736878772673,41.13056249386994,0 14.77363949665385,41.13050511190721,0 14.77360978950195,41.13046705515511,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="0627D2C20A2CFE2BDF28">
+		<name>Da settima ad ottava tappa</name>
+		<LookAt>
+			<longitude>14.77377451574146</longitude>
+			<latitude>41.13036475195338</latitude>
+			<altitude>137.8318499106204</altitude>
+			<heading>105.1052525787355</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>228.2918673291351</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<LineString>
+			<coordinates>
+				14.77355636739301,41.13037354519134,0 14.77353915382129,41.13034947956087,0 14.77351137283999,41.13029742964882,0 14.7734962036827,41.13024479765157,0 14.77346703286748,41.13012785910957,0 14.77354845778131,41.13010931943057,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="04EA19690F2CFE2C929B">
+		<name>Da ottava a nona Tappa</name>
+		<LookAt>
+			<longitude>14.77323210161317</longitude>
+			<latitude>41.13004543294763</latitude>
+			<altitude>125.6217825029027</altitude>
+			<heading>105.1050039061889</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>169.9926142755249</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<LineString>
+			<coordinates>
+				14.77353038781167,41.13012374903724,0 14.77341801412216,41.1301410042381,0 14.77329495733733,41.13016874728712,0 14.77311439845435,41.13022229081228,0 14.77306070666158,41.13023551831926,0 14.77299821365682,41.1301926283593,0 14.77296443266184,41.13013988821857,0 14.77292067278698,41.13005555560008,0 14.77297067444919,41.13006916329886,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="0D97DFCFD02CFE2D61CE">
+		<name>da Nona a Teatro Romano</name>
+		<LookAt>
+			<longitude>14.7718757703791</longitude>
+			<latitude>41.12983364171382</latitude>
+			<altitude>121.7801907492498</altitude>
+			<heading>105.1041117508888</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>173.8341970702095</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<LineString>
+			<coordinates>
+				14.77296077605713,41.13007303245275,0 14.7729134970638,41.13006980171746,0 14.77294529889827,41.13013138690368,0 14.7726811381879,41.13027148322149,0 14.77261998507407,41.13018347339779,0 14.77252823536408,41.1300883177524,0 14.772461259083,41.12995671649456,0 14.772421163811,41.12988901954505,0 14.77234585527447,41.12988615496574,0 14.77227224302663,41.12990096075688,0 14.77223140960927,41.12988605771031,0 14.77216860008321,41.12988284269149,0 14.77211596611878,41.12990808794266,0 14.77197945431218,41.12994692988011,0 14.77184793856237,41.129990113994,0 14.77182476048369,41.13000522299126,0 14.77186331410365,41.13007919462169,0 14.77173389688491,41.13013412193303,0 14.77163945680413,41.1301695214956,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="0B88606E382CFE2E2151">
+		<name>1° percorso rientro da Teatro Romano a Arco sacramento</name>
+		<LookAt>
+			<longitude>14.77302509605213</longitude>
+			<latitude>41.13070549735618</latitude>
+			<altitude>128.6073919114707</altitude>
+			<heading>105.1047961255939</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>238.2606918793681</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<LineString>
+			<coordinates>
+				14.77160444479206,41.13017337636081,0 14.77153545633925,41.13009752450582,0 14.77208887267937,41.12992802364202,0 14.77222090235574,41.12988967615302,0 14.77228641996947,41.12992090893523,0 14.77239010340961,41.1299008638342,0 14.77254655208212,41.13008581286522,0 14.77285114656192,41.13041071563808,0 14.7730275728724,41.13056005805743,0 14.77332873221577,41.13079199884377,0 14.77344946485811,41.13091082682163,0 14.77358819289077,41.13102731483259,0 14.77382082919985,41.13128275591666,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="0F58E7BEED2CFE2F59B7">
+		<name>Percorso Arco Sacramento - Fine persorso</name>
+		<LookAt>
+			<longitude>14.77708541032684</longitude>
+			<latitude>41.13087848746957</latitude>
+			<altitude>159.047430377256</altitude>
+			<heading>105.107466965048</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>207.820646713808</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_026B73123D34378A32FF</styleUrl>
+		<LineString>
+			<coordinates>
+				14.7738490904872,41.13134147237271,0 14.77416107544347,41.131675411346,0 14.77442417247147,41.13199281413576,0 14.77469423173305,41.13189297769649,0 14.77481402779599,41.13191562291924,0 14.7748510130729,41.13201258405014,0 14.7749972003741,41.13198685728052,0 14.77506602890136,41.13205538885358,0 14.7751449062139,41.13202682077102,0 14.77509524014274,41.13194822111949,0 14.77558729860458,41.13185248703648,0 14.77596318771576,41.1317706420383,0 14.77630331487344,41.1316977156087,0 14.77666902080377,41.1316321203174,0 14.77706933984009,41.13155700845689,0 14.77751861980425,41.13143594450202,0 14.77776894730765,41.13135049421334,0 14.77781431541618,41.13138228048249,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+</Document>
+</kml>
