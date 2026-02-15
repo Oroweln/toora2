@@ -1,0 +1,1309 @@
+{
+  "version": "1.0.0",
+  "itineraries": [
+    {
+      "id": "itinerary_01",
+      "slug": "4-imperatori",
+      "title": "4 Imperatori",
+      "description": "Un viaggio nel tempo attraverso Benevento romana, sulle orme di quattro grandi imperatori: Traiano, Domiziano, Adriano e le loro eredità monumentali.",
+      "coverImage": null,
+      "difficulty": "easy",
+      "distanceKm": 2.7,
+      "estimatedDurationMinutes": 44,
+      "elevationGainM": 47,
+      "terrain": [
+        "paved"
+      ],
+      "tags": [
+        "history",
+        "culture",
+        "roman"
+      ],
+      "routeGeoJSON": "routes/4-imperatori.geojson",
+      "startingPoint": {
+        "latitude": 41.1293715,
+        "longitude": 14.7824216,
+        "geofenceRadiusM": 30,
+        "name": "Statua di Traiano",
+        "navigationAddress": "Statua di Traiano, Benevento BN"
+      },
+      "hotspots": [
+        {
+          "id": "hs_01_01",
+          "sequence": 1,
+          "isActive": true,
+          "title": "Statua di Traiano",
+          "shortDescription": "Tappa 1 del percorso 4 Imperatori.",
+          "latitude": 41.1293715,
+          "longitude": 14.7824216,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": "images/TOORA PHOTOS/COMPRESSED PHOTOS/Arco di Traiano.jpg",
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_01_02",
+          "sequence": 2,
+          "isActive": true,
+          "title": "Incontro con Gladiatore",
+          "shortDescription": "Tappa 2 del percorso 4 Imperatori.",
+          "latitude": 41.1302855,
+          "longitude": 14.7809654,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_01_03",
+          "sequence": 3,
+          "isActive": true,
+          "title": "Incontro Traiano. e De Cebalo",
+          "shortDescription": "Tappa 3 del percorso 4 Imperatori.",
+          "latitude": 41.1324673,
+          "longitude": 14.7789994,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": "images/TOORA PHOTOS/COMPRESSED PHOTOS/Arco di Traiano.jpg",
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_01_04",
+          "sequence": 4,
+          "isActive": true,
+          "title": "Impertore Domiziano",
+          "shortDescription": "Tappa 4 del percorso 4 Imperatori.",
+          "latitude": 41.1316617,
+          "longitude": 14.7771553,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_01_05",
+          "sequence": 5,
+          "isActive": true,
+          "title": "Mascherone Teatro Romano — Adriano",
+          "shortDescription": "Tappa 5 del percorso 4 Imperatori.",
+          "latitude": 41.1315038,
+          "longitude": 14.7763527,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": "images/TOORA PHOTOS/COMPRESSED PHOTOS/Arco di Traiano.jpg",
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_01_06",
+          "sequence": 6,
+          "isActive": false,
+          "title": "Reimpiego",
+          "shortDescription": "Tappa 6 del percorso 4 Imperatori.",
+          "latitude": 41.13173,
+          "longitude": 14.7757879,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_01_07",
+          "sequence": 7,
+          "isActive": false,
+          "title": "Il Gladiatore Filemazione",
+          "shortDescription": "Tappa 7 del percorso 4 Imperatori.",
+          "latitude": 41.1317003,
+          "longitude": 14.7747013,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_01_08",
+          "sequence": 8,
+          "isActive": false,
+          "title": "Lucinius — Vestali",
+          "shortDescription": "Tappa 8 del percorso 4 Imperatori.",
+          "latitude": 41.1318009,
+          "longitude": 14.7714138,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_01_09",
+          "sequence": 9,
+          "isActive": false,
+          "title": "Lucilius Schiniero gamba sinistra",
+          "shortDescription": "Tappa 9 del percorso 4 Imperatori.",
+          "latitude": 41.1289954,
+          "longitude": 14.7825545,
+          "geofenceRadiusM": 25,
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "itinerary_02",
+      "slug": "percorso-magico",
+      "title": "Percorso Magico Benevento",
+      "description": "Un percorso incantato tra le vie del centro storico di Benevento, dalla Rocca dei Rettori al Teatro Romano, seguendo le tracce delle streghe e dei miti beneventani.",
+      "coverImage": "images/TOORA PHOTOS/COMPRESSED PHOTOS/Pecorso magico.jpg",
+      "difficulty": "easy",
+      "distanceKm": 2.2,
+      "estimatedDurationMinutes": 41,
+      "elevationGainM": 0,
+      "terrain": [
+        "paved"
+      ],
+      "tags": [
+        "history",
+        "culture",
+        "magic"
+      ],
+      "routeGeoJSON": "routes/percorso-magico.geojson",
+      "startingPoint": {
+        "latitude": 41.1288413,
+        "longitude": 14.7815147,
+        "geofenceRadiusM": 30,
+        "name": "Partenza Tour — Giardini Rocca dei Rettori",
+        "navigationAddress": "Partenza Tour — Giardini Rocca dei Rettori, Benevento BN"
+      },
+      "hotspots": [
+        {
+          "id": "hs_02_01",
+          "sequence": 1,
+          "isActive": true,
+          "title": "Partenza Tour — Giardini Rocca dei Rettori",
+          "shortDescription": "Tappa 1 del percorso Percorso Magico Benevento.",
+          "latitude": 41.1288413,
+          "longitude": 14.7815147,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_02_02",
+          "sequence": 2,
+          "isActive": true,
+          "title": "seconda tappa — vico Cecia",
+          "shortDescription": "Tappa 2 del percorso Percorso Magico Benevento.",
+          "latitude": 41.1298143,
+          "longitude": 14.7801983,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_02_03",
+          "sequence": 3,
+          "isActive": true,
+          "title": "Terza Tappa — Campanile Santa Sofia",
+          "shortDescription": "Tappa 3 del percorso Percorso Magico Benevento.",
+          "latitude": 41.1303787,
+          "longitude": 14.780902,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": "images/TOORA PHOTOS/COMPRESSED PHOTOS/santa sofia.JPG",
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_02_04",
+          "sequence": 4,
+          "isActive": true,
+          "title": "Quarta Tappa — Ultima Strega di Benevento",
+          "shortDescription": "Tappa 4 del percorso Percorso Magico Benevento.",
+          "latitude": 41.1305051,
+          "longitude": 14.7803344,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": "images/TOORA PHOTOS/COMPRESSED PHOTOS/struscio di streghe.jpg",
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_02_05",
+          "sequence": 5,
+          "isActive": true,
+          "title": "Palazzo Collenea — Degustazione",
+          "shortDescription": "Tappa 5 del percorso Percorso Magico Benevento.",
+          "latitude": 41.1304021,
+          "longitude": 14.779139,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_02_06",
+          "sequence": 6,
+          "isActive": false,
+          "title": "Quinta tappa — Obelisco",
+          "shortDescription": "Tappa 6 del percorso Percorso Magico Benevento.",
+          "latitude": 41.1316174,
+          "longitude": 14.7771431,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_02_07",
+          "sequence": 7,
+          "isActive": false,
+          "title": "Sesta Fermata — Duomo",
+          "shortDescription": "Tappa 7 del percorso Percorso Magico Benevento.",
+          "latitude": 41.1319075,
+          "longitude": 14.7745837,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_02_08",
+          "sequence": 8,
+          "isActive": false,
+          "title": "Settima Tappa — Calata Olivella",
+          "shortDescription": "Tappa 8 del percorso Percorso Magico Benevento.",
+          "latitude": 41.1304296,
+          "longitude": 14.7735783,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_02_09",
+          "sequence": 9,
+          "isActive": false,
+          "title": "Ottava tappa",
+          "shortDescription": "Tappa 9 del percorso Percorso Magico Benevento.",
+          "latitude": 41.1301321,
+          "longitude": 14.773533,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_02_10",
+          "sequence": 10,
+          "isActive": false,
+          "title": "Nona Tappa",
+          "shortDescription": "Tappa 10 del percorso Percorso Magico Benevento.",
+          "latitude": 41.1300678,
+          "longitude": 14.7729904,
+          "geofenceRadiusM": 25,
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "itinerary_03",
+      "slug": "sant-agata-dei-goti",
+      "title": "Sant'Agata dei Goti",
+      "description": "Esplorazione del borgo medievale di Sant'Agata dei Goti, tra castelli, chiese antiche e panorami mozzafiato sulla valle caudina.",
+      "coverImage": null,
+      "difficulty": "moderate",
+      "distanceKm": 2.4,
+      "estimatedDurationMinutes": 42,
+      "elevationGainM": 72,
+      "terrain": [
+        "paved",
+        "gravel"
+      ],
+      "tags": [
+        "history",
+        "culture",
+        "medieval"
+      ],
+      "routeGeoJSON": "routes/sant-agata-dei-goti.geojson",
+      "startingPoint": {
+        "latitude": 41.0891174,
+        "longitude": 14.5022709,
+        "geofenceRadiusM": 30,
+        "name": "Inizio Tour con prentazione",
+        "navigationAddress": "Inizio Tour con prentazione, Benevento BN"
+      },
+      "hotspots": [
+        {
+          "id": "hs_03_01",
+          "sequence": 1,
+          "isActive": true,
+          "title": "Inizio Tour con prentazione",
+          "shortDescription": "Tappa 1 del percorso Sant'Agata dei Goti.",
+          "latitude": 41.0891174,
+          "longitude": 14.5022709,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_03_02",
+          "sequence": 2,
+          "isActive": true,
+          "title": "2 Castello Ducale",
+          "shortDescription": "Tappa 2 del percorso Sant'Agata dei Goti.",
+          "latitude": 41.0884842,
+          "longitude": 14.5038959,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_03_03",
+          "sequence": 3,
+          "isActive": true,
+          "title": "3 VILLA COMUNALE ‘DEL BOSCHETTO’ E BELVEDERE",
+          "shortDescription": "Tappa 3 del percorso Sant'Agata dei Goti.",
+          "latitude": 41.0884382,
+          "longitude": 14.5049434,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_03_04",
+          "sequence": 4,
+          "isActive": true,
+          "title": "7 Portale del convento delle Suore Redentoriste",
+          "shortDescription": "Tappa 4 del percorso Sant'Agata dei Goti.",
+          "latitude": 41.0900777,
+          "longitude": 14.5040185,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_03_05",
+          "sequence": 5,
+          "isActive": true,
+          "title": "8 Portici di Via Roma",
+          "shortDescription": "Tappa 5 del percorso Sant'Agata dei Goti.",
+          "latitude": 41.0904899,
+          "longitude": 14.503753,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_03_06",
+          "sequence": 6,
+          "isActive": false,
+          "title": "13 Ingresso al Triggio",
+          "shortDescription": "Tappa 6 del percorso Sant'Agata dei Goti.",
+          "latitude": 41.0926403,
+          "longitude": 14.5044667,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_03_07",
+          "sequence": 7,
+          "isActive": false,
+          "title": "17 Chiesa di San Menna",
+          "shortDescription": "Tappa 7 del percorso Sant'Agata dei Goti.",
+          "latitude": 41.0884667,
+          "longitude": 14.5035939,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_03_08",
+          "sequence": 8,
+          "isActive": false,
+          "title": "16 Vico dei Fiori",
+          "shortDescription": "Tappa 8 del percorso Sant'Agata dei Goti.",
+          "latitude": 41.0901682,
+          "longitude": 14.5055328,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_03_09",
+          "sequence": 9,
+          "isActive": false,
+          "title": "18 Chiesa dell&apos;Annunziata",
+          "shortDescription": "Tappa 9 del percorso Sant'Agata dei Goti.",
+          "latitude": 41.087425,
+          "longitude": 14.5038244,
+          "geofenceRadiusM": 25,
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "itinerary_04",
+      "slug": "castelvenere-camaiola",
+      "title": "Castelvenere - La Camaiola",
+      "description": "Un percorso tra vigne e cantine tufacee di Castelvenere, alla scoperta della tradizione vitivinicola campana e del vitigno Camaiola.",
+      "coverImage": null,
+      "difficulty": "moderate",
+      "distanceKm": 16.1,
+      "estimatedDurationMinutes": 111,
+      "elevationGainM": 290,
+      "terrain": [
+        "paved",
+        "gravel",
+        "trail"
+      ],
+      "tags": [
+        "wine",
+        "culture",
+        "nature"
+      ],
+      "routeGeoJSON": "routes/castelvenere-camaiola.geojson",
+      "startingPoint": {
+        "latitude": 41.2197894,
+        "longitude": 14.5350243,
+        "geofenceRadiusM": 30,
+        "name": "0. Bgni vecchi Terme Iacobelli",
+        "navigationAddress": "0. Bgni vecchi Terme Iacobelli, Benevento BN"
+      },
+      "hotspots": [
+        {
+          "id": "hs_04_01",
+          "sequence": 1,
+          "isActive": true,
+          "title": "0. Bgni vecchi Terme Iacobelli",
+          "shortDescription": "Tappa 1 del percorso Castelvenere - La Camaiola.",
+          "latitude": 41.2197894,
+          "longitude": 14.5350243,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_04_02",
+          "sequence": 2,
+          "isActive": true,
+          "title": "Bosco Caldara — animazione cavalette",
+          "shortDescription": "Tappa 2 del percorso Castelvenere - La Camaiola.",
+          "latitude": 41.227098,
+          "longitude": 14.5583402,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": "images/TOORA PHOTOS/COMPRESSED PHOTOS/bosco caldara.jpg",
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_04_03",
+          "sequence": 3,
+          "isActive": true,
+          "title": "cantine tufacee",
+          "shortDescription": "Tappa 3 del percorso Castelvenere - La Camaiola.",
+          "latitude": 41.2352155,
+          "longitude": 14.5463571,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_04_04",
+          "sequence": 4,
+          "isActive": true,
+          "title": "2 chiesa madonna scavi",
+          "shortDescription": "Tappa 4 del percorso Castelvenere - La Camaiola.",
+          "latitude": 41.232532,
+          "longitude": 14.5483174,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_04_05",
+          "sequence": 5,
+          "isActive": true,
+          "title": "Mulino",
+          "shortDescription": "Tappa 5 del percorso Castelvenere - La Camaiola.",
+          "latitude": 41.2368806,
+          "longitude": 14.5465549,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_04_06",
+          "sequence": 6,
+          "isActive": false,
+          "title": "5 cantina Simone Giacomo",
+          "shortDescription": "Tappa 6 del percorso Castelvenere - La Camaiola.",
+          "latitude": 41.2387595,
+          "longitude": 14.5484727,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_04_07",
+          "sequence": 7,
+          "isActive": false,
+          "title": "6Podere Veneri vecchia cantina",
+          "shortDescription": "Tappa 7 del percorso Castelvenere - La Camaiola.",
+          "latitude": 41.2464939,
+          "longitude": 14.5535067,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_04_08",
+          "sequence": 8,
+          "isActive": false,
+          "title": "Casinon Pelosi (Pengue)",
+          "shortDescription": "Tappa 8 del percorso Castelvenere - La Camaiola.",
+          "latitude": 41.2495695,
+          "longitude": 14.5545479,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_04_09",
+          "sequence": 9,
+          "isActive": false,
+          "title": "Chiesa San Barbato",
+          "shortDescription": "Tappa 9 del percorso Castelvenere - La Camaiola.",
+          "latitude": 41.2492159,
+          "longitude": 14.5515433,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_04_10",
+          "sequence": 10,
+          "isActive": false,
+          "title": "Agriturismo Le Vigne di Filippo",
+          "shortDescription": "Tappa 10 del percorso Castelvenere - La Camaiola.",
+          "latitude": 41.2410133,
+          "longitude": 14.5512251,
+          "geofenceRadiusM": 25,
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "itinerary_05",
+      "slug": "percorso-di-iside",
+      "title": "Percorso di Iside",
+      "description": "Sulle tracce del culto di Iside a Benevento, un percorso archeologico attraverso i reperti egizi che testimoniano il legame tra Roma e l'Oriente.",
+      "coverImage": null,
+      "difficulty": "easy",
+      "distanceKm": 1.5,
+      "estimatedDurationMinutes": 38,
+      "elevationGainM": 42,
+      "terrain": [
+        "paved"
+      ],
+      "tags": [
+        "history",
+        "archaeology",
+        "culture"
+      ],
+      "routeGeoJSON": "routes/percorso-di-iside.geojson",
+      "startingPoint": {
+        "latitude": 41.1337868,
+        "longitude": 14.7701593,
+        "geofenceRadiusM": 30,
+        "name": "Toro Apis",
+        "navigationAddress": "Toro Apis, Benevento BN"
+      },
+      "hotspots": [
+        {
+          "id": "hs_05_01",
+          "sequence": 1,
+          "isActive": true,
+          "title": "Toro Apis",
+          "shortDescription": "Tappa 1 del percorso Percorso di Iside.",
+          "latitude": 41.1337868,
+          "longitude": 14.7701593,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_05_02",
+          "sequence": 2,
+          "isActive": true,
+          "title": "Ritrovamento Obelisco",
+          "shortDescription": "Tappa 2 del percorso Percorso di Iside.",
+          "latitude": 41.1319039,
+          "longitude": 14.7745952,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": "images/TOORA PHOTOS/COMPRESSED PHOTOS/obelisco neoegizio.JPG",
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_05_03",
+          "sequence": 3,
+          "isActive": true,
+          "title": "Obelisco",
+          "shortDescription": "Tappa 3 del percorso Percorso di Iside.",
+          "latitude": 41.1316646,
+          "longitude": 14.7771674,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": "images/TOORA PHOTOS/COMPRESSED PHOTOS/obelisco neoegizio.JPG",
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_05_04",
+          "sequence": 4,
+          "isActive": true,
+          "title": "Corso Garibaldi - Palazzo Collenea",
+          "shortDescription": "Tappa 4 del percorso Percorso di Iside.",
+          "latitude": 41.1309585,
+          "longitude": 14.778435,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_05_05",
+          "sequence": 5,
+          "isActive": true,
+          "title": "Parte Mancante Obelisco del Museo del Sannio",
+          "shortDescription": "Tappa 5 del percorso Percorso di Iside.",
+          "latitude": 41.1307685,
+          "longitude": 14.7787291,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": "images/TOORA PHOTOS/COMPRESSED PHOTOS/obelisco neoegizio.JPG",
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_05_06",
+          "sequence": 6,
+          "isActive": false,
+          "title": "Parte bassa Sfinge",
+          "shortDescription": "Tappa 6 del percorso Percorso di Iside.",
+          "latitude": 41.1316456,
+          "longitude": 14.7800885,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_05_07",
+          "sequence": 7,
+          "isActive": false,
+          "title": "Piazza Santa Sofia - Museo del Sannio",
+          "shortDescription": "Tappa 7 del percorso Percorso di Iside.",
+          "latitude": 41.1304089,
+          "longitude": 14.7811937,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_05_08",
+          "sequence": 8,
+          "isActive": false,
+          "title": "Museo Arcos",
+          "shortDescription": "Tappa 8 del percorso Percorso di Iside.",
+          "latitude": 41.1298244,
+          "longitude": 14.7812124,
+          "geofenceRadiusM": 25,
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "itinerary_06",
+      "slug": "via-appia-urbano",
+      "title": "Via Appia - Percorso Urbano",
+      "description": "Il tratto urbano dell'antica Via Appia attraverso Benevento, tra monumenti romani, archi trionfali e tracce dell'antico lastricato.",
+      "coverImage": null,
+      "difficulty": "easy",
+      "distanceKm": 2.7,
+      "estimatedDurationMinutes": 44,
+      "elevationGainM": 63,
+      "terrain": [
+        "paved"
+      ],
+      "tags": [
+        "history",
+        "roman",
+        "archaeology"
+      ],
+      "routeGeoJSON": "routes/via-appia-urbano.geojson",
+      "startingPoint": {
+        "latitude": 41.1289064,
+        "longitude": 14.7630275,
+        "geofenceRadiusM": 30,
+        "name": "POI 0 - La Via Appia a Benevento",
+        "navigationAddress": "POI 0 - La Via Appia a Benevento, Benevento BN"
+      },
+      "hotspots": [
+        {
+          "id": "hs_06_01",
+          "sequence": 1,
+          "isActive": true,
+          "title": "POI 0 - La Via Appia a Benevento",
+          "shortDescription": "Tappa 1 del percorso Via Appia - Percorso Urbano.",
+          "latitude": 41.1289064,
+          "longitude": 14.7630275,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_06_02",
+          "sequence": 2,
+          "isActive": true,
+          "title": "POI 1 - Strada glareata e recinto funerario",
+          "shortDescription": "Tappa 2 del percorso Via Appia - Percorso Urbano.",
+          "latitude": 41.1293514,
+          "longitude": 14.7637823,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_06_03",
+          "sequence": 3,
+          "isActive": true,
+          "title": "POI 2 - Muro di contenimento della Via Appia",
+          "shortDescription": "Tappa 3 del percorso Via Appia - Percorso Urbano.",
+          "latitude": 41.1293055,
+          "longitude": 14.7635756,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_06_04",
+          "sequence": 4,
+          "isActive": true,
+          "title": "POI 3 – Monumento funerario",
+          "shortDescription": "Tappa 4 del percorso Via Appia - Percorso Urbano.",
+          "latitude": 41.1299126,
+          "longitude": 14.7643034,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_06_05",
+          "sequence": 5,
+          "isActive": true,
+          "title": "POI 4 - Ponte Leproso",
+          "shortDescription": "Tappa 5 del percorso Via Appia - Percorso Urbano.",
+          "latitude": 41.1314069,
+          "longitude": 14.7654397,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_06_06",
+          "sequence": 6,
+          "isActive": false,
+          "title": "POI 5 - Ipotesi dell’ingresso in città",
+          "shortDescription": "Tappa 6 del percorso Via Appia - Percorso Urbano.",
+          "latitude": 41.1321698,
+          "longitude": 14.7661669,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_06_07",
+          "sequence": 7,
+          "isActive": false,
+          "title": "POI 6 - Anfiteatro",
+          "shortDescription": "Tappa 7 del percorso Via Appia - Percorso Urbano.",
+          "latitude": 41.1324639,
+          "longitude": 14.7674444,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_06_08",
+          "sequence": 8,
+          "isActive": false,
+          "title": "POI 7 - Criptoportico dei Santi Quaranta",
+          "shortDescription": "Tappa 8 del percorso Via Appia - Percorso Urbano.",
+          "latitude": 41.1339227,
+          "longitude": 14.7674864,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_06_09",
+          "sequence": 9,
+          "isActive": false,
+          "title": "POI 9 - Teatro",
+          "shortDescription": "Tappa 9 del percorso Via Appia - Percorso Urbano.",
+          "latitude": 41.130769,
+          "longitude": 14.7719335,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_06_10",
+          "sequence": 10,
+          "isActive": false,
+          "title": "POI 10 - Arco del Sacramento con area delle terme",
+          "shortDescription": "Tappa 10 del percorso Via Appia - Percorso Urbano.",
+          "latitude": 41.1310935,
+          "longitude": 14.7736131,
+          "geofenceRadiusM": 25,
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "itinerary_07",
+      "slug": "via-appia-benevento-apice",
+      "title": "Via Appia - Benevento ad Apice",
+      "description": "Il secondo tratto della Via Appia da Benevento verso Apice, attraverso la campagna sannita fino al Ponte Rotto, testimone di duemila anni di storia.",
+      "coverImage": null,
+      "difficulty": "moderate",
+      "distanceKm": 16.2,
+      "estimatedDurationMinutes": 111,
+      "elevationGainM": 325,
+      "terrain": [
+        "paved",
+        "gravel"
+      ],
+      "tags": [
+        "history",
+        "roman",
+        "nature"
+      ],
+      "routeGeoJSON": "routes/via-appia-benevento-apice.geojson",
+      "startingPoint": {
+        "latitude": 41.1295175,
+        "longitude": 14.7824419,
+        "geofenceRadiusM": 30,
+        "name": "POI 0 – Lungo l’Appia da Beneventum a Ponte Rotto",
+        "navigationAddress": "POI 0 – Lungo l’Appia da Beneventum a Ponte Rotto, Benevento BN"
+      },
+      "hotspots": [
+        {
+          "id": "hs_07_01",
+          "sequence": 1,
+          "isActive": true,
+          "title": "POI 0 – Lungo l’Appia da Beneventum a Ponte Rotto",
+          "shortDescription": "Tappa 1 del percorso Via Appia - Benevento ad Apice.",
+          "latitude": 41.1295175,
+          "longitude": 14.7824419,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": "images/TOORA PHOTOS/COMPRESSED PHOTOS/ponte_Rotto.jpg",
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_07_02",
+          "sequence": 2,
+          "isActive": true,
+          "title": "POI 1bis - Speco dell’acquedotto del Serino",
+          "shortDescription": "Tappa 2 del percorso Via Appia - Benevento ad Apice.",
+          "latitude": 41.1194162,
+          "longitude": 14.8036127,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_07_03",
+          "sequence": 3,
+          "isActive": true,
+          "title": "POI 1 - Masseria San Cumano e i resti del passato",
+          "shortDescription": "Tappa 3 del percorso Via Appia - Benevento ad Apice.",
+          "latitude": 41.1096202,
+          "longitude": 14.834981,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_07_04",
+          "sequence": 4,
+          "isActive": true,
+          "title": "POI 2 - Il persistere dell’antico. La Via Appia a San Cumano",
+          "shortDescription": "Tappa 4 del percorso Via Appia - Benevento ad Apice.",
+          "latitude": 41.1069132,
+          "longitude": 14.8411392,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_07_05",
+          "sequence": 5,
+          "isActive": true,
+          "title": "POI 3 – L’insediamento di Nuceriola",
+          "shortDescription": "Tappa 5 del percorso Via Appia - Benevento ad Apice.",
+          "latitude": 41.10322,
+          "longitude": 14.8465308,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_07_06",
+          "sequence": 6,
+          "isActive": false,
+          "title": "POI 4 - Una divinità tra i campi",
+          "shortDescription": "Tappa 6 del percorso Via Appia - Benevento ad Apice.",
+          "latitude": 41.1000706,
+          "longitude": 14.8513407,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_07_07",
+          "sequence": 7,
+          "isActive": false,
+          "title": "POI 5 – Giunti al IV miglio",
+          "shortDescription": "Tappa 7 del percorso Via Appia - Benevento ad Apice.",
+          "latitude": 41.0999997,
+          "longitude": 14.8549322,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_07_08",
+          "sequence": 8,
+          "isActive": false,
+          "title": "POI 6 – Una masseria dello Stato Pontificio",
+          "shortDescription": "Tappa 8 del percorso Via Appia - Benevento ad Apice.",
+          "latitude": 41.1016766,
+          "longitude": 14.856812,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_07_09",
+          "sequence": 9,
+          "isActive": false,
+          "title": "POI 7 – Un restauro antico. I miliari di Adriano",
+          "shortDescription": "Tappa 9 del percorso Via Appia - Benevento ad Apice.",
+          "latitude": 41.1095963,
+          "longitude": 14.867458,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_07_10",
+          "sequence": 10,
+          "isActive": false,
+          "title": "POI 8 – Panorami da San Giovanni",
+          "shortDescription": "Tappa 10 del percorso Via Appia - Benevento ad Apice.",
+          "latitude": 41.1045945,
+          "longitude": 14.8598359,
+          "geofenceRadiusM": 25,
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "itinerary_08",
+      "slug": "via-appia-apice-eclanum",
+      "title": "Via Appia - Apice a Eclanum",
+      "description": "L'ultimo tratto della Via Appia da Apice all'antica città romana di Aeclanum, un percorso attraverso paesaggi collinari e siti archeologici.",
+      "coverImage": null,
+      "difficulty": "moderate",
+      "distanceKm": 9,
+      "estimatedDurationMinutes": 75,
+      "elevationGainM": 320,
+      "terrain": [
+        "paved",
+        "gravel",
+        "trail"
+      ],
+      "tags": [
+        "history",
+        "roman",
+        "archaeology",
+        "nature"
+      ],
+      "routeGeoJSON": "routes/via-appia-apice-eclanum.geojson",
+      "startingPoint": {
+        "latitude": 41.085967,
+        "longitude": 14.9329711,
+        "geofenceRadiusM": 30,
+        "name": "POI 1 – Il Ponte Rotto sul fiume Calore",
+        "navigationAddress": "POI 1 – Il Ponte Rotto sul fiume Calore, Benevento BN"
+      },
+      "hotspots": [
+        {
+          "id": "hs_08_01",
+          "sequence": 1,
+          "isActive": true,
+          "title": "POI 1 – Il Ponte Rotto sul fiume Calore",
+          "shortDescription": "Tappa 1 del percorso Via Appia - Apice a Eclanum.",
+          "latitude": 41.085967,
+          "longitude": 14.9329711,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": "images/TOORA PHOTOS/COMPRESSED PHOTOS/ponte_Rotto.jpg",
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_08_02",
+          "sequence": 2,
+          "isActive": true,
+          "title": "POI 2 - Ponte medievale",
+          "shortDescription": "Tappa 2 del percorso Via Appia - Apice a Eclanum.",
+          "latitude": 41.0869889,
+          "longitude": 14.9345674,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_08_03",
+          "sequence": 3,
+          "isActive": true,
+          "title": "POI 3 – Marmo tra le masserie",
+          "shortDescription": "Tappa 3 del percorso Via Appia - Apice a Eclanum.",
+          "latitude": 41.08259,
+          "longitude": 14.945503,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_08_04",
+          "sequence": 4,
+          "isActive": true,
+          "title": "POI 4 - Ara funeraria in località Iscalonga",
+          "shortDescription": "Tappa 4 del percorso Via Appia - Apice a Eclanum.",
+          "latitude": 41.0758167,
+          "longitude": 14.95199,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_08_05",
+          "sequence": 5,
+          "isActive": true,
+          "title": "POI 5 - Basoli reimpiegati in una casa colonica, località Cifurio",
+          "shortDescription": "Tappa 5 del percorso Via Appia - Apice a Eclanum.",
+          "latitude": 41.0714923,
+          "longitude": 14.9597997,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_08_06",
+          "sequence": 6,
+          "isActive": false,
+          "title": "POI 6 - Insediamenti rustici e aree di necropoli lungo la strada",
+          "shortDescription": "Tappa 6 del percorso Via Appia - Apice a Eclanum.",
+          "latitude": 41.0619953,
+          "longitude": 14.9757036,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_08_07",
+          "sequence": 7,
+          "isActive": false,
+          "title": "POI 7 - Via Appia in ingresso ad Aeclanum",
+          "shortDescription": "Tappa 7 del percorso Via Appia - Apice a Eclanum.",
+          "latitude": 41.0547027,
+          "longitude": 15.0107152,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_08_08",
+          "sequence": 8,
+          "isActive": false,
+          "title": "POI 8 – Aeclanum",
+          "shortDescription": "Tappa 8 del percorso Via Appia - Apice a Eclanum.",
+          "latitude": 41.0544701,
+          "longitude": 15.0103685,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_08_09",
+          "sequence": 9,
+          "isActive": false,
+          "title": "POI 9 – Lungo le strade della storia",
+          "shortDescription": "Tappa 9 del percorso Via Appia - Apice a Eclanum.",
+          "latitude": 41.0544701,
+          "longitude": 15.0103685,
+          "geofenceRadiusM": 25,
+          "content": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,98 +1,259 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+/**
+ * Home Screen — Itinerary List
+ * Displays all 8 itineraries as cards with cover image, title, stats.
+ */
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
+import { FlatList, StyleSheet, View, Pressable } from 'react-native';
+import { useRouter } from 'expo-router';
+import { Image } from 'expo-image';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { useColorScheme } from '@/hooks/use-color-scheme';
+import { Colors, Brand, DifficultyColors, Spacing } from '@/constants/theme';
+import { getItineraries } from '@/src/data';
+import { useVisitStore } from '@/src/stores/useVisitStore';
+import type { Itinerary } from '@/src/types';
+
+function DifficultyBadge({ difficulty }: { difficulty: string }) {
+  const color = DifficultyColors[difficulty] ?? Brand.gray400;
+  const labels: Record<string, string> = {
+    easy: 'Facile',
+    moderate: 'Moderato',
+    hard: 'Difficile',
+  };
+  return (
+    <View style={[styles.badge, { backgroundColor: color + '20', borderColor: color }]}>
+      <ThemedText style={[styles.badgeText, { color }]}>
+        {labels[difficulty] ?? difficulty}
+      </ThemedText>
+    </View>
+  );
+}
+
+function TerrainTags({ terrain }: { terrain: string[] }) {
+  const labels: Record<string, string> = {
+    paved: 'Asfaltato',
+    gravel: 'Sterrato',
+    trail: 'Sentiero',
+  };
+  return (
+    <View style={styles.terrainRow}>
+      {terrain.map((t) => (
+        <View key={t} style={styles.terrainTag}>
+          <ThemedText style={styles.terrainText}>
+            {labels[t] ?? t}
+          </ThemedText>
+        </View>
+      ))}
+    </View>
+  );
+}
+
+function ItineraryCard({
+  itinerary,
+  onPress,
+  isCompleted,
+}: {
+  itinerary: Itinerary;
+  onPress: () => void;
+  isCompleted: boolean;
+}) {
+  const colorScheme = useColorScheme();
+  const colors = Colors[colorScheme ?? 'light'];
+
+  const hours = Math.floor(itinerary.estimatedDurationMinutes / 60);
+  const mins = itinerary.estimatedDurationMinutes % 60;
+  const durationStr = hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
+
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.card,
+        {
+          backgroundColor: colors.card,
+          borderColor: colors.cardBorder,
+          opacity: pressed ? 0.9 : 1,
+          transform: [{ scale: pressed ? 0.98 : 1 }],
+        },
+      ]}
+    >
+      <View style={styles.cardImageContainer}>
+        {itinerary.coverImage ? (
+          <Image
+            source={{ uri: itinerary.coverImage }}
+            style={styles.cardImage}
+            contentFit="cover"
+          />
+        ) : (
+          <View style={[styles.cardImage, styles.cardImagePlaceholder]}>
+            <ThemedText style={styles.placeholderText}>
+              {itinerary.title.charAt(0)}
+            </ThemedText>
+          </View>
+        )}
+        {isCompleted && (
+          <View style={styles.completedOverlay}>
+            <ThemedText style={styles.completedText}>Completato</ThemedText>
+          </View>
+        )}
+      </View>
+
+      <View style={styles.cardContent}>
+        <ThemedText style={styles.cardTitle} numberOfLines={1}>
+          {itinerary.title}
+        </ThemedText>
+
+        <View style={styles.statsRow}>
+          <ThemedText style={styles.statText}>
+            {itinerary.distanceKm} km
+          </ThemedText>
+          <ThemedText style={styles.statDivider}>·</ThemedText>
+          <ThemedText style={styles.statText}>{durationStr}</ThemedText>
+          <ThemedText style={styles.statDivider}>·</ThemedText>
+          <ThemedText style={styles.statText}>
+            {itinerary.elevationGainM}m elev.
+          </ThemedText>
+        </View>
+
+        <View style={styles.cardBottom}>
+          <DifficultyBadge difficulty={itinerary.difficulty} />
+          <TerrainTags terrain={itinerary.terrain} />
+        </View>
+      </View>
+    </Pressable>
+  );
+}
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const router = useRouter();
+  const insets = useSafeAreaInsets();
+  const itineraries = getItineraries();
+  const isItineraryCompleted = useVisitStore((s) => s.isItineraryCompleted);
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  return (
+    <ThemedView style={styles.container}>
+      <FlatList
+        data={itineraries}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={[
+          styles.list,
+          { paddingBottom: insets.bottom + Spacing.md },
+        ]}
+        renderItem={({ item }) => (
+          <ItineraryCard
+            itinerary={item}
+            isCompleted={isItineraryCompleted(item.id)}
+            onPress={() => router.push(`/itinerary/${item.id}`)}
+          />
+        )}
+        showsVerticalScrollIndicator={false}
+      />
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  container: {
+    flex: 1,
+  },
+  list: {
+    padding: Spacing.md,
+    gap: Spacing.md,
+  },
+  card: {
+    borderRadius: 12,
+    borderWidth: 1,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  cardImageContainer: {
+    height: 160,
+    position: 'relative',
+  },
+  cardImage: {
+    width: '100%',
+    height: '100%',
+  },
+  cardImagePlaceholder: {
+    backgroundColor: Brand.primary + '20',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  placeholderText: {
+    fontSize: 48,
+    fontWeight: '700',
+    color: Brand.primary,
+  },
+  completedOverlay: {
+    position: 'absolute',
+    top: Spacing.sm,
+    right: Spacing.sm,
+    backgroundColor: Brand.success,
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: Spacing.xs,
+    borderRadius: 6,
+  },
+  completedText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  cardContent: {
+    padding: Spacing.md,
+  },
+  cardTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: Spacing.xs,
+  },
+  statsRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    marginBottom: Spacing.sm,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  statText: {
+    fontSize: 13,
+    color: Brand.gray500,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  statDivider: {
+    fontSize: 13,
+    color: Brand.gray400,
+    marginHorizontal: 6,
+  },
+  cardBottom: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.sm,
+  },
+  badge: {
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 6,
+    borderWidth: 1,
+  },
+  badgeText: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  terrainRow: {
+    flexDirection: 'row',
+    gap: 4,
+  },
+  terrainTag: {
+    backgroundColor: Brand.gray100,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+  },
+  terrainText: {
+    fontSize: 11,
+    color: Brand.gray600,
   },
 });
