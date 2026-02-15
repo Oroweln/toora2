@@ -7,6 +7,7 @@ import { FlatList, StyleSheet, View, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Image } from 'expo-image';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -17,33 +18,25 @@ import { useVisitStore } from '@/src/stores/useVisitStore';
 import type { Itinerary } from '@/src/types';
 
 function DifficultyBadge({ difficulty }: { difficulty: string }) {
+  const { t } = useTranslation();
   const color = DifficultyColors[difficulty] ?? Brand.gray400;
-  const labels: Record<string, string> = {
-    easy: 'Facile',
-    moderate: 'Moderato',
-    hard: 'Difficile',
-  };
   return (
     <View style={[styles.badge, { backgroundColor: color + '20', borderColor: color }]}>
       <ThemedText style={[styles.badgeText, { color }]}>
-        {labels[difficulty] ?? difficulty}
+        {t(`difficulty.${difficulty}`, difficulty)}
       </ThemedText>
     </View>
   );
 }
 
 function TerrainTags({ terrain }: { terrain: string[] }) {
-  const labels: Record<string, string> = {
-    paved: 'Asfaltato',
-    gravel: 'Sterrato',
-    trail: 'Sentiero',
-  };
+  const { t } = useTranslation();
   return (
     <View style={styles.terrainRow}>
-      {terrain.map((t) => (
-        <View key={t} style={styles.terrainTag}>
+      {terrain.map((ter) => (
+        <View key={ter} style={styles.terrainTag}>
           <ThemedText style={styles.terrainText}>
-            {labels[t] ?? t}
+            {t(`terrain.${ter}`, ter)}
           </ThemedText>
         </View>
       ))}
@@ -62,6 +55,7 @@ function ItineraryCard({
 }) {
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? 'light'];
+  const { t } = useTranslation();
 
   const hours = Math.floor(itinerary.estimatedDurationMinutes / 60);
   const mins = itinerary.estimatedDurationMinutes % 60;
@@ -96,7 +90,7 @@ function ItineraryCard({
         )}
         {isCompleted && (
           <View style={styles.completedOverlay}>
-            <ThemedText style={styles.completedText}>Completato</ThemedText>
+            <ThemedText style={styles.completedText}>{t('home.completed')}</ThemedText>
           </View>
         )}
       </View>
@@ -114,7 +108,7 @@ function ItineraryCard({
           <ThemedText style={styles.statText}>{durationStr}</ThemedText>
           <ThemedText style={styles.statDivider}>·</ThemedText>
           <ThemedText style={styles.statText}>
-            {itinerary.elevationGainM}m elev.
+            {itinerary.elevationGainM}m {t('units.elev')}
           </ThemedText>
         </View>
 

@@ -16,6 +16,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Image } from 'expo-image';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -37,6 +38,7 @@ function HotspotListItem({
   hotspot: Hotspot;
   isVisited: boolean;
 }) {
+  const { t } = useTranslation();
   return (
     <View style={styles.hotspotItem}>
       <View
@@ -72,7 +74,7 @@ function HotspotListItem({
       </View>
       {hotspot.isActive && (
         <View style={styles.activeBadge}>
-          <ThemedText style={styles.activeBadgeText}>Attivo</ThemedText>
+          <ThemedText style={styles.activeBadgeText}>{t('itinerary.active')}</ThemedText>
         </View>
       )}
     </View>
@@ -85,6 +87,7 @@ export default function ItineraryDetailScreen() {
   const insets = useSafeAreaInsets();
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? 'light'];
+  const { t } = useTranslation();
 
   const itinerary = getItinerary(id!);
   const startRoute = useRouteStore((s) => s.startRoute);
@@ -96,7 +99,7 @@ export default function ItineraryDetailScreen() {
   if (!itinerary) {
     return (
       <ThemedView style={styles.center}>
-        <ThemedText>Itinerario non trovato.</ThemedText>
+        <ThemedText>{t('itinerary.notFound')}</ThemedText>
       </ThemedView>
     );
   }
@@ -105,16 +108,6 @@ export default function ItineraryDetailScreen() {
   const mins = itinerary.estimatedDurationMinutes % 60;
   const durationStr = hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
   const activeCount = itinerary.hotspots.filter((h) => h.isActive).length;
-  const difficultyLabels: Record<string, string> = {
-    easy: 'Facile',
-    moderate: 'Moderato',
-    hard: 'Difficile',
-  };
-  const terrainLabels: Record<string, string> = {
-    paved: 'Asfaltato',
-    gravel: 'Sterrato',
-    trail: 'Sentiero',
-  };
 
   const handleStartRoute = useCallback(async () => {
     if (isStarting) return;
@@ -127,8 +120,8 @@ export default function ItineraryDetailScreen() {
 
       if (!hasPermission) {
         Alert.alert(
-          'Permesso GPS richiesto',
-          "TOORA ha bisogno dell'accesso alla posizione per guidarti lungo il percorso.",
+          t('itinerary.gpsPermissionTitle'),
+          t('itinerary.gpsPermissionMessage'),
         );
         setIsStarting(false);
         return;
@@ -136,7 +129,7 @@ export default function ItineraryDetailScreen() {
 
       const geojson = getRouteGeoJSON(itinerary);
       if (!geojson) {
-        Alert.alert('Errore', 'Dati del percorso non disponibili.');
+        Alert.alert(t('itinerary.errorTitle'), t('itinerary.routeDataUnavailable'));
         setIsStarting(false);
         return;
       }
@@ -158,11 +151,13 @@ export default function ItineraryDetailScreen() {
         if (distToStart > 200) {
           // Far from start — offer external navigation
           Alert.alert(
-            'Raggiungi il punto di partenza',
-            `Sei a ${(distToStart / 1000).toFixed(1)} km dal punto di partenza. Vuoi aprire la navigazione?`,
+            t('itinerary.reachStartTitle'),
+            t('itinerary.reachStartMessage', {
+              distance: (distToStart / 1000).toFixed(1),
+            }),
             [
               {
-                text: 'Apri Maps',
+                text: t('itinerary.openMaps'),
                 onPress: () => {
                   openNativeNavigation(
                     itinerary.startingPoint.latitude,
@@ -174,7 +169,7 @@ export default function ItineraryDetailScreen() {
                 },
               },
               {
-                text: 'Vai alla mappa',
+                text: t('itinerary.goToMap'),
                 onPress: () => router.push(`/route/${itinerary.id}`),
               },
             ],
@@ -190,7 +185,7 @@ export default function ItineraryDetailScreen() {
     } finally {
       setIsStarting(false);
     }
-  }, [itinerary, isStarting, startRoute, setPermission, markItineraryStarted, router]);
+  }, [itinerary, isStarting, startRoute, setPermission, markItineraryStarted, router, t]);
 
   return (
     <ThemedView style={styles.container}>
@@ -260,13 +255,13 @@ export default function ItineraryDetailScreen() {
                   },
                 ]}
               >
-                {difficultyLabels[itinerary.difficulty] ?? itinerary.difficulty}
+                {t(`difficulty.${itinerary.difficulty}`, itinerary.difficulty)}
               </ThemedText>
             </View>
-            {itinerary.terrain.map((t) => (
-              <View key={t} style={styles.terrainTag}>
+            {itinerary.terrain.map((ter) => (
+              <View key={ter} style={styles.terrainTag}>
                 <ThemedText style={styles.terrainText}>
-                  {terrainLabels[t] ?? t}
+                  {t(`terrain.${ter}`, ter)}
                 </ThemedText>
               </View>
             ))}
@@ -276,7 +271,7 @@ export default function ItineraryDetailScreen() {
           <View style={styles.startingPointBox}>
             <Ionicons name="flag" size={20} color={Brand.success} />
             <View style={{ flex: 1 }}>
-              <ThemedText style={styles.startLabel}>Punto di partenza</ThemedText>
+              <ThemedText style={styles.startLabel}>{t('itinerary.startingPoint')}</ThemedText>
               <ThemedText style={styles.startName}>
                 {itinerary.startingPoint.name}
               </ThemedText>
@@ -286,7 +281,10 @@ export default function ItineraryDetailScreen() {
           {/* Hotspot List */}
           <View style={styles.hotspotSection}>
             <ThemedText style={styles.sectionTitle}>
-              Tappe ({itinerary.hotspots.length}) · {activeCount} con contenuti
+              {t('itinerary.hotspotCount', {
+                count: itinerary.hotspots.length,
+                active: activeCount,
+              })}
             </ThemedText>
             {itinerary.hotspots.map((hs) => (
               <HotspotListItem
@@ -319,7 +317,7 @@ export default function ItineraryDetailScreen() {
         >
           <Ionicons name="navigate" size={22} color="#fff" />
           <ThemedText style={styles.startButtonText}>
-            {isStarting ? 'Avvio in corso...' : 'INIZIA IL PERCORSO'}
+            {isStarting ? t('itinerary.starting') : t('itinerary.startRoute')}
           </ThemedText>
         </Pressable>
       </View>
