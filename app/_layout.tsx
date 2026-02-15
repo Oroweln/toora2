@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import '@/src/i18n'; // Initialize i18n before anything renders
+import '@/src/services/backgroundTasks'; // Register background task definitions
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useVisitStore } from '@/src/stores/useVisitStore';

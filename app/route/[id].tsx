@@ -24,13 +24,17 @@ import { getItinerary, getRouteGeoJSON, getRouteCoordinates } from '@/src/data';
 import { useRouteStore } from '@/src/stores/useRouteStore';
 import { useLocationStore } from '@/src/stores/useLocationStore';
 import { useVisitStore } from '@/src/stores/useVisitStore';
-import { startForegroundTracking } from '@/src/services/location';
+import { startForegroundTracking, registerGeofences, unregisterGeofences } from '@/src/services/location';
 import {
   computeGuidance,
   formatDistance,
   estimateTimeMinutes,
 } from '@/src/services/routeGuidance';
-import { isContentAccessible, isAtStartingPoint } from '@/src/services/geofence';
+import {
+  isContentAccessible,
+  isAtStartingPoint,
+  buildGeofenceRegions,
+} from '@/src/services/geofence';
 import { openNativeNavigation, navigateToRoutePoint } from '@/src/services/navigation';
 import { GPSSmoother } from '@/src/utils/kalmanFilter';
 import type { UserLocation, Hotspot } from '@/src/types';
@@ -69,6 +73,25 @@ export default function RouteMapScreen() {
   const { currentLocation, updateLocation } = useLocationStore();
   const { markVisited, setActiveRoute } = useVisitStore();
 
+  // ─── Refs for mutable store values ─────────────────────────
+  // Updating refs synchronously on every render ensures the GPS callback
+  // (which has a stable closure over the refs) always reads the latest values
+  // without needing to be re-registered whenever these values change.
+  const navigationModeRef = useRef(navigationMode);
+  navigationModeRef.current = navigationMode;
+
+  const currentHotspotIndexRef = useRef(currentHotspotIndex);
+  currentHotspotIndexRef.current = currentHotspotIndex;
+
+  const visitedHotspotIdsRef = useRef(visitedHotspotIds);
+  visitedHotspotIdsRef.current = visitedHotspotIds;
+
+  const unlockedHotspotIdsRef = useRef(unlockedHotspotIds);
+  unlockedHotspotIdsRef.current = unlockedHotspotIds;
+
+  const hotspotEntryTimestampsRef = useRef(hotspotEntryTimestamps);
+  hotspotEntryTimestampsRef.current = hotspotEntryTimestamps;
+
   const [offRouteSeconds, setOffRouteSeconds] = useState(0);
   const smootherRef = useRef(new GPSSmoother());
   const trackingRef = useRef<{ remove: () => void } | null>(null);
@@ -78,6 +101,10 @@ export default function RouteMapScreen() {
     if (!itinerary) return;
 
     setActiveRoute(itinerary.id);
+
+    // Register native background geofences so the OS can wake the app
+    // when the user enters/exits a hotspot region even when backgrounded.
+    registerGeofences(buildGeofenceRegions(itinerary));
 
     trackingRef.current = startForegroundTracking((rawLocation: UserLocation) => {
       // Smooth GPS readings
@@ -96,19 +123,28 @@ export default function RouteMapScreen() {
 
       updateLocation(location);
 
+      // Read latest values from refs — avoids stale closure bugs where
+      // currentHotspotIndex / visitedHotspotIds change between GPS ticks
+      // without this callback being re-registered.
+      const navMode = navigationModeRef.current;
+      const hotspotIdx = currentHotspotIndexRef.current;
+      const visitedIds = visitedHotspotIdsRef.current;
+      const unlockedIds = unlockedHotspotIdsRef.current;
+      const entryTimestamps = hotspotEntryTimestampsRef.current;
+
       // Compute guidance
       if (routeCoords.length > 0) {
         const newGuidance = computeGuidance(
           location,
           routeCoords,
           itinerary,
-          currentHotspotIndex,
-          visitedHotspotIds,
+          hotspotIdx,
+          visitedIds,
         );
         updateGuidance(newGuidance);
 
         // Check starting point arrival
-        if (navigationMode === 'navigating_to_start') {
+        if (navMode === 'navigating_to_start') {
           if (
             isAtStartingPoint(
               itinerary,
@@ -122,20 +158,20 @@ export default function RouteMapScreen() {
         }
 
         // Check hotspot geofences
-        if (navigationMode === 'on_route') {
+        if (navMode === 'on_route') {
           for (const hs of itinerary.hotspots) {
             const accessible = isContentAccessible(
               hs,
               location.latitude,
               location.longitude,
               location.accuracy,
-              hotspotEntryTimestamps[hs.id],
+              entryTimestamps[hs.id],
             );
 
-            if (accessible && !unlockedHotspotIds.has(hs.id)) {
+            if (accessible && !unlockedIds.has(hs.id)) {
               unlockHotspot(hs.id);
               recordHotspotEntry(hs.id);
-            } else if (!accessible && unlockedHotspotIds.has(hs.id)) {
+            } else if (!accessible && unlockedIds.has(hs.id)) {
               lockHotspot(hs.id);
             }
           }
@@ -145,8 +181,12 @@ export default function RouteMapScreen() {
 
     return () => {
       trackingRef.current?.remove();
+      unregisterGeofences();
     };
-  }, [itinerary?.id, navigationMode]);
+    // Intentionally depends only on itinerary?.id — mutable store values
+    // are accessed via refs above so no re-registration is needed when they change.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [itinerary?.id]);
 
   // Track off-route time
   useEffect(() => {
