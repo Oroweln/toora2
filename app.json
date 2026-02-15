@@ -72,7 +72,6 @@
           "microphonePermission": false
         }
       ],
-      "expo-keep-awake",
       "expo-sensors"
     ],
     "experiments": {
