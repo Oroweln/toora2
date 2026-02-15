@@ -2,6 +2,9 @@
  * Simple 1D Kalman Filter for GPS smoothing.
  * Reduces GPS jitter by smoothing coordinate updates.
  */
+
+import { haversineDistance } from './geo';
+
 export class KalmanFilter {
   private estimate: number;
   private errorEstimate: number;
@@ -20,13 +23,32 @@ export class KalmanFilter {
     this.q = processNoise;
   }
 
-  update(measurement: number): number {
-    // Prediction
-    this.errorEstimate += this.q;
+  /**
+   * Update the filter with a new measurement.
+   *
+   * @param measurement        The raw observed value (lat or lng degree).
+   * @param measurementNoiseScale  Scale factor applied to the base measurement
+   *   noise (R). Pass a value > 1 when GPS accuracy is poor so the filter
+   *   trusts the raw reading less and relies more on its prior estimate.
+   *   Derived from: max(1, gpsAccuracyMeters / 10).
+   * @param processNoiseScale  Scale factor applied to the process noise (Q).
+   *   Pass the elapsed time in seconds so that longer gaps between updates
+   *   increase the uncertainty of the prior estimate, allowing faster
+   *   convergence to the new measurement.
+   */
+  update(
+    measurement: number,
+    measurementNoiseScale: number = 1,
+    processNoiseScale: number = 1,
+  ): number {
+    // Prediction — uncertainty grows with elapsed time
+    this.errorEstimate += this.q * processNoiseScale;
+
+    // Dynamic measurement noise: poor GPS → larger R → trust prior more
+    const R = this.errorMeasurement * measurementNoiseScale;
 
     // Update
-    const kalmanGain =
-      this.errorEstimate / (this.errorEstimate + this.errorMeasurement);
+    const kalmanGain = this.errorEstimate / (this.errorEstimate + R);
     this.estimate = this.estimate + kalmanGain * (measurement - this.estimate);
     this.errorEstimate = (1 - kalmanGain) * this.errorEstimate;
 
@@ -71,15 +93,19 @@ export class GPSSmoother {
       return { latitude, longitude };
     }
 
-    // Adjust measurement error based on reported GPS accuracy
+    // Poor GPS accuracy → increase measurement noise so the filter
+    // relies more on its smoothed estimate than the raw reading.
+    // errorScale = 1 when accuracy ≤ 10 m, grows linearly beyond that.
     const errorScale = Math.max(1, accuracy / 10);
 
-    // Scale process noise by time delta (more time = more potential movement)
+    // Scale process noise by elapsed time: a longer gap means the device
+    // could have moved further, so we should allow the estimate to update
+    // more aggressively toward the new measurement.
     const dt = Math.max(0.1, (timestamp - this.lastTimestamp) / 1000);
     this.lastTimestamp = timestamp;
 
-    const smoothedLat = this.latFilter.update(latitude);
-    const smoothedLng = this.lngFilter.update(longitude);
+    const smoothedLat = this.latFilter.update(latitude, errorScale, dt);
+    const smoothedLng = this.lngFilter.update(longitude, errorScale, dt);
 
     return { latitude: smoothedLat, longitude: smoothedLng };
   }
@@ -99,6 +125,5 @@ export function isOutlier(
   newLng: number,
   maxJumpMeters: number = 50,
 ): boolean {
-  const { haversineDistance } = require('./geo');
   return haversineDistance(prevLat, prevLng, newLat, newLng) > maxJumpMeters;
 }
