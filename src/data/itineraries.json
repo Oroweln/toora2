@@ -19,7 +19,7 @@
         "culture",
         "roman"
       ],
-      "routeGeoJSON": "routes/4-imperatori.geojson",
+      "routeGeoJSON": "routes/4-imperatori.json",
       "startingPoint": {
         "latitude": 41.1293715,
         "longitude": 14.7824216,
@@ -177,7 +177,7 @@
         "culture",
         "magic"
       ],
-      "routeGeoJSON": "routes/percorso-magico.geojson",
+      "routeGeoJSON": "routes/percorso-magico.json",
       "startingPoint": {
         "latitude": 41.1288413,
         "longitude": 14.7815147,
@@ -347,7 +347,7 @@
         "culture",
         "medieval"
       ],
-      "routeGeoJSON": "routes/sant-agata-dei-goti.geojson",
+      "routeGeoJSON": "routes/sant-agata-dei-goti.json",
       "startingPoint": {
         "latitude": 41.0891174,
         "longitude": 14.5022709,
@@ -507,7 +507,7 @@
         "culture",
         "nature"
       ],
-      "routeGeoJSON": "routes/castelvenere-camaiola.geojson",
+      "routeGeoJSON": "routes/castelvenere-camaiola.json",
       "startingPoint": {
         "latitude": 41.2197894,
         "longitude": 14.5350243,
@@ -676,7 +676,7 @@
         "archaeology",
         "culture"
       ],
-      "routeGeoJSON": "routes/percorso-di-iside.geojson",
+      "routeGeoJSON": "routes/percorso-di-iside.json",
       "startingPoint": {
         "latitude": 41.1337868,
         "longitude": 14.7701593,
@@ -823,7 +823,7 @@
         "roman",
         "archaeology"
       ],
-      "routeGeoJSON": "routes/via-appia-urbano.geojson",
+      "routeGeoJSON": "routes/via-appia-urbano.json",
       "startingPoint": {
         "latitude": 41.1289064,
         "longitude": 14.7630275,
@@ -993,7 +993,7 @@
         "roman",
         "nature"
       ],
-      "routeGeoJSON": "routes/via-appia-benevento-apice.geojson",
+      "routeGeoJSON": "routes/via-appia-benevento-apice.json",
       "startingPoint": {
         "latitude": 41.1295175,
         "longitude": 14.7824419,
@@ -1165,7 +1165,7 @@
         "archaeology",
         "nature"
       ],
-      "routeGeoJSON": "routes/via-appia-apice-eclanum.geojson",
+      "routeGeoJSON": "routes/via-appia-apice-eclanum.json",
       "startingPoint": {
         "latitude": 41.085967,
         "longitude": 14.9329711,
