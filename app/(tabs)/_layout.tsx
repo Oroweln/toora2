@@ -1,11 +1,13 @@
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Colors, Brand } from '@/constants/theme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? 'light'];
+  const { t } = useTranslation();
 
   return (
     <Tabs
@@ -25,7 +27,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Itinerari',
+          title: t('tabs.itineraries'),
           headerTitle: 'TOORA',
           headerTitleStyle: { fontWeight: '700', fontSize: 20 },
           tabBarIcon: ({ color, size }) => (
@@ -36,8 +38,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="explore"
         options={{
-          title: 'Esplora',
-          headerTitle: 'Esplora',
+          title: t('tabs.explore'),
+          headerTitle: t('tabs.explore'),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="compass-outline" size={size} color={color} />
           ),

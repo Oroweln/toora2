@@ -4,7 +4,7 @@
  * Content is geo-locked — only accessible within geofence radius.
  */
 
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -18,6 +18,7 @@ import { Image } from 'expo-image';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Audio, Video, ResizeMode } from 'expo-av';
+import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -41,6 +42,7 @@ export default function HotspotContentScreen() {
   }>();
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
 
   const itinerary = getItinerary(itineraryId!);
   const hotspot = itinerary?.hotspots.find((h) => h.id === hotspotId);
@@ -49,7 +51,6 @@ export default function HotspotContentScreen() {
   const hotspotEntryTimestamps = useRouteStore(
     (s) => s.hotspotEntryTimestamps,
   );
-  const visitedHotspotIds = useRouteStore((s) => s.visitedHotspotIds);
 
   const [activeTab, setActiveTab] = useState<ContentTab>('text');
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
@@ -67,7 +68,7 @@ export default function HotspotContentScreen() {
   if (!itinerary || !hotspot) {
     return (
       <ThemedView style={styles.center}>
-        <ThemedText>Tappa non trovata.</ThemedText>
+        <ThemedText>{t('hotspot.notFound')}</ThemedText>
       </ThemedView>
     );
   }
@@ -98,12 +99,12 @@ export default function HotspotContentScreen() {
         <Stack.Screen options={{ headerTitle: hotspot.title }} />
         <View style={styles.lockedContainer}>
           <Ionicons name="lock-closed" size={64} color={Brand.gray400} />
-          <ThemedText style={styles.lockedTitle}>Contenuto bloccato</ThemedText>
+          <ThemedText style={styles.lockedTitle}>{t('hotspot.contentLockedTitle')}</ThemedText>
           <ThemedText style={styles.lockedMessage}>
-            Devi essere alla tappa per accedere ai contenuti.
+            {t('hotspot.contentLockedMessage')}
           </ThemedText>
           <ThemedText style={styles.lockedDistance}>
-            Distanza: {formatDistance(dist)}
+            {t('hotspot.distance', { distance: formatDistance(dist) })}
           </ThemedText>
           <Pressable
             onPress={() =>
@@ -113,7 +114,7 @@ export default function HotspotContentScreen() {
           >
             <Ionicons name="navigate" size={20} color="#fff" />
             <ThemedText style={styles.navigateButtonText}>
-              Naviga qui
+              {t('hotspot.navigateHere')}
             </ThemedText>
           </Pressable>
         </View>
@@ -128,7 +129,7 @@ export default function HotspotContentScreen() {
         <Stack.Screen options={{ headerTitle: hotspot.title }} />
         <View style={styles.waypointContainer}>
           <View style={styles.waypointBadge}>
-            <ThemedText style={styles.waypointBadgeText}>Tappa</ThemedText>
+            <ThemedText style={styles.waypointBadgeText}>{t('hotspot.waypoint')}</ThemedText>
           </View>
           <ThemedText style={styles.waypointTitle}>{hotspot.title}</ThemedText>
           <ThemedText style={styles.waypointDesc}>
@@ -136,7 +137,7 @@ export default function HotspotContentScreen() {
           </ThemedText>
           <Pressable onPress={() => router.back()} style={styles.continueButton}>
             <ThemedText style={styles.continueButtonText}>
-              Prosegui verso la prossima tappa
+              {t('hotspot.continueNext')}
             </ThemedText>
             <Ionicons name="arrow-forward" size={20} color={Brand.primary} />
           </Pressable>
@@ -151,12 +152,12 @@ export default function HotspotContentScreen() {
   const totalHotspots = itinerary.hotspots.length;
 
   const tabs: { key: ContentTab; label: string; icon: string }[] = [
-    { key: 'text', label: 'Testo', icon: 'document-text-outline' },
+    { key: 'text', label: t('hotspot.tabText'), icon: 'document-text-outline' },
     ...(hasGallery
-      ? [{ key: 'gallery' as ContentTab, label: 'Galleria', icon: 'images-outline' }]
+      ? [{ key: 'gallery' as ContentTab, label: t('hotspot.tabGallery'), icon: 'images-outline' }]
       : []),
     ...(hasVideo
-      ? [{ key: 'video' as ContentTab, label: 'Video', icon: 'videocam-outline' }]
+      ? [{ key: 'video' as ContentTab, label: t('hotspot.tabVideo'), icon: 'videocam-outline' }]
       : []),
   ];
 
@@ -223,7 +224,11 @@ export default function HotspotContentScreen() {
           {/* Title + Subtitle */}
           <ThemedText style={styles.title}>{hotspot.title}</ThemedText>
           <ThemedText style={styles.subtitle}>
-            Tappa {hotspot.sequence} di {totalHotspots} · {itinerary.title}
+            {t('hotspot.stopOf', {
+              sequence: hotspot.sequence,
+              total: totalHotspots,
+              itinerary: itinerary.title,
+            })}
           </ThemedText>
 
           {/* Tab Bar */}
@@ -264,8 +269,7 @@ export default function HotspotContentScreen() {
               </ThemedText>
               {/* Placeholder for markdown content */}
               <ThemedText style={styles.bodyText}>
-                {`Questo è il contenuto dettagliato della tappa "${hotspot.title}". `}
-                {`In questa posizione potrai scoprire la storia e le curiosità di questo luogo attraverso testi, immagini e contenuti multimediali.`}
+                {t('hotspot.placeholderContent', { title: hotspot.title })}
               </ThemedText>
             </View>
           )}
@@ -309,7 +313,7 @@ export default function HotspotContentScreen() {
           style={[styles.audioPlayer, { paddingBottom: insets.bottom + Spacing.sm }]}
         >
           <Ionicons name="headset" size={20} color={Brand.primary} />
-          <ThemedText style={styles.audioLabel}>Audio Guide</ThemedText>
+          <ThemedText style={styles.audioLabel}>{t('hotspot.audioGuide')}</ThemedText>
           <Pressable
             onPress={toggleAudio}
             style={styles.audioPlayButton}

@@ -16,6 +16,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useKeepAwake } from 'expo-keep-awake';
+import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/themed-text';
 import { Brand, RouteColors, Spacing, TouchTarget } from '@/constants/theme';
@@ -41,6 +42,7 @@ export default function RouteMapScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
 
   const itinerary = getItinerary(id!);
   const routeCoords = itinerary ? getRouteCoordinates(itinerary) : [];
@@ -160,10 +162,10 @@ export default function RouteMapScreen() {
 
   // ─── Handlers ──────────────────────────────────────────────
   const handleExitRoute = useCallback(() => {
-    Alert.alert('Esci dal percorso?', 'Il progresso verrà salvato.', [
-      { text: 'Annulla', style: 'cancel' },
+    Alert.alert(t('route.exitTitle'), t('route.exitMessage'), [
+      { text: t('route.cancel'), style: 'cancel' },
       {
-        text: 'Esci',
+        text: t('route.exit'),
         style: 'destructive',
         onPress: () => {
           exitRoute();
@@ -172,7 +174,7 @@ export default function RouteMapScreen() {
         },
       },
     ]);
-  }, [exitRoute, setActiveRoute, router]);
+  }, [exitRoute, setActiveRoute, router, t]);
 
   const handleHotspotTap = useCallback(
     (hs: Hotspot) => {
@@ -185,9 +187,9 @@ export default function RouteMapScreen() {
         router.push(`/hotspot/${hs.id}?itineraryId=${itinerary!.id}`);
       } else {
         Alert.alert(
-          'Contenuto bloccato',
-          `Devi essere alla tappa per accedere ai contenuti.\nDistanza: ${
-            currentLocation
+          t('route.contentLockedTitle'),
+          t('route.contentLockedMessage', {
+            distance: currentLocation
               ? formatDistance(
                   require('@/src/utils/geo').haversineDistance(
                     currentLocation.latitude,
@@ -196,19 +198,19 @@ export default function RouteMapScreen() {
                     hs.longitude,
                   ),
                 )
-              : '?'
-          }`,
+              : '?',
+          }),
           [
-            { text: 'OK' },
+            { text: t('route.ok') },
             {
-              text: 'Naviga qui',
+              text: t('route.navigateHere'),
               onPress: () => openNativeNavigation(hs.latitude, hs.longitude),
             },
           ],
         );
       }
     },
-    [unlockedHotspotIds, markHotspotVisited, markVisited, router, itinerary, currentLocation],
+    [unlockedHotspotIds, markHotspotVisited, markVisited, router, itinerary, currentLocation, t],
   );
 
   const handleNavigateBackToRoute = useCallback(() => {
@@ -223,7 +225,7 @@ export default function RouteMapScreen() {
   if (!itinerary) {
     return (
       <View style={[styles.container, styles.center]}>
-        <ThemedText>Itinerario non trovato.</ThemedText>
+        <ThemedText>{t('route.notFound')}</ThemedText>
       </View>
     );
   }
@@ -243,21 +245,25 @@ export default function RouteMapScreen() {
         <View style={styles.mapPlaceholder}>
           <Ionicons name="map" size={64} color={Brand.primary + '40'} />
           <ThemedText style={styles.mapPlaceholderText}>
-            Mappa del percorso
+            {t('route.mapTitle')}
           </ThemedText>
           <ThemedText style={styles.mapSubtext}>
-            MapLibre GL renderizza qui con le tile raster offline
+            {t('route.mapSubtext')}
           </ThemedText>
 
           {/* Show current position info */}
           {currentLocation && (
             <View style={styles.positionInfo}>
               <ThemedText style={styles.positionText}>
-                GPS: {currentLocation.latitude.toFixed(5)},{' '}
-                {currentLocation.longitude.toFixed(5)}
+                {t('route.gpsLabel', {
+                  lat: currentLocation.latitude.toFixed(5),
+                  lng: currentLocation.longitude.toFixed(5),
+                })}
               </ThemedText>
               <ThemedText style={styles.positionText}>
-                Precisione: {currentLocation.accuracy.toFixed(0)}m
+                {t('route.accuracyLabel', {
+                  accuracy: currentLocation.accuracy.toFixed(0),
+                })}
               </ThemedText>
             </View>
           )}
@@ -316,14 +322,14 @@ export default function RouteMapScreen() {
           hitSlop={8}
         >
           <Ionicons name="arrow-back" size={22} color="#fff" />
-          <ThemedText style={styles.topButtonText}>Esci</ThemedText>
+          <ThemedText style={styles.topButtonText}>{t('route.exit')}</ThemedText>
         </Pressable>
 
         {/* GPS accuracy indicator */}
         {currentLocation && currentLocation.accuracy > 30 && (
           <View style={styles.gpsWarning}>
             <Ionicons name="warning" size={16} color={Brand.warning} />
-            <ThemedText style={styles.gpsWarningText}>GPS debole</ThemedText>
+            <ThemedText style={styles.gpsWarningText}>{t('route.weakGps')}</ThemedText>
           </View>
         )}
       </View>
@@ -333,7 +339,7 @@ export default function RouteMapScreen() {
         <View style={styles.offRouteBanner}>
           <Ionicons name="alert-circle" size={20} color="#fff" />
           <ThemedText style={styles.offRouteText}>
-            Sei fuori dal percorso!
+            {t('route.offRoute')}
           </ThemedText>
           {offRouteSeconds > 60 && (
             <Pressable
@@ -341,7 +347,7 @@ export default function RouteMapScreen() {
               style={styles.offRouteButton}
             >
               <ThemedText style={styles.offRouteButtonText}>
-                Torna al percorso
+                {t('route.backToRoute')}
               </ThemedText>
             </Pressable>
           )}
@@ -353,7 +359,7 @@ export default function RouteMapScreen() {
         <View style={styles.navigatingBanner}>
           <Ionicons name="navigate" size={20} color="#fff" />
           <ThemedText style={styles.navigatingText}>
-            Raggiungi il punto di partenza...
+            {t('route.reachingStart')}
           </ThemedText>
         </View>
       )}
@@ -363,7 +369,7 @@ export default function RouteMapScreen() {
         {nextHotspot && (
           <>
             <View style={styles.nextHotspotRow}>
-              <ThemedText style={styles.nextLabel}>Prossima tappa:</ThemedText>
+              <ThemedText style={styles.nextLabel}>{t('route.nextStop')}</ThemedText>
               <ThemedText style={styles.nextName} numberOfLines={1}>
                 {nextHotspot.title}
               </ThemedText>
@@ -377,7 +383,7 @@ export default function RouteMapScreen() {
               <ThemedText style={styles.distanceDivider}>·</ThemedText>
               <ThemedText style={styles.distanceText}>
                 ~{guidance ? estimateTimeMinutes(guidance.distanceToNextHotspot) : '?'}{' '}
-                min
+                {t('units.min')}
               </ThemedText>
             </View>
           </>
@@ -391,7 +397,10 @@ export default function RouteMapScreen() {
             />
           </View>
           <ThemedText style={styles.progressText}>
-            {visitedHotspotIds.size}/{itinerary.hotspots.length} tappe
+            {t('route.stopsProgress', {
+              visited: visitedHotspotIds.size,
+              total: itinerary.hotspots.length,
+            })}
           </ThemedText>
         </View>
 
@@ -405,7 +414,7 @@ export default function RouteMapScreen() {
             style={styles.completeButton}
           >
             <ThemedText style={styles.completeButtonText}>
-              Percorso completato!
+              {t('route.routeCompleted')}
             </ThemedText>
           </Pressable>
         )}

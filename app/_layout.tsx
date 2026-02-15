@@ -3,17 +3,21 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
+import '@/src/i18n'; // Initialize i18n before anything renders
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useVisitStore } from '@/src/stores/useVisitStore';
+import { useLanguageStore } from '@/src/stores/useLanguageStore';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const loadFromStorage = useVisitStore((s) => s.loadFromStorage);
+  const loadLanguage = useLanguageStore((s) => s.loadLanguage);
 
   useEffect(() => {
     loadFromStorage();
-  }, [loadFromStorage]);
+    loadLanguage();
+  }, [loadFromStorage, loadLanguage]);
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>

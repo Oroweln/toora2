@@ -7,6 +7,7 @@ import { StyleSheet, View, Pressable } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -19,6 +20,7 @@ export default function RouteCompleteScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
 
   const itinerary = getItinerary(id!);
   const { visitedHotspotIds, startedAt, exitRoute } = useRouteStore();
@@ -28,7 +30,7 @@ export default function RouteCompleteScreen() {
   if (!itinerary) {
     return (
       <ThemedView style={styles.center}>
-        <ThemedText>Itinerario non trovato.</ThemedText>
+        <ThemedText>{t('complete.notFound')}</ThemedText>
       </ThemedView>
     );
   }
@@ -60,9 +62,9 @@ export default function RouteCompleteScreen() {
       </View>
 
       {/* Congratulations */}
-      <ThemedText style={styles.title}>Complimenti!</ThemedText>
+      <ThemedText style={styles.title}>{t('complete.congratulations')}</ThemedText>
       <ThemedText style={styles.subtitle}>
-        Hai completato il percorso
+        {t('complete.routeCompleted')}
       </ThemedText>
       <ThemedText style={styles.routeName}>{itinerary.title}</ThemedText>
 
@@ -71,28 +73,27 @@ export default function RouteCompleteScreen() {
         <View style={styles.statBox}>
           <Ionicons name="time-outline" size={24} color={Brand.primary} />
           <ThemedText style={styles.statValue}>{timeStr}</ThemedText>
-          <ThemedText style={styles.statLabel}>Tempo impiegato</ThemedText>
+          <ThemedText style={styles.statLabel}>{t('complete.timeSpent')}</ThemedText>
         </View>
         <View style={styles.statBox}>
           <Ionicons name="location-outline" size={24} color={Brand.accent} />
           <ThemedText style={styles.statValue}>
             {visitedCount}/{totalCount}
           </ThemedText>
-          <ThemedText style={styles.statLabel}>Tappe visitate</ThemedText>
+          <ThemedText style={styles.statLabel}>{t('complete.stopsVisited')}</ThemedText>
         </View>
         <View style={styles.statBox}>
           <Ionicons name="resize-outline" size={24} color={Brand.success} />
           <ThemedText style={styles.statValue}>
             {itinerary.distanceKm} km
           </ThemedText>
-          <ThemedText style={styles.statLabel}>Distanza</ThemedText>
+          <ThemedText style={styles.statLabel}>{t('complete.distance')}</ThemedText>
         </View>
       </View>
 
       {/* Message */}
       <ThemedText style={styles.message}>
-        Hai scoperto {activeCount} tappe con contenuti multimediali lungo il
-        percorso. Il tuo progresso è stato salvato.
+        {t('complete.summary', { count: activeCount })}
       </ThemedText>
 
       {/* Back to Home */}
@@ -106,7 +107,7 @@ export default function RouteCompleteScreen() {
         >
           <Ionicons name="home-outline" size={22} color="#fff" />
           <ThemedText style={styles.homeButtonText}>
-            Torna alla Home
+            {t('complete.goHome')}
           </ThemedText>
         </Pressable>
       </View>
