@@ -13,24 +13,24 @@ import type {
 import itinerariesRaw from './itineraries.json';
 
 // Import all route GeoJSON files
-import route4Imperatori from './routes/4-imperatori.geojson';
-import routePercorsoMagico from './routes/percorso-magico.geojson';
-import routeSantAgata from './routes/sant-agata-dei-goti.geojson';
-import routeCastelvenere from './routes/castelvenere-camaiola.geojson';
-import routeIside from './routes/percorso-di-iside.geojson';
-import routeViaAppiaUrbano from './routes/via-appia-urbano.geojson';
-import routeViaAppiaApice from './routes/via-appia-benevento-apice.geojson';
-import routeViaAppiaEclanum from './routes/via-appia-apice-eclanum.geojson';
+import route4Imperatori from './routes/4-imperatori.json';
+import routePercorsoMagico from './routes/percorso-magico.json';
+import routeSantAgata from './routes/sant-agata-dei-goti.json';
+import routeCastelvenere from './routes/castelvenere-camaiola.json';
+import routeIside from './routes/percorso-di-iside.json';
+import routeViaAppiaUrbano from './routes/via-appia-urbano.json';
+import routeViaAppiaApice from './routes/via-appia-benevento-apice.json';
+import routeViaAppiaEclanum from './routes/via-appia-apice-eclanum.json';
 
 const routeGeoJSONMap: Record<string, GeoJSONFeatureCollection> = {
-  'routes/4-imperatori.geojson': route4Imperatori as unknown as GeoJSONFeatureCollection,
-  'routes/percorso-magico.geojson': routePercorsoMagico as unknown as GeoJSONFeatureCollection,
-  'routes/sant-agata-dei-goti.geojson': routeSantAgata as unknown as GeoJSONFeatureCollection,
-  'routes/castelvenere-camaiola.geojson': routeCastelvenere as unknown as GeoJSONFeatureCollection,
-  'routes/percorso-di-iside.geojson': routeIside as unknown as GeoJSONFeatureCollection,
-  'routes/via-appia-urbano.geojson': routeViaAppiaUrbano as unknown as GeoJSONFeatureCollection,
-  'routes/via-appia-benevento-apice.geojson': routeViaAppiaApice as unknown as GeoJSONFeatureCollection,
-  'routes/via-appia-apice-eclanum.geojson': routeViaAppiaEclanum as unknown as GeoJSONFeatureCollection,
+  'routes/4-imperatori.json': route4Imperatori as unknown as GeoJSONFeatureCollection,
+  'routes/percorso-magico.json': routePercorsoMagico as unknown as GeoJSONFeatureCollection,
+  'routes/sant-agata-dei-goti.json': routeSantAgata as unknown as GeoJSONFeatureCollection,
+  'routes/castelvenere-camaiola.json': routeCastelvenere as unknown as GeoJSONFeatureCollection,
+  'routes/percorso-di-iside.json': routeIside as unknown as GeoJSONFeatureCollection,
+  'routes/via-appia-urbano.json': routeViaAppiaUrbano as unknown as GeoJSONFeatureCollection,
+  'routes/via-appia-benevento-apice.json': routeViaAppiaApice as unknown as GeoJSONFeatureCollection,
+  'routes/via-appia-apice-eclanum.json': routeViaAppiaEclanum as unknown as GeoJSONFeatureCollection,
 };
 
 const data = itinerariesRaw as unknown as ItinerariesData;

@@ -442,7 +442,7 @@ function processRoute(routeDef) {
     elevationGainM: Math.round(elevationGain),
     terrain: routeDef.terrain,
     tags: routeDef.tags,
-    routeGeoJSON: `routes/${routeDef.slug}.geojson`,
+    routeGeoJSON: `routes/${routeDef.slug}.json`,
     startingPoint: {
       latitude: startCoord[1],
       longitude: startCoord[0],
@@ -477,7 +477,7 @@ for (const routeDef of routeDefinitions) {
     // Write GeoJSON
     const geojsonPath = path.join(
       outputRoutesDir,
-      `${routeDef.slug}.geojson`
+      `${routeDef.slug}.json`
     );
     fs.writeFileSync(geojsonPath, JSON.stringify(result.geojson, null, 2));
 
