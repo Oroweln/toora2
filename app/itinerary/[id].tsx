@@ -3,14 +3,13 @@
  * Shows full details: cover image, stats, hotspot list, map preview, start button.
  */
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   ScrollView,
   StyleSheet,
   View,
   Pressable,
   Alert,
-  Platform,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Image } from 'expo-image';
@@ -20,8 +19,7 @@ import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-import { Colors, Brand, DifficultyColors, Spacing, TouchTarget } from '@/constants/theme';
+import { Brand, DifficultyColors, Spacing, TouchTarget } from '@/constants/theme';
 import { getItinerary, getRouteGeoJSON } from '@/src/data';
 import { useRouteStore } from '@/src/stores/useRouteStore';
 import { useLocationStore } from '@/src/stores/useLocationStore';
@@ -85,8 +83,6 @@ export default function ItineraryDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const colorScheme = useColorScheme();
-  const colors = Colors[colorScheme ?? 'light'];
   const { t } = useTranslation();
 
   const itinerary = getItinerary(id!);
@@ -96,21 +92,8 @@ export default function ItineraryDetailScreen() {
   const markItineraryStarted = useVisitStore((s) => s.markItineraryStarted);
   const [isStarting, setIsStarting] = useState(false);
 
-  if (!itinerary) {
-    return (
-      <ThemedView style={styles.center}>
-        <ThemedText>{t('itinerary.notFound')}</ThemedText>
-      </ThemedView>
-    );
-  }
-
-  const hours = Math.floor(itinerary.estimatedDurationMinutes / 60);
-  const mins = itinerary.estimatedDurationMinutes % 60;
-  const durationStr = hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
-  const activeCount = itinerary.hotspots.filter((h) => h.isActive).length;
-
   const handleStartRoute = useCallback(async () => {
-    if (isStarting) return;
+    if (!itinerary || isStarting) return;
     setIsStarting(true);
 
     try {
@@ -186,6 +169,19 @@ export default function ItineraryDetailScreen() {
       setIsStarting(false);
     }
   }, [itinerary, isStarting, startRoute, setPermission, markItineraryStarted, router, t]);
+
+  if (!itinerary) {
+    return (
+      <ThemedView style={styles.center}>
+        <ThemedText>{t('itinerary.notFound')}</ThemedText>
+      </ThemedView>
+    );
+  }
+
+  const hours = Math.floor(itinerary.estimatedDurationMinutes / 60);
+  const mins = itinerary.estimatedDurationMinutes % 60;
+  const durationStr = hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
+  const activeCount = itinerary.hotspots.filter((h) => h.isActive).length;
 
   return (
     <ThemedView style={styles.container}>

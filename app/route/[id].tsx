@@ -20,7 +20,7 @@ import { useTranslation } from 'react-i18next';
 import { ThemedText } from '@/components/themed-text';
 import { RouteMap } from '@/components/RouteMap';
 import { Brand, RouteColors, Spacing, TouchTarget } from '@/constants/theme';
-import { getItinerary, getRouteGeoJSON, getRouteCoordinates } from '@/src/data';
+import { getItinerary, getRouteCoordinates } from '@/src/data';
 import { useRouteStore } from '@/src/stores/useRouteStore';
 import { useLocationStore } from '@/src/stores/useLocationStore';
 import { useVisitStore } from '@/src/stores/useVisitStore';
@@ -38,7 +38,7 @@ import {
 import { openNativeNavigation, navigateToRoutePoint } from '@/src/services/navigation';
 import { GPSSmoother } from '@/src/utils/kalmanFilter';
 import type { UserLocation, Hotspot } from '@/src/types';
-import { GEOFENCE_CONFIG } from '@/src/types';
+import { haversineDistance } from '@/src/utils/geo';
 
 export default function RouteMapScreen() {
   useKeepAwake(); // Prevent screen sleep during navigation
@@ -65,7 +65,6 @@ export default function RouteMapScreen() {
     unlockHotspot,
     lockHotspot,
     recordHotspotEntry,
-    advanceToNextHotspot,
     completeRoute,
     exitRoute,
   } = useRouteStore();
@@ -231,7 +230,7 @@ export default function RouteMapScreen() {
           t('route.contentLockedMessage', {
             distance: currentLocation
               ? formatDistance(
-                  require('@/src/utils/geo').haversineDistance(
+                  haversineDistance(
                     currentLocation.latitude,
                     currentLocation.longitude,
                     hs.latitude,
