@@ -10,7 +10,6 @@ import {
   View,
   Pressable,
   Alert,
-  Platform,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
@@ -19,6 +18,7 @@ import { useKeepAwake } from 'expo-keep-awake';
 import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/themed-text';
+import { RouteMap } from '@/components/RouteMap';
 import { Brand, RouteColors, Spacing, TouchTarget } from '@/constants/theme';
 import { getItinerary, getRouteGeoJSON, getRouteCoordinates } from '@/src/data';
 import { useRouteStore } from '@/src/stores/useRouteStore';
@@ -280,78 +280,16 @@ export default function RouteMapScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Map Area — placeholder for MapLibre */}
+      {/* Map Area — MapLibre GL with offline MBTiles */}
       <View style={styles.mapContainer}>
-        <View style={styles.mapPlaceholder}>
-          <Ionicons name="map" size={64} color={Brand.primary + '40'} />
-          <ThemedText style={styles.mapPlaceholderText}>
-            {t('route.mapTitle')}
-          </ThemedText>
-          <ThemedText style={styles.mapSubtext}>
-            {t('route.mapSubtext')}
-          </ThemedText>
-
-          {/* Show current position info */}
-          {currentLocation && (
-            <View style={styles.positionInfo}>
-              <ThemedText style={styles.positionText}>
-                {t('route.gpsLabel', {
-                  lat: currentLocation.latitude.toFixed(5),
-                  lng: currentLocation.longitude.toFixed(5),
-                })}
-              </ThemedText>
-              <ThemedText style={styles.positionText}>
-                {t('route.accuracyLabel', {
-                  accuracy: currentLocation.accuracy.toFixed(0),
-                })}
-              </ThemedText>
-            </View>
-          )}
-
-          {/* Hotspot markers as list (until MapLibre renders) */}
-          <View style={styles.hotspotMarkerList}>
-            {itinerary.hotspots.map((hs) => (
-              <Pressable
-                key={hs.id}
-                onPress={() => handleHotspotTap(hs)}
-                style={[
-                  styles.markerItem,
-                  {
-                    backgroundColor: unlockedHotspotIds.has(hs.id)
-                      ? RouteColors.hotspotActive + '20'
-                      : visitedHotspotIds.has(hs.id)
-                        ? RouteColors.hotspotVisited + '20'
-                        : Brand.gray100,
-                  },
-                ]}
-              >
-                <View
-                  style={[
-                    styles.markerDot,
-                    {
-                      backgroundColor: unlockedHotspotIds.has(hs.id)
-                        ? RouteColors.hotspotActive
-                        : visitedHotspotIds.has(hs.id)
-                          ? RouteColors.hotspotVisited
-                          : hs.isActive
-                            ? RouteColors.hotspotLocked
-                            : RouteColors.hotspotWaypoint,
-                    },
-                  ]}
-                />
-                <ThemedText style={styles.markerText} numberOfLines={1}>
-                  {hs.sequence}. {hs.title}
-                </ThemedText>
-                {unlockedHotspotIds.has(hs.id) && hs.isActive && (
-                  <Ionicons name="lock-open" size={14} color={RouteColors.hotspotActive} />
-                )}
-                {visitedHotspotIds.has(hs.id) && (
-                  <Ionicons name="checkmark-circle" size={14} color={RouteColors.hotspotVisited} />
-                )}
-              </Pressable>
-            ))}
-          </View>
-        </View>
+        <RouteMap
+          routeCoords={routeCoords}
+          hotspots={itinerary.hotspots}
+          unlockedHotspotIds={unlockedHotspotIds}
+          visitedHotspotIds={visitedHotspotIds}
+          currentLocation={currentLocation}
+          onHotspotPress={handleHotspotTap}
+        />
       </View>
 
       {/* Top Bar */}
@@ -473,57 +411,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   mapContainer: {
-    flex: 1,
-  },
-  mapPlaceholder: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#E8EDF2',
-    padding: Spacing.md,
-  },
-  mapPlaceholderText: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: Brand.gray500,
-    marginTop: Spacing.sm,
-  },
-  mapSubtext: {
-    fontSize: 12,
-    color: Brand.gray400,
-    marginTop: Spacing.xs,
-    marginBottom: Spacing.md,
-  },
-  positionInfo: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    padding: Spacing.sm,
-    borderRadius: 8,
-    marginBottom: Spacing.sm,
-  },
-  positionText: {
-    fontSize: 11,
-    color: Brand.gray500,
-    fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace',
-  },
-  hotspotMarkerList: {
-    width: '100%',
-    gap: 4,
-  },
-  markerItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    paddingVertical: 6,
-    paddingHorizontal: 10,
-    borderRadius: 8,
-  },
-  markerDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-  },
-  markerText: {
-    fontSize: 12,
     flex: 1,
   },
   topBar: {
