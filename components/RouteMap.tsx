@@ -14,6 +14,7 @@ import type { Hotspot, UserLocation } from '@/src/types';
 // MapLibre is native-only — guarded by Platform check at render time.
 let MapLibreGL: typeof import('@maplibre/maplibre-react-native');
 if (Platform.OS !== 'web') {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   MapLibreGL = require('@maplibre/maplibre-react-native');
 }
 
@@ -105,8 +106,6 @@ export function RouteMap({
 }: RouteMapProps) {
   const [mbtilesPath, setMbtilesPath] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const cameraRef = useRef<any>(null);
 
   // Load the MBTiles asset on mount
@@ -116,8 +115,6 @@ export function RouteMap({
       if (cancelled) return;
       if (path) {
         setMbtilesPath(path);
-      } else {
-        setError('Failed to load offline tiles');
       }
       setLoading(false);
     });
@@ -234,7 +231,6 @@ export function RouteMap({
   );
 
   const handleHotspotPress = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (event: any) => {
       const feature = event.features?.[0];
       if (!feature?.properties?.id) return;
