@@ -108,27 +108,43 @@ export const useVisitStore = create<VisitState>((set, get) => ({
       const startedKeys = keys.filter((k) => k.startsWith('started:'));
       const completedKeys = keys.filter((k) => k.startsWith('completed:'));
 
+      // Single batch read instead of N individual getItem() calls
+      const allKeys = [
+        ...visitedKeys,
+        ...startedKeys,
+        ...completedKeys,
+        'activeRoute',
+        'lastKnownLat',
+        'lastKnownLng',
+      ];
+      const pairs = await AsyncStorage.multiGet(allKeys);
+
+      const values = new Map<string, string>();
+      for (const [key, val] of pairs) {
+        if (val != null) values.set(key, val);
+      }
+
       const visited: Record<string, string> = {};
       for (const key of visitedKeys) {
-        const val = await AsyncStorage.getItem(key);
+        const val = values.get(key);
         if (val) visited[key.replace('visited:', '')] = val;
       }
 
       const started: Record<string, string> = {};
       for (const key of startedKeys) {
-        const val = await AsyncStorage.getItem(key);
+        const val = values.get(key);
         if (val) started[key.replace('started:', '')] = val;
       }
 
       const completed: Record<string, string> = {};
       for (const key of completedKeys) {
-        const val = await AsyncStorage.getItem(key);
+        const val = values.get(key);
         if (val) completed[key.replace('completed:', '')] = val;
       }
 
-      const activeRoute = await AsyncStorage.getItem('activeRoute');
-      const lastLat = await AsyncStorage.getItem('lastKnownLat');
-      const lastLng = await AsyncStorage.getItem('lastKnownLng');
+      const activeRoute = values.get('activeRoute') ?? null;
+      const lastLat = values.get('lastKnownLat');
+      const lastLng = values.get('lastKnownLng');
 
       set({
         visitedHotspots: visited,
