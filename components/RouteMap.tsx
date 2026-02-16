@@ -196,18 +196,18 @@ export function RouteMap({
     };
   }, [currentLocation]);
 
-  // Build MapLibre style JSON string with the mbtiles:// source URI baked in.
-  // Passed as a JSON string to avoid object-serialization issues in RN bridge.
-  // Uses data-driven "match" expressions instead of layer "filter" properties
-  // for maximum compatibility across maplibre-react-native versions.
-  const mapStyleJSON = useMemo(() => {
+  // Build MapLibre style with offline MBTiles vector source.
+  // IMPORTANT: mbtiles:// must go in "tiles" array, NOT in "url" property.
+  // "url" is for TileJSON endpoints; "tiles" is for direct tile access.
+  const mapStyle = useMemo(() => {
     if (!mbtilesPath) return null;
-    const style = {
-      version: 8,
+    return {
+      version: 8 as const,
       sources: {
         campania: {
-          type: 'vector',
-          url: `mbtiles://${mbtilesPath}`,
+          type: 'vector' as const,
+          tiles: [`mbtiles://${mbtilesPath}`],
+          maxzoom: 14,
         },
       },
       glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
@@ -512,7 +512,6 @@ export function RouteMap({
         },
       ],
     };
-    return JSON.stringify(style);
   }, [mbtilesPath]);
 
   // Fallback style (plain background) when MBTiles fails to load
@@ -561,7 +560,7 @@ export function RouteMap({
     );
   }
 
-  const activeStyle = mapStyleJSON ?? JSON.stringify(fallbackStyle);
+  const activeStyle = mapStyle ?? fallbackStyle;
 
   return (
     <MapLibreGL.MapView
