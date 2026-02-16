@@ -202,6 +202,9 @@ export function RouteMap({
   const mapStyle = useMemo(() => {
     if (!mbtilesPath) return null;
 
+    // This is the exact debug structure that worked — same layer count,
+    // same patterns, no filters, no expressions, no layout, no minzoom,
+    // no symbol/label layers, no glyphs. Just colors changed from neon.
     return {
       version: 8 as const,
       sources: {
@@ -210,47 +213,22 @@ export function RouteMap({
           url: `mbtiles://${mbtilesPath}`,
         },
       },
-      // CONSTRAINT: maplibre-react-native v10 silently drops layers that
-      // use style expressions OR filter properties. Only filterless layers
-      // with simple literal paint values render. One layer per source-layer.
       glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
       layers: [
         { id: 'background', type: 'background',
           paint: { 'background-color': '#F2EFE9' } },
-        { id: 'landcover', type: 'fill', source: 'campania', 'source-layer': 'landcover',
-          paint: { 'fill-color': '#C0D8A0', 'fill-opacity': 0.5 } },
-        { id: 'landuse', type: 'fill', source: 'campania', 'source-layer': 'landuse',
-          paint: { 'fill-color': '#E0D8D0', 'fill-opacity': 0.4 } },
-        { id: 'park', type: 'fill', source: 'campania', 'source-layer': 'park',
-          paint: { 'fill-color': '#B0D490', 'fill-opacity': 0.5 } },
         { id: 'water', type: 'fill', source: 'campania', 'source-layer': 'water',
           paint: { 'fill-color': '#88C4E0' } },
-        { id: 'waterway', type: 'line', source: 'campania', 'source-layer': 'waterway',
-          paint: { 'line-color': '#88C4E0', 'line-width': 1.5 } },
-        { id: 'building', type: 'fill', source: 'campania', 'source-layer': 'building',
-          minzoom: 13,
-          paint: { 'fill-color': '#D4C8BC', 'fill-opacity': 0.5 } },
-        { id: 'building-outline', type: 'line', source: 'campania', 'source-layer': 'building',
-          minzoom: 13,
-          paint: { 'line-color': '#B8A898', 'line-width': 0.5 } },
         { id: 'boundary', type: 'line', source: 'campania', 'source-layer': 'boundary',
           paint: { 'line-color': '#9E7B9B', 'line-width': 1, 'line-dasharray': [3, 2] } },
+        { id: 'landcover', type: 'fill', source: 'campania', 'source-layer': 'landcover',
+          paint: { 'fill-color': '#C0D8A0', 'fill-opacity': 0.5 } },
         { id: 'transportation', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#C0B8B0', 'line-width': 1.5 } },
-        { id: 'aeroway', type: 'line', source: 'campania', 'source-layer': 'aeroway',
-          paint: { 'line-color': '#D0CFCB', 'line-width': 4 } },
-        { id: 'place-label', type: 'symbol', source: 'campania', 'source-layer': 'place',
-          layout: { 'text-field': '{name:latin}', 'text-font': ['Open Sans Bold'], 'text-size': 12, 'text-max-width': 8 },
-          paint: { 'text-color': '#333333', 'text-halo-color': '#FFFFFF', 'text-halo-width': 2 } },
-        { id: 'road-label', type: 'symbol', source: 'campania', 'source-layer': 'transportation_name',
-          minzoom: 13,
-          layout: { 'text-field': '{name:latin}', 'text-font': ['Open Sans Regular'], 'text-size': 10,
-                    'symbol-placement': 'line', 'text-rotation-alignment': 'map', 'text-max-angle': 30 },
-          paint: { 'text-color': '#666666', 'text-halo-color': '#FFFFFF', 'text-halo-width': 1.5 } },
-        { id: 'water-name', type: 'symbol', source: 'campania', 'source-layer': 'water_name',
-          layout: { 'text-field': '{name:latin}', 'text-font': ['Open Sans Italic'], 'text-size': 12, 'text-max-width': 8 },
-          paint: { 'text-color': '#4A7D99', 'text-halo-color': '#FFFFFF', 'text-halo-width': 1.2 } },
+          paint: { 'line-color': '#999999', 'line-width': 2 } },
+        { id: 'building', type: 'fill', source: 'campania', 'source-layer': 'building',
+          paint: { 'fill-color': '#D4C8BC', 'fill-opacity': 0.6 } },
+        { id: 'park', type: 'fill', source: 'campania', 'source-layer': 'park',
+          paint: { 'fill-color': '#B0D490', 'fill-opacity': 0.5 } },
       ],
     };
   }, [mbtilesPath]);
