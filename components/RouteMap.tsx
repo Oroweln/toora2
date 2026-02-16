@@ -5,6 +5,11 @@
  * The campania.mbtiles file contains OpenMapTiles-schema vector tiles (pbf)
  * covering the Campania/Sannio region at zoom 0-14. The style below paints
  * each vector layer (water, landcover, roads, buildings, labels, etc.).
+ *
+ * IMPORTANT: The JS→native bridge in maplibre-react-native silently drops
+ * `filter` properties and style expressions (arrays like ['==', ...]).
+ * Only simple literal values survive serialization. Do NOT add filters
+ * or expressions to the style layers below — they will be silently ignored.
  */
 
 import { useEffect, useMemo, useRef, useState, useCallback } from 'react';
@@ -48,13 +53,59 @@ interface RouteMapProps {
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const MBTILES_MODULE = require('../assets/campania.mbtiles');
 
-async function loadMBTilesPath(): Promise<string | null> {
+/**
+ * Download the MBTiles asset and build the style object.
+ * CRITICAL: No filters, no expressions — only flat literal values.
+ * The glyphs URL MUST be present or the entire style silently fails.
+ */
+async function loadStyle(): Promise<Record<string, unknown> | null> {
   try {
     const asset = Asset.fromModule(MBTILES_MODULE);
     await asset.downloadAsync();
     if (!asset.localUri) return null;
-    // Strip file:// prefix → bare path for mbtiles:// scheme
-    return asset.localUri.replace(/^file:\/\//, '');
+    const mbtilesPath = asset.localUri.replace(/^file:\/\//, '');
+
+    return {
+      version: 8,
+      sources: {
+        campania: {
+          type: 'vector',
+          url: `mbtiles://${mbtilesPath}`,
+        },
+      },
+      glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
+      layers: [
+        { id: 'background', type: 'background',
+          paint: { 'background-color': '#F2EFE9' } },
+        { id: 'landcover', type: 'fill', source: 'campania',
+          'source-layer': 'landcover',
+          paint: { 'fill-color': '#C8DFA0', 'fill-opacity': 0.45 } },
+        { id: 'landuse', type: 'fill', source: 'campania',
+          'source-layer': 'landuse',
+          paint: { 'fill-color': '#E0D8D0', 'fill-opacity': 0.35 } },
+        { id: 'park', type: 'fill', source: 'campania',
+          'source-layer': 'park',
+          paint: { 'fill-color': '#B0D490', 'fill-opacity': 0.5 } },
+        { id: 'water', type: 'fill', source: 'campania',
+          'source-layer': 'water',
+          paint: { 'fill-color': '#88C4E0' } },
+        { id: 'waterway', type: 'line', source: 'campania',
+          'source-layer': 'waterway',
+          paint: { 'line-color': '#88C4E0', 'line-width': 1.5 } },
+        { id: 'building', type: 'fill', source: 'campania',
+          'source-layer': 'building',
+          paint: { 'fill-color': '#D4C8BC', 'fill-opacity': 0.5 } },
+        { id: 'boundary', type: 'line', source: 'campania',
+          'source-layer': 'boundary',
+          paint: { 'line-color': '#9E7B9B', 'line-width': 1 } },
+        { id: 'road', type: 'line', source: 'campania',
+          'source-layer': 'transportation',
+          paint: { 'line-color': '#FFFFFF', 'line-width': 2 } },
+        { id: 'aeroway', type: 'line', source: 'campania',
+          'source-layer': 'aeroway',
+          paint: { 'line-color': '#D0CFCB', 'line-width': 4 } },
+      ],
+    };
   } catch {
     return null;
   }
@@ -108,18 +159,16 @@ export function RouteMap({
   currentLocation,
   onHotspotPress,
 }: RouteMapProps) {
-  const [mbtilesPath, setMbtilesPath] = useState<string | null>(null);
+  const [mapStyle, setMapStyle] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
   const cameraRef = useRef<any>(null);
 
-  // Load the MBTiles asset on mount
+  // Load MBTiles asset and build style on mount
   useEffect(() => {
     let cancelled = false;
-    loadMBTilesPath().then((path) => {
+    loadStyle().then((style) => {
       if (cancelled) return;
-      if (path) {
-        setMbtilesPath(path);
-      }
+      if (style) setMapStyle(style);
       setLoading(false);
     });
     return () => {
@@ -196,48 +245,12 @@ export function RouteMap({
     };
   }, [currentLocation]);
 
-  // Build MapLibre style with offline MBTiles vector source.
-  // "url" triggers TileJSON generation from the MBTiles metadata table,
-  // which then constructs proper tile URL templates internally.
-  const mapStyle = useMemo(() => {
-    if (!mbtilesPath) return null;
-
-    // This is the exact debug structure that worked — same layer count,
-    // same patterns, no filters, no expressions, no layout, no minzoom,
-    // no symbol/label layers, no glyphs. Just colors changed from neon.
-    return {
-      version: 8 as const,
-      sources: {
-        campania: {
-          type: 'vector' as const,
-          url: `mbtiles://${mbtilesPath}`,
-        },
-      },
-      glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
-      layers: [
-        { id: 'background', type: 'background',
-          paint: { 'background-color': '#F2EFE9' } },
-        { id: 'water', type: 'fill', source: 'campania', 'source-layer': 'water',
-          paint: { 'fill-color': '#88C4E0' } },
-        { id: 'boundary', type: 'line', source: 'campania', 'source-layer': 'boundary',
-          paint: { 'line-color': '#9E7B9B', 'line-width': 1, 'line-dasharray': [3, 2] } },
-        { id: 'landcover', type: 'fill', source: 'campania', 'source-layer': 'landcover',
-          paint: { 'fill-color': '#C0D8A0', 'fill-opacity': 0.5 } },
-        { id: 'transportation', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          paint: { 'line-color': '#999999', 'line-width': 2 } },
-        { id: 'building', type: 'fill', source: 'campania', 'source-layer': 'building',
-          paint: { 'fill-color': '#D4C8BC', 'fill-opacity': 0.6 } },
-        { id: 'park', type: 'fill', source: 'campania', 'source-layer': 'park',
-          paint: { 'fill-color': '#B0D490', 'fill-opacity': 0.5 } },
-      ],
-    };
-  }, [mbtilesPath]);
-
-  // Fallback style (plain background) when MBTiles fails to load
+  // Fallback style (plain background) when style fails to build
   const fallbackStyle = useMemo(
     () => ({
       version: 8,
       sources: {},
+      glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
       layers: [
         {
           id: 'background',
