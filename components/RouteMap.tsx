@@ -210,164 +210,47 @@ export function RouteMap({
           url: `mbtiles://${mbtilesPath}`,
         },
       },
-      // NOTE: Style expressions (match, interpolate, get, coalesce) crash
-      // silently in this maplibre-react-native version. All paint/layout
-      // values below MUST be simple literals. For per-class styling we use
-      // separate layers with legacy filters instead.
+      // CONSTRAINT: maplibre-react-native v10 silently drops layers that
+      // use style expressions OR filter properties. Only filterless layers
+      // with simple literal paint values render. One layer per source-layer.
       glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
       layers: [
-        // ── Background ──────────────────────────────────────────
-        { id: 'background', type: 'background', paint: { 'background-color': '#F2EFE9' } },
-
-        // ── Landcover ───────────────────────────────────────────
-        { id: 'landcover-wood', type: 'fill', source: 'campania', 'source-layer': 'landcover',
-          filter: ['in', 'class', 'wood', 'forest'],
-          paint: { 'fill-color': '#A8C98A', 'fill-opacity': 0.6 } },
-        { id: 'landcover-grass', type: 'fill', source: 'campania', 'source-layer': 'landcover',
-          filter: ['in', 'class', 'grass', 'grassland', 'scrub', 'heath'],
-          paint: { 'fill-color': '#C8DFA0', 'fill-opacity': 0.5 } },
-        { id: 'landcover-farm', type: 'fill', source: 'campania', 'source-layer': 'landcover',
-          filter: ['in', 'subclass', 'farmland', 'orchard'],
-          paint: { 'fill-color': '#E2D9C2', 'fill-opacity': 0.4 } },
-
-        // ── Landuse ─────────────────────────────────────────────
-        { id: 'landuse-residential', type: 'fill', source: 'campania', 'source-layer': 'landuse',
-          filter: ['==', 'class', 'residential'],
+        { id: 'background', type: 'background',
+          paint: { 'background-color': '#F2EFE9' } },
+        { id: 'landcover', type: 'fill', source: 'campania', 'source-layer': 'landcover',
+          paint: { 'fill-color': '#C0D8A0', 'fill-opacity': 0.5 } },
+        { id: 'landuse', type: 'fill', source: 'campania', 'source-layer': 'landuse',
           paint: { 'fill-color': '#E0D8D0', 'fill-opacity': 0.4 } },
-        { id: 'landuse-other', type: 'fill', source: 'campania', 'source-layer': 'landuse',
-          filter: ['in', 'class', 'commercial', 'industrial', 'retail', 'railway'],
-          paint: { 'fill-color': '#E4D8CF', 'fill-opacity': 0.3 } },
-        { id: 'landuse-green', type: 'fill', source: 'campania', 'source-layer': 'landuse',
-          filter: ['==', 'class', 'cemetery'],
-          paint: { 'fill-color': '#BFCFAB', 'fill-opacity': 0.4 } },
-
-        // ── Parks ───────────────────────────────────────────────
         { id: 'park', type: 'fill', source: 'campania', 'source-layer': 'park',
           paint: { 'fill-color': '#B0D490', 'fill-opacity': 0.5 } },
-
-        // ── Water ───────────────────────────────────────────────
         { id: 'water', type: 'fill', source: 'campania', 'source-layer': 'water',
           paint: { 'fill-color': '#88C4E0' } },
         { id: 'waterway', type: 'line', source: 'campania', 'source-layer': 'waterway',
           paint: { 'line-color': '#88C4E0', 'line-width': 1.5 } },
-
-        // ── Buildings ───────────────────────────────────────────
         { id: 'building', type: 'fill', source: 'campania', 'source-layer': 'building',
           minzoom: 13,
           paint: { 'fill-color': '#D4C8BC', 'fill-opacity': 0.5 } },
         { id: 'building-outline', type: 'line', source: 'campania', 'source-layer': 'building',
           minzoom: 13,
           paint: { 'line-color': '#B8A898', 'line-width': 0.5 } },
-
-        // ── Boundaries ──────────────────────────────────────────
-        { id: 'boundary-admin2', type: 'line', source: 'campania', 'source-layer': 'boundary',
-          filter: ['==', 'admin_level', 2],
-          paint: { 'line-color': '#9E7B9B', 'line-width': 1.5, 'line-dasharray': [3, 2] } },
-        { id: 'boundary-admin4', type: 'line', source: 'campania', 'source-layer': 'boundary',
-          filter: ['>=', 'admin_level', 4],
-          paint: { 'line-color': '#B8A8B5', 'line-width': 0.8, 'line-dasharray': [4, 3] } },
-
-        // ── Roads: casings (drawn first) ────────────────────────
-        { id: 'road-motorway-casing', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['==', 'class', 'motorway'],
+        { id: 'boundary', type: 'line', source: 'campania', 'source-layer': 'boundary',
+          paint: { 'line-color': '#9E7B9B', 'line-width': 1, 'line-dasharray': [3, 2] } },
+        { id: 'transportation', type: 'line', source: 'campania', 'source-layer': 'transportation',
           layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#C24E6B', 'line-width': 5 } },
-        { id: 'road-trunk-casing', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['==', 'class', 'trunk'],
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#C87830', 'line-width': 4.5 } },
-        { id: 'road-primary-casing', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['==', 'class', 'primary'],
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#C8A868', 'line-width': 4 } },
-        { id: 'road-secondary-casing', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['==', 'class', 'secondary'],
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#C8BD8E', 'line-width': 3.5 } },
-        { id: 'road-tertiary-casing', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['==', 'class', 'tertiary'],
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#CCCCCC', 'line-width': 3 } },
-
-        // ── Roads: fills (drawn on top of casings) ──────────────
-        { id: 'road-motorway', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['==', 'class', 'motorway'],
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#E892A2', 'line-width': 3.5 } },
-        { id: 'road-trunk', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['==', 'class', 'trunk'],
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#F9B29C', 'line-width': 3 } },
-        { id: 'road-primary', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['==', 'class', 'primary'],
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#FCD6A4', 'line-width': 2.5 } },
-        { id: 'road-secondary', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['==', 'class', 'secondary'],
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#F7FABF', 'line-width': 2 } },
-        { id: 'road-tertiary', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['==', 'class', 'tertiary'],
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#FFFFFF', 'line-width': 1.5 } },
-        { id: 'road-minor', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['==', 'class', 'minor'],
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#FFFFFF', 'line-width': 1 } },
-        { id: 'road-service', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['in', 'class', 'service', 'track'],
-          minzoom: 12,
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#F0EDE8', 'line-width': 0.8 } },
-        { id: 'road-path', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['==', 'class', 'path'],
-          minzoom: 12,
-          paint: { 'line-color': '#CBA26E', 'line-width': 1, 'line-dasharray': [3, 2] } },
-        { id: 'road-rail', type: 'line', source: 'campania', 'source-layer': 'transportation',
-          filter: ['in', 'class', 'rail', 'narrow_gauge', 'transit'],
-          paint: { 'line-color': '#B0B0B0', 'line-width': 1.2, 'line-dasharray': [4, 2] } },
-
-        // ── Aeroways ────────────────────────────────────────────
+          paint: { 'line-color': '#C0B8B0', 'line-width': 1.5 } },
         { id: 'aeroway', type: 'line', source: 'campania', 'source-layer': 'aeroway',
-          paint: { 'line-color': '#D0CFCB', 'line-width': 6 } },
-
-        // ── Labels: place names ─────────────────────────────────
-        { id: 'place-city', type: 'symbol', source: 'campania', 'source-layer': 'place',
-          filter: ['==', 'class', 'city'],
-          layout: { 'text-field': '{name:latin}', 'text-font': ['Open Sans Bold'], 'text-size': 16, 'text-max-width': 8 },
+          paint: { 'line-color': '#D0CFCB', 'line-width': 4 } },
+        { id: 'place-label', type: 'symbol', source: 'campania', 'source-layer': 'place',
+          layout: { 'text-field': '{name:latin}', 'text-font': ['Open Sans Bold'], 'text-size': 12, 'text-max-width': 8 },
           paint: { 'text-color': '#333333', 'text-halo-color': '#FFFFFF', 'text-halo-width': 2 } },
-        { id: 'place-town', type: 'symbol', source: 'campania', 'source-layer': 'place',
-          filter: ['==', 'class', 'town'],
-          layout: { 'text-field': '{name:latin}', 'text-font': ['Open Sans Bold'], 'text-size': 13, 'text-max-width': 8 },
-          paint: { 'text-color': '#444444', 'text-halo-color': '#FFFFFF', 'text-halo-width': 1.5 } },
-        { id: 'place-village', type: 'symbol', source: 'campania', 'source-layer': 'place',
-          filter: ['==', 'class', 'village'],
-          minzoom: 10,
-          layout: { 'text-field': '{name:latin}', 'text-font': ['Open Sans Regular'], 'text-size': 11, 'text-max-width': 7 },
-          paint: { 'text-color': '#555555', 'text-halo-color': '#FFFFFF', 'text-halo-width': 1.5 } },
-        { id: 'place-hamlet', type: 'symbol', source: 'campania', 'source-layer': 'place',
-          filter: ['in', 'class', 'hamlet', 'suburb', 'neighbourhood'],
-          minzoom: 12,
-          layout: { 'text-field': '{name:latin}', 'text-font': ['Open Sans Regular'], 'text-size': 10, 'text-max-width': 6 },
-          paint: { 'text-color': '#777777', 'text-halo-color': '#FFFFFF', 'text-halo-width': 1 } },
-
-        // ── Labels: road names ──────────────────────────────────
         { id: 'road-label', type: 'symbol', source: 'campania', 'source-layer': 'transportation_name',
           minzoom: 13,
           layout: { 'text-field': '{name:latin}', 'text-font': ['Open Sans Regular'], 'text-size': 10,
                     'symbol-placement': 'line', 'text-rotation-alignment': 'map', 'text-max-angle': 30 },
           paint: { 'text-color': '#666666', 'text-halo-color': '#FFFFFF', 'text-halo-width': 1.5 } },
-
-        // ── Labels: water names ─────────────────────────────────
         { id: 'water-name', type: 'symbol', source: 'campania', 'source-layer': 'water_name',
           layout: { 'text-field': '{name:latin}', 'text-font': ['Open Sans Italic'], 'text-size': 12, 'text-max-width': 8 },
           paint: { 'text-color': '#4A7D99', 'text-halo-color': '#FFFFFF', 'text-halo-width': 1.2 } },
-
-        // ── Labels: mountain peaks ──────────────────────────────
-        { id: 'mountain-peak', type: 'symbol', source: 'campania', 'source-layer': 'mountain_peak',
-          minzoom: 10,
-          layout: { 'text-field': '{name:latin}', 'text-font': ['Open Sans Italic'], 'text-size': 10, 'text-offset': [0, 0.8] },
-          paint: { 'text-color': '#7D5C34', 'text-halo-color': '#FFFFFF', 'text-halo-width': 1 } },
       ],
     };
   }, [mbtilesPath]);
