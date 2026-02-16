@@ -1,6 +1,10 @@
 /**
- * RouteMap — MapLibre GL map with offline MBTiles raster base layer,
+ * RouteMap — MapLibre GL map with offline MBTiles vector tile base layer,
  * route polyline, hotspot markers, and live user position.
+ *
+ * The campania.mbtiles file contains OpenMapTiles-schema vector tiles (pbf)
+ * covering the Campania/Sannio region at zoom 0-14. The style below paints
+ * each vector layer (water, landcover, roads, buildings, labels, etc.).
  */
 
 import { useEffect, useMemo, useRef, useState, useCallback } from 'react';
@@ -192,23 +196,449 @@ export function RouteMap({
     };
   }, [currentLocation]);
 
-  // MapLibre style object with MBTiles as the raster base layer
+  // MapLibre style — vector source + OpenMapTiles-compatible layer definitions.
+  // The MBTiles contains pbf vector tiles with layers: water, waterway,
+  // landcover, landuse, park, boundary, transportation, building, place,
+  // poi, transportation_name, water_name, mountain_peak, aeroway, housenumber.
   const mapStyle = useMemo(() => {
     if (!mbtilesPath) return null;
     return {
       version: 8,
       sources: {
         campania: {
-          type: 'raster',
+          type: 'vector',
           url: `mbtiles://${mbtilesPath}`,
-          tileSize: 256,
         },
       },
+      glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
       layers: [
+        // Background
         {
-          id: 'campania-tiles',
-          type: 'raster',
+          id: 'background',
+          type: 'background',
+          paint: { 'background-color': '#F2EFE9' },
+        },
+        // Landcover (forest, grass, farmland, etc.)
+        {
+          id: 'landcover-grass',
+          type: 'fill',
           source: 'campania',
+          'source-layer': 'landcover',
+          filter: ['==', 'class', 'grass'],
+          paint: { 'fill-color': '#D8E8C8', 'fill-opacity': 0.6 },
+        },
+        {
+          id: 'landcover-wood',
+          type: 'fill',
+          source: 'campania',
+          'source-layer': 'landcover',
+          filter: ['in', 'class', 'wood', 'forest'],
+          paint: { 'fill-color': '#C0D9AF', 'fill-opacity': 0.6 },
+        },
+        {
+          id: 'landcover-farmland',
+          type: 'fill',
+          source: 'campania',
+          'source-layer': 'landcover',
+          filter: ['==', 'subclass', 'farmland'],
+          paint: { 'fill-color': '#EAE0D0', 'fill-opacity': 0.5 },
+        },
+        // Landuse
+        {
+          id: 'landuse-residential',
+          type: 'fill',
+          source: 'campania',
+          'source-layer': 'landuse',
+          filter: ['==', 'class', 'residential'],
+          paint: { 'fill-color': '#E8E0D8', 'fill-opacity': 0.5 },
+        },
+        {
+          id: 'landuse-commercial',
+          type: 'fill',
+          source: 'campania',
+          'source-layer': 'landuse',
+          filter: ['in', 'class', 'commercial', 'industrial', 'retail'],
+          paint: { 'fill-color': '#E4D8CF', 'fill-opacity': 0.4 },
+        },
+        {
+          id: 'landuse-cemetery',
+          type: 'fill',
+          source: 'campania',
+          'source-layer': 'landuse',
+          filter: ['==', 'class', 'cemetery'],
+          paint: { 'fill-color': '#CDDBBE', 'fill-opacity': 0.5 },
+        },
+        // Parks and green areas
+        {
+          id: 'park',
+          type: 'fill',
+          source: 'campania',
+          'source-layer': 'park',
+          paint: { 'fill-color': '#C8DFAB', 'fill-opacity': 0.5 },
+        },
+        // Water bodies
+        {
+          id: 'water',
+          type: 'fill',
+          source: 'campania',
+          'source-layer': 'water',
+          paint: { 'fill-color': '#AAD3DF' },
+        },
+        // Waterways (rivers, streams)
+        {
+          id: 'waterway',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'waterway',
+          paint: {
+            'line-color': '#AAD3DF',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.5, 14, 3],
+          },
+        },
+        // Buildings
+        {
+          id: 'building',
+          type: 'fill',
+          source: 'campania',
+          'source-layer': 'building',
+          minzoom: 13,
+          paint: {
+            'fill-color': '#D9D0C9',
+            'fill-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0.3, 16, 0.6],
+          },
+        },
+        {
+          id: 'building-outline',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'building',
+          minzoom: 13,
+          paint: { 'line-color': '#C9BFB8', 'line-width': 0.5 },
+        },
+        // Boundaries (admin borders)
+        {
+          id: 'boundary-country',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'boundary',
+          filter: ['==', 'admin_level', 2],
+          paint: {
+            'line-color': '#9E7B9B',
+            'line-width': 1.5,
+            'line-dasharray': [3, 2],
+          },
+        },
+        {
+          id: 'boundary-region',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'boundary',
+          filter: ['in', 'admin_level', 4, 6],
+          paint: {
+            'line-color': '#B8A8B5',
+            'line-width': 0.8,
+            'line-dasharray': [4, 3],
+          },
+        },
+        // Roads — service / track (lowest)
+        {
+          id: 'road-service',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['in', 'class', 'service', 'track'],
+          minzoom: 12,
+          paint: {
+            'line-color': '#FFFFFF',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 12, 0.5, 16, 2],
+          },
+        },
+        // Roads — minor
+        {
+          id: 'road-minor',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'minor'],
+          minzoom: 10,
+          paint: {
+            'line-color': '#FFFFFF',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 10, 0.5, 14, 3, 16, 5],
+          },
+        },
+        // Roads — tertiary
+        {
+          id: 'road-tertiary',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'tertiary'],
+          paint: {
+            'line-color': '#FFFFFF',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.5, 12, 2, 16, 6],
+          },
+        },
+        // Roads — secondary
+        {
+          id: 'road-secondary-casing',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'secondary'],
+          paint: {
+            'line-color': '#D4C9A8',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 8, 1.5, 14, 6, 16, 10],
+          },
+        },
+        {
+          id: 'road-secondary',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'secondary'],
+          paint: {
+            'line-color': '#F7FABF',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 8, 1, 14, 5, 16, 9],
+          },
+        },
+        // Roads — primary
+        {
+          id: 'road-primary-casing',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'primary'],
+          paint: {
+            'line-color': '#C8A868',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1, 12, 4, 16, 12],
+          },
+        },
+        {
+          id: 'road-primary',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'primary'],
+          paint: {
+            'line-color': '#FCD6A4',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 6, 0.5, 12, 3, 16, 10],
+          },
+        },
+        // Roads — trunk
+        {
+          id: 'road-trunk-casing',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'trunk'],
+          paint: {
+            'line-color': '#C87830',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1, 12, 4, 16, 12],
+          },
+        },
+        {
+          id: 'road-trunk',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'trunk'],
+          paint: {
+            'line-color': '#F9B29C',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 6, 0.5, 12, 3, 16, 10],
+          },
+        },
+        // Roads — motorway
+        {
+          id: 'road-motorway-casing',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'motorway'],
+          paint: {
+            'line-color': '#C24E6B',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 5, 1, 12, 5, 16, 14],
+          },
+        },
+        {
+          id: 'road-motorway',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'motorway'],
+          paint: {
+            'line-color': '#E892A2',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 5, 0.5, 12, 4, 16, 12],
+          },
+        },
+        // Paths — bicycle/foot/pedestrian (important for cycling app!)
+        {
+          id: 'path',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'path'],
+          minzoom: 12,
+          paint: {
+            'line-color': '#CBA26E',
+            'line-width': 1,
+            'line-dasharray': [3, 2],
+          },
+        },
+        // Rail
+        {
+          id: 'rail',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'rail'],
+          paint: {
+            'line-color': '#B7B7B7',
+            'line-width': 1.5,
+            'line-dasharray': [4, 2],
+          },
+        },
+        // Aeroways
+        {
+          id: 'aeroway-runway',
+          type: 'line',
+          source: 'campania',
+          'source-layer': 'aeroway',
+          filter: ['==', 'class', 'runway'],
+          paint: { 'line-color': '#D0CFCB', 'line-width': 8 },
+        },
+        // Water name labels
+        {
+          id: 'water-name',
+          type: 'symbol',
+          source: 'campania',
+          'source-layer': 'water_name',
+          layout: {
+            'text-field': ['coalesce', ['get', 'name:it'], ['get', 'name:latin'], ['get', 'name']],
+            'text-font': ['Open Sans Italic'],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 8, 10, 14, 14],
+            'text-max-width': 8,
+          },
+          paint: {
+            'text-color': '#5D87A0',
+            'text-halo-color': 'rgba(255,255,255,0.8)',
+            'text-halo-width': 1,
+          },
+        },
+        // Road labels
+        {
+          id: 'road-label',
+          type: 'symbol',
+          source: 'campania',
+          'source-layer': 'transportation_name',
+          minzoom: 12,
+          layout: {
+            'text-field': ['coalesce', ['get', 'name:it'], ['get', 'name:latin'], ['get', 'name']],
+            'text-font': ['Open Sans Regular'],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 12, 9, 16, 12],
+            'symbol-placement': 'line',
+            'text-rotation-alignment': 'map',
+            'text-max-angle': 30,
+          },
+          paint: {
+            'text-color': '#666',
+            'text-halo-color': 'rgba(255,255,255,0.8)',
+            'text-halo-width': 1.5,
+          },
+        },
+        // Place labels — city/town/village
+        {
+          id: 'place-city',
+          type: 'symbol',
+          source: 'campania',
+          'source-layer': 'place',
+          filter: ['==', 'class', 'city'],
+          layout: {
+            'text-field': ['coalesce', ['get', 'name:it'], ['get', 'name:latin'], ['get', 'name']],
+            'text-font': ['Open Sans Bold'],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 5, 12, 10, 18],
+            'text-max-width': 8,
+          },
+          paint: {
+            'text-color': '#333',
+            'text-halo-color': 'rgba(255,255,255,0.9)',
+            'text-halo-width': 2,
+          },
+        },
+        {
+          id: 'place-town',
+          type: 'symbol',
+          source: 'campania',
+          'source-layer': 'place',
+          filter: ['==', 'class', 'town'],
+          layout: {
+            'text-field': ['coalesce', ['get', 'name:it'], ['get', 'name:latin'], ['get', 'name']],
+            'text-font': ['Open Sans Bold'],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 7, 10, 12, 14],
+            'text-max-width': 8,
+          },
+          paint: {
+            'text-color': '#444',
+            'text-halo-color': 'rgba(255,255,255,0.9)',
+            'text-halo-width': 1.5,
+          },
+        },
+        {
+          id: 'place-village',
+          type: 'symbol',
+          source: 'campania',
+          'source-layer': 'place',
+          filter: ['==', 'class', 'village'],
+          minzoom: 9,
+          layout: {
+            'text-field': ['coalesce', ['get', 'name:it'], ['get', 'name:latin'], ['get', 'name']],
+            'text-font': ['Open Sans Regular'],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 9, 9, 14, 12],
+            'text-max-width': 7,
+          },
+          paint: {
+            'text-color': '#555',
+            'text-halo-color': 'rgba(255,255,255,0.9)',
+            'text-halo-width': 1.5,
+          },
+        },
+        {
+          id: 'place-hamlet',
+          type: 'symbol',
+          source: 'campania',
+          'source-layer': 'place',
+          filter: ['in', 'class', 'hamlet', 'suburb', 'neighbourhood'],
+          minzoom: 12,
+          layout: {
+            'text-field': ['coalesce', ['get', 'name:it'], ['get', 'name:latin'], ['get', 'name']],
+            'text-font': ['Open Sans Regular'],
+            'text-size': 10,
+            'text-max-width': 6,
+          },
+          paint: {
+            'text-color': '#777',
+            'text-halo-color': 'rgba(255,255,255,0.8)',
+            'text-halo-width': 1,
+          },
+        },
+        // Mountain peaks
+        {
+          id: 'mountain-peak',
+          type: 'symbol',
+          source: 'campania',
+          'source-layer': 'mountain_peak',
+          minzoom: 9,
+          layout: {
+            'text-field': ['coalesce', ['get', 'name:it'], ['get', 'name:latin'], ['get', 'name']],
+            'text-font': ['Open Sans Italic'],
+            'text-size': 10,
+            'text-offset': [0, 1],
+            'icon-image': '',
+          },
+          paint: {
+            'text-color': '#7D5C34',
+            'text-halo-color': 'rgba(255,255,255,0.8)',
+            'text-halo-width': 1,
+          },
         },
       ],
     };
