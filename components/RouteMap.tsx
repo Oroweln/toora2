@@ -1,6 +1,6 @@
 /**
  * RouteMap — MapLibre GL map with offline MBTiles vector tile base layer,
- * route polyline, hotspot markers, and live user position.
+ * route polyline, hotspot markers, direction arrows, and live user position.
  *
  * The campania.mbtiles file contains OpenMapTiles-schema vector tiles (pbf)
  * covering the Campania/Sannio region at zoom 0-14. The style below paints
@@ -104,6 +104,49 @@ async function loadStyle(): Promise<Record<string, unknown> | null> {
         { id: 'aeroway', type: 'line', source: 'campania',
           'source-layer': 'aeroway',
           paint: { 'line-color': '#D0CFCB', 'line-width': 4 } },
+        // Place name labels (cities, towns, villages)
+        { id: 'place-label', type: 'symbol', source: 'campania',
+          'source-layer': 'place',
+          layout: {
+            'text-field': '{name}',
+            'text-font': ['Open Sans Regular'],
+            'text-size': 13,
+            'text-anchor': 'center',
+            'text-max-width': 8,
+          },
+          paint: {
+            'text-color': '#333333',
+            'text-halo-color': '#FFFFFF',
+            'text-halo-width': 1.5,
+          } },
+        // Road / street name labels
+        { id: 'road-label', type: 'symbol', source: 'campania',
+          'source-layer': 'transportation_name',
+          layout: {
+            'text-field': '{name}',
+            'text-font': ['Open Sans Regular'],
+            'text-size': 10,
+            'symbol-placement': 'line',
+            'text-rotation-alignment': 'map',
+          },
+          paint: {
+            'text-color': '#666666',
+            'text-halo-color': '#FFFFFF',
+            'text-halo-width': 1,
+          } },
+        // Water body labels
+        { id: 'water-label', type: 'symbol', source: 'campania',
+          'source-layer': 'water_name',
+          layout: {
+            'text-field': '{name}',
+            'text-font': ['Open Sans Regular'],
+            'text-size': 11,
+          },
+          paint: {
+            'text-color': '#4A90B8',
+            'text-halo-color': '#FFFFFF',
+            'text-halo-width': 1,
+          } },
       ],
     };
   } catch {
@@ -145,6 +188,69 @@ function hotspotColor(
   if (visitedIds.has(hs.id)) return RouteColors.hotspotVisited;
   if (hs.isActive) return RouteColors.hotspotLocked;
   return RouteColors.hotspotWaypoint;
+}
+
+/** Calculate bearing in degrees between two [lng, lat] points. */
+function bearing(
+  [lng1, lat1]: [number, number],
+  [lng2, lat2]: [number, number],
+): number {
+  const toRad = Math.PI / 180;
+  const toDeg = 180 / Math.PI;
+  const dLng = (lng2 - lng1) * toRad;
+  const φ1 = lat1 * toRad;
+  const φ2 = lat2 * toRad;
+  const y = Math.sin(dLng) * Math.cos(φ2);
+  const x =
+    Math.cos(φ1) * Math.sin(φ2) -
+    Math.sin(φ1) * Math.cos(φ2) * Math.cos(dLng);
+  return ((Math.atan2(y, x) * toDeg + 360) % 360);
+}
+
+/** Haversine distance in meters between two [lng, lat] points. */
+function haversineM(
+  [lng1, lat1]: [number, number],
+  [lng2, lat2]: [number, number],
+): number {
+  const R = 6371000;
+  const toRad = Math.PI / 180;
+  const dLat = (lat2 - lat1) * toRad;
+  const dLng = (lng2 - lng1) * toRad;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1 * toRad) * Math.cos(lat2 * toRad) * Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+/**
+ * Sample points along the route polyline at regular intervals, returning
+ * GeoJSON features with a `bearing` property for direction arrows.
+ */
+function sampleDirectionArrows(
+  coords: [number, number][],
+  intervalM: number,
+): GeoJSON.Feature[] {
+  if (coords.length < 2) return [];
+  const arrows: GeoJSON.Feature[] = [];
+  let accumulated = 0;
+
+  for (let i = 1; i < coords.length; i++) {
+    const segDist = haversineM(coords[i - 1], coords[i]);
+    accumulated += segDist;
+    if (accumulated >= intervalM) {
+      accumulated = 0;
+      const b = bearing(coords[i - 1], coords[i]);
+      arrows.push({
+        type: 'Feature',
+        properties: { bearing: b },
+        geometry: {
+          type: 'Point',
+          coordinates: coords[i],
+        },
+      });
+    }
+  }
+  return arrows;
 }
 
 // ---------------------------------------------------------------------------
@@ -197,6 +303,53 @@ export function RouteMap({
     [routeCoords],
   );
 
+  // Direction arrows sampled along the route (~300m apart)
+  const arrowsGeoJSON = useMemo(
+    (): GeoJSON.FeatureCollection => ({
+      type: 'FeatureCollection',
+      features:
+        routeCoords.length >= 2
+          ? sampleDirectionArrows(routeCoords, 300)
+          : [],
+    }),
+    [routeCoords],
+  );
+
+  // Start and end marker GeoJSON
+  const startEndGeoJSON = useMemo((): {
+    start: GeoJSON.FeatureCollection | null;
+    end: GeoJSON.FeatureCollection | null;
+  } => {
+    if (routeCoords.length < 2)
+      return { start: null, end: null };
+
+    const startCoord = routeCoords[0];
+    const endCoord = routeCoords[routeCoords.length - 1];
+
+    return {
+      start: {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            properties: { label: 'P' },
+            geometry: { type: 'Point', coordinates: startCoord },
+          },
+        ],
+      },
+      end: {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            properties: { label: 'A' },
+            geometry: { type: 'Point', coordinates: endCoord },
+          },
+        ],
+      },
+    };
+  }, [routeCoords]);
+
   // Hotspot markers as GeoJSON — rebuilt when unlock/visit sets change
   const hotspotGeoJSON = useMemo(
     (): GeoJSON.FeatureCollection => ({
@@ -209,8 +362,8 @@ export function RouteMap({
           title: hs.title,
           isActive: hs.isActive,
           color: hotspotColor(hs, unlockedHotspotIds, visitedHotspotIds),
-          strokeColor: unlockedHotspotIds.has(hs.id) ? '#FFFFFF' : 'transparent',
-          radius: unlockedHotspotIds.has(hs.id) ? 10 : hs.isActive ? 8 : 6,
+          strokeColor: unlockedHotspotIds.has(hs.id) ? '#FFFFFF' : '#666666',
+          radius: unlockedHotspotIds.has(hs.id) ? 12 : hs.isActive ? 10 : 8,
         },
         geometry: {
           type: 'Point',
@@ -343,13 +496,84 @@ export function RouteMap({
         />
       </MapLibreGL.ShapeSource>
 
-      {/* Hotspot markers */}
+      {/* Direction arrows along the route */}
+      <MapLibreGL.ShapeSource id="arrows-source" shape={arrowsGeoJSON}>
+        <MapLibreGL.SymbolLayer
+          id="direction-arrows"
+          style={{
+            textField: '▸',
+            textSize: 18,
+            textColor: '#1A5A96',
+            textRotate: ['get', 'bearing'] as unknown as number,
+            textRotationAlignment: 'map',
+            textAllowOverlap: true,
+            textIgnorePlacement: true,
+            textFont: ['Open Sans Bold'],
+            textHaloColor: '#FFFFFF',
+            textHaloWidth: 1,
+          }}
+        />
+      </MapLibreGL.ShapeSource>
+
+      {/* Start marker — green "P" (Partenza) */}
+      {startEndGeoJSON.start && (
+        <MapLibreGL.ShapeSource id="start-source" shape={startEndGeoJSON.start}>
+          <MapLibreGL.CircleLayer
+            id="start-circle-outer"
+            style={{
+              circleRadius: 16,
+              circleColor: '#27AE60',
+              circleStrokeColor: '#FFFFFF',
+              circleStrokeWidth: 3,
+            }}
+          />
+          <MapLibreGL.SymbolLayer
+            id="start-label"
+            style={{
+              textField: 'P',
+              textSize: 14,
+              textColor: '#FFFFFF',
+              textFont: ['Open Sans Bold'],
+              textAllowOverlap: true,
+              textIgnorePlacement: true,
+            }}
+          />
+        </MapLibreGL.ShapeSource>
+      )}
+
+      {/* End marker — red "A" (Arrivo) */}
+      {startEndGeoJSON.end && (
+        <MapLibreGL.ShapeSource id="end-source" shape={startEndGeoJSON.end}>
+          <MapLibreGL.CircleLayer
+            id="end-circle-outer"
+            style={{
+              circleRadius: 16,
+              circleColor: '#E74C3C',
+              circleStrokeColor: '#FFFFFF',
+              circleStrokeWidth: 3,
+            }}
+          />
+          <MapLibreGL.SymbolLayer
+            id="end-label"
+            style={{
+              textField: 'A',
+              textSize: 14,
+              textColor: '#FFFFFF',
+              textFont: ['Open Sans Bold'],
+              textAllowOverlap: true,
+              textIgnorePlacement: true,
+            }}
+          />
+        </MapLibreGL.ShapeSource>
+      )}
+
+      {/* Hotspot checkpoint markers */}
       <MapLibreGL.ShapeSource
         id="hotspot-source"
         shape={hotspotGeoJSON}
         onPress={handleHotspotPress}
       >
-        {/* Outer stroke ring for unlocked hotspots */}
+        {/* Outer stroke ring */}
         <MapLibreGL.CircleLayer
           id="hotspot-stroke"
           style={{
@@ -372,11 +596,28 @@ export function RouteMap({
           id="hotspot-label"
           style={{
             textField: ['to-string', ['get', 'sequence']],
-            textSize: 11,
+            textSize: 12,
             textColor: '#FFFFFF',
             textFont: ['Open Sans Bold'],
             textAllowOverlap: true,
             textIgnorePlacement: true,
+          }}
+        />
+        {/* Hotspot title label below the marker */}
+        <MapLibreGL.SymbolLayer
+          id="hotspot-title"
+          style={{
+            textField: ['get', 'title'],
+            textSize: 10,
+            textColor: '#333333',
+            textFont: ['Open Sans Regular'],
+            textOffset: [0, 2],
+            textAnchor: 'top',
+            textMaxWidth: 10,
+            textHaloColor: '#FFFFFF',
+            textHaloWidth: 1.5,
+            textAllowOverlap: false,
+            textOptional: true,
           }}
         />
       </MapLibreGL.ShapeSource>
