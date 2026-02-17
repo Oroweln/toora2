@@ -4,41 +4,41 @@
  * Implements Mode B: On-Route Navigation (internal, offline).
  */
 
-import { useEffect, useRef, useCallback, useState } from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { useKeepAwake } from 'expo-keep-awake';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
+  Alert,
+  Pressable,
   StyleSheet,
   View,
-  Pressable,
-  Alert,
 } from 'react-native';
-import { useLocalSearchParams, useRouter } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useKeepAwake } from 'expo-keep-awake';
-import { useTranslation } from 'react-i18next';
 
-import { ThemedText } from '@/components/themed-text';
 import { RouteMap } from '@/components/RouteMap';
+import { ThemedText } from '@/components/themed-text';
 import { Brand, RouteColors, Spacing, TouchTarget } from '@/constants/theme';
 import { getItinerary, getRouteCoordinates } from '@/src/data';
-import { useRouteStore } from '@/src/stores/useRouteStore';
-import { useLocationStore } from '@/src/stores/useLocationStore';
-import { useVisitStore } from '@/src/stores/useVisitStore';
-import { startForegroundTracking, registerGeofences, unregisterGeofences } from '@/src/services/location';
+import {
+  buildGeofenceRegions,
+  isAtStartingPoint,
+  isContentAccessible,
+} from '@/src/services/geofence';
+import { registerGeofences, startForegroundTracking, unregisterGeofences } from '@/src/services/location';
+import { navigateToRoutePoint, openNativeNavigation } from '@/src/services/navigation';
 import {
   computeGuidance,
-  formatDistance,
   estimateTimeMinutes,
+  formatDistance,
 } from '@/src/services/routeGuidance';
-import {
-  isContentAccessible,
-  isAtStartingPoint,
-  buildGeofenceRegions,
-} from '@/src/services/geofence';
-import { openNativeNavigation, navigateToRoutePoint } from '@/src/services/navigation';
-import { GPSSmoother } from '@/src/utils/kalmanFilter';
-import type { UserLocation, Hotspot } from '@/src/types';
+import { useLocationStore } from '@/src/stores/useLocationStore';
+import { useRouteStore } from '@/src/stores/useRouteStore';
+import { useVisitStore } from '@/src/stores/useVisitStore';
+import type { Hotspot, UserLocation } from '@/src/types';
 import { haversineDistance } from '@/src/utils/geo';
+import { GPSSmoother } from '@/src/utils/kalmanFilter';
 
 export default function RouteMapScreen() {
   useKeepAwake(); // Prevent screen sleep during navigation
@@ -94,6 +94,10 @@ export default function RouteMapScreen() {
   const [offRouteSeconds, setOffRouteSeconds] = useState(0);
   const smootherRef = useRef(new GPSSmoother());
   const trackingRef = useRef<{ remove: () => void } | null>(null);
+
+  // ─── Dev Mode — bypasses geofencing so all hotspots are tappable ──
+  // TODO: set to false for production release
+  const devMode = false;
 
   // ─── GPS Tracking ──────────────────────────────────────────
   useEffect(() => {
@@ -217,13 +221,13 @@ export default function RouteMapScreen() {
 
   const handleHotspotTap = useCallback(
     (hs: Hotspot) => {
-      if (!hs.isActive) return;
+      if (!devMode && !hs.isActive) return;
 
-      if (unlockedHotspotIds.has(hs.id)) {
-        // Mark as visited and navigate to content
+      // Dev mode: bypass geofence — open any hotspot directly
+      if (devMode || unlockedHotspotIds.has(hs.id)) {
         markHotspotVisited(hs.id);
         markVisited(hs.id);
-        router.push(`/hotspot/${hs.id}?itineraryId=${itinerary!.id}`);
+        router.push(`/hotspot/${hs.id}?itineraryId=${itinerary!.id}${devMode ? '&devMode=1' : ''}`);
       } else {
         Alert.alert(
           t('route.contentLockedTitle'),
@@ -249,7 +253,7 @@ export default function RouteMapScreen() {
         );
       }
     },
-    [unlockedHotspotIds, markHotspotVisited, markVisited, router, itinerary, currentLocation, t],
+    [devMode, unlockedHotspotIds, markHotspotVisited, markVisited, router, itinerary, currentLocation, t],
   );
 
   const handleNavigateBackToRoute = useCallback(() => {
@@ -284,7 +288,11 @@ export default function RouteMapScreen() {
         <RouteMap
           routeCoords={routeCoords}
           hotspots={itinerary.hotspots}
-          unlockedHotspotIds={unlockedHotspotIds}
+          unlockedHotspotIds={
+            devMode
+              ? new Set(itinerary.hotspots.map((h) => h.id))
+              : unlockedHotspotIds
+          }
           visitedHotspotIds={visitedHotspotIds}
           currentLocation={currentLocation}
           onHotspotPress={handleHotspotTap}
@@ -379,6 +387,11 @@ export default function RouteMapScreen() {
               total: itinerary.hotspots.length,
             })}
           </ThemedText>
+          {devMode && (
+            <View style={styles.devBadge}>
+              <ThemedText style={styles.devBadgeText}>DEV</ThemedText>
+            </View>
+          )}
         </View>
 
         {/* Complete button */}
@@ -572,6 +585,17 @@ const styles = StyleSheet.create({
   completeButtonText: {
     color: '#fff',
     fontSize: 16,
+    fontWeight: '700',
+  },
+  devBadge: {
+    backgroundColor: '#E74C3C',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+  },
+  devBadgeText: {
+    color: '#fff',
+    fontSize: 10,
     fontWeight: '700',
   },
 });

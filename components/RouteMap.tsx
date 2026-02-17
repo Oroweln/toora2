@@ -358,7 +358,7 @@ export function RouteMap({
             filter={['all', ['==', ['get', 'type'], 'place'], ['==', ['get', 'class'], 'city']]}
             style={{
               textField: ['get', 'name'],
-              textFont: ['Open Sans Bold'],
+              textFont: ['OpenSansBold'],
               textSize: 16,
               textColor: '#1a1a1a',
               textHaloColor: '#FFFFFF',
@@ -373,7 +373,7 @@ export function RouteMap({
             filter={['all', ['==', ['get', 'type'], 'place'], ['==', ['get', 'class'], 'town']]}
             style={{
               textField: ['get', 'name'],
-              textFont: ['Open Sans Bold'],
+              textFont: ['OpenSansBold'],
               textSize: 13,
               textColor: '#333333',
               textHaloColor: '#FFFFFF',
@@ -388,7 +388,7 @@ export function RouteMap({
             filter={['all', ['==', ['get', 'type'], 'place'], ['==', ['get', 'class'], 'village']]}
             style={{
               textField: ['get', 'name'],
-              textFont: ['Open Sans Regular'],
+              textFont: ['OpenSansRegular'],
               textSize: 11,
               textColor: '#444444',
               textHaloColor: '#FFFFFF',
@@ -404,7 +404,7 @@ export function RouteMap({
               ['!', ['in', ['get', 'class'], ['literal', ['city', 'town', 'village']]]]]}
             style={{
               textField: ['get', 'name'],
-              textFont: ['Open Sans Regular'],
+              textFont: ['OpenSansRegular'],
               textSize: 9,
               textColor: '#666666',
               textHaloColor: '#FFFFFF',
@@ -419,7 +419,7 @@ export function RouteMap({
             filter={['==', ['get', 'type'], 'road']}
             style={{
               textField: ['get', 'name'],
-              textFont: ['Open Sans Regular'],
+              textFont: ['OpenSansRegular'],
               textSize: 9,
               textColor: '#666666',
               textHaloColor: '#FFFFFF',
@@ -435,7 +435,7 @@ export function RouteMap({
             filter={['==', ['get', 'type'], 'water']}
             style={{
               textField: ['get', 'name'],
-              textFont: ['Open Sans Regular'],
+              textFont: ['OpenSansRegular'],
               textSize: 11,
               textColor: '#2171A5',
               textHaloColor: '#FFFFFF',
@@ -450,7 +450,7 @@ export function RouteMap({
             filter={['==', ['get', 'type'], 'peak']}
             style={{
               textField: ['get', 'name'],
-              textFont: ['Open Sans Regular'],
+              textFont: ['OpenSansRegular'],
               textSize: 10,
               textColor: '#8B4513',
               textHaloColor: '#FFFFFF',
@@ -465,7 +465,7 @@ export function RouteMap({
             filter={['==', ['get', 'type'], 'poi']}
             style={{
               textField: ['get', 'name'],
-              textFont: ['Open Sans Regular'],
+              textFont: ['OpenSansRegular'],
               textSize: 9,
               textColor: '#555555',
               textHaloColor: '#FFFFFF',

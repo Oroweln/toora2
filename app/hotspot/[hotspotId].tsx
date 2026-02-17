@@ -36,9 +36,10 @@ type ContentTab = 'text' | 'gallery' | 'video';
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 export default function HotspotContentScreen() {
-  const { hotspotId, itineraryId } = useLocalSearchParams<{
+  const { hotspotId, itineraryId, devMode } = useLocalSearchParams<{
     hotspotId: string;
     itineraryId: string;
+    devMode?: string;
   }>();
   const router = useRouter();
   const insets = useSafeAreaInsets();
@@ -73,8 +74,9 @@ export default function HotspotContentScreen() {
     );
   }
 
-  // Check geo-lock
+  // Check geo-lock (devMode bypasses)
   const isAccessible =
+    devMode === '1' ||
     !hotspot.isActive ||
     !currentLocation ||
     isContentAccessible(

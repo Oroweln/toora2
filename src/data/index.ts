@@ -21,6 +21,8 @@ import routeIside from './routes/percorso-di-iside.json';
 import routeViaAppiaUrbano from './routes/via-appia-urbano.json';
 import routeViaAppiaApice from './routes/via-appia-benevento-apice.json';
 import routeViaAppiaEclanum from './routes/via-appia-apice-eclanum.json';
+import routeTestBelgrade from './routes/test-belgrade.json';
+import routeTestBenevento from './routes/test-benevento.json';
 
 const routeGeoJSONMap: Record<string, GeoJSONFeatureCollection> = {
   'routes/4-imperatori.json': route4Imperatori as unknown as GeoJSONFeatureCollection,
@@ -31,6 +33,8 @@ const routeGeoJSONMap: Record<string, GeoJSONFeatureCollection> = {
   'routes/via-appia-urbano.json': routeViaAppiaUrbano as unknown as GeoJSONFeatureCollection,
   'routes/via-appia-benevento-apice.json': routeViaAppiaApice as unknown as GeoJSONFeatureCollection,
   'routes/via-appia-apice-eclanum.json': routeViaAppiaEclanum as unknown as GeoJSONFeatureCollection,
+  'routes/test-belgrade.json': routeTestBelgrade as unknown as GeoJSONFeatureCollection,
+  'routes/test-benevento.json': routeTestBenevento as unknown as GeoJSONFeatureCollection,
 };
 
 const data = itinerariesRaw as unknown as ItinerariesData;

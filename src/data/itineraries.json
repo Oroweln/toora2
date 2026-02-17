@@ -1304,6 +1304,227 @@
           "content": null
         }
       ]
+    },
+    {
+      "id": "itinerary_09",
+      "slug": "test-belgrade",
+      "title": "Test Route - Belgrade",
+      "description": "Test route through Belgrade, Serbia. Directions from Mate Milosevica 22 to Vojvode Vlahovića 48А.",
+      "coverImage": null,
+      "difficulty": "easy",
+      "distanceKm": 1.5,
+      "estimatedDurationMinutes": 38,
+      "elevationGainM": 0,
+      "terrain": ["paved"],
+      "tags": ["test"],
+      "routeGeoJSON": "routes/test-belgrade.json",
+      "startingPoint": {
+        "latitude": 44.7595502,
+        "longitude": 20.5077672,
+        "geofenceRadiusM": 30,
+        "name": "Mate Milosevica 22, Belgrade",
+        "navigationAddress": "Mate Milosevica 22, Belgrade, Serbia"
+      },
+      "hotspots": [
+        {
+          "id": "hs_09_01",
+          "sequence": 1,
+          "isActive": true,
+          "title": "Mate Milosevica 22, Belgrade",
+          "shortDescription": "Tappa 1 del percorso Test Route - Belgrade.",
+          "latitude": 44.7595502,
+          "longitude": 20.5077672,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_09_02",
+          "sequence": 2,
+          "isActive": true,
+          "title": "Војводе Влаховића 39u, Belgrade",
+          "shortDescription": "Tappa 2 del percorso Test Route - Belgrade.",
+          "latitude": 44.7627693,
+          "longitude": 20.5097586,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_09_03",
+          "sequence": 3,
+          "isActive": true,
+          "title": "Vojvode Vlahovića 37g, Belgrade",
+          "shortDescription": "Tappa 3 del percorso Test Route - Belgrade.",
+          "latitude": 44.7605529,
+          "longitude": 20.5052363,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_09_04",
+          "sequence": 4,
+          "isActive": true,
+          "title": "Vojvode Vlahovića 48А, Кумодраж",
+          "shortDescription": "Tappa 4 del percorso Test Route - Belgrade.",
+          "latitude": 44.7615717,
+          "longitude": 20.5038878,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "itinerary_10",
+      "slug": "test-benevento",
+      "title": "Test Route - Benevento POI",
+      "description": "Test route through points of interest in Benevento, Italy.",
+      "coverImage": null,
+      "difficulty": "easy",
+      "distanceKm": 0.8,
+      "estimatedDurationMinutes": 34,
+      "elevationGainM": 0,
+      "terrain": ["paved"],
+      "tags": ["test"],
+      "routeGeoJSON": "routes/test-benevento.json",
+      "startingPoint": {
+        "latitude": 41.13001,
+        "longitude": 14.7836545,
+        "geofenceRadiusM": 30,
+        "name": "Agenzia Viaggi Rotolando Verso Sud Benevento",
+        "navigationAddress": "Agenzia Viaggi Rotolando Verso Sud, Benevento BN"
+      },
+      "hotspots": [
+        {
+          "id": "hs_10_01",
+          "sequence": 1,
+          "isActive": true,
+          "title": "Agenzia Viaggi Rotolando Verso Sud Benevento",
+          "shortDescription": "Tappa 1 del percorso Test Route - Benevento POI.",
+          "latitude": 41.13001,
+          "longitude": 14.7836545,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_10_02",
+          "sequence": 2,
+          "isActive": true,
+          "title": "Rocca dei Rettori",
+          "shortDescription": "Tappa 2 del percorso Test Route - Benevento POI.",
+          "latitude": 41.1290675,
+          "longitude": 14.7817649,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_10_03",
+          "sequence": 3,
+          "isActive": true,
+          "title": "Hortus Conclusus",
+          "shortDescription": "Tappa 3 del percorso Test Route - Benevento POI.",
+          "latitude": 41.129779,
+          "longitude": 14.7801367,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_10_04",
+          "sequence": 4,
+          "isActive": true,
+          "title": "Chiesa di Santa Sofia",
+          "shortDescription": "Tappa 4 del percorso Test Route - Benevento POI.",
+          "latitude": 41.1305321,
+          "longitude": 14.7810902,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_10_05",
+          "sequence": 5,
+          "isActive": true,
+          "title": "Teatro Comunale Vittorio Emanuele",
+          "shortDescription": "Tappa 5 del percorso Test Route - Benevento POI.",
+          "latitude": 41.1304825,
+          "longitude": 14.7804891,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_10_06",
+          "sequence": 6,
+          "isActive": false,
+          "title": "Villa Comunale di Benevento",
+          "shortDescription": "Tappa 6 del percorso Test Route - Benevento POI.",
+          "latitude": 41.1279914,
+          "longitude": 14.7836171,
+          "geofenceRadiusM": 25,
+          "content": null
+        },
+        {
+          "id": "hs_10_07",
+          "sequence": 7,
+          "isActive": false,
+          "title": "Bar Massimo",
+          "shortDescription": "Tappa 7 del percorso Test Route - Benevento POI.",
+          "latitude": 41.1299012,
+          "longitude": 14.7838465,
+          "geofenceRadiusM": 25,
+          "content": null
+        }
+      ]
     }
   ]
 }

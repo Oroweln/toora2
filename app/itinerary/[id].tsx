@@ -21,7 +21,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Brand, DifficultyColors, Spacing, TouchTarget } from '@/constants/theme';
 import { getItinerary, getRouteGeoJSON } from '@/src/data';
-import { useRouteStore } from '@/src/stores/useRouteStore';
+import { useRouteStore, loadPersistedSession } from '@/src/stores/useRouteStore';
 import { useLocationStore } from '@/src/stores/useLocationStore';
 import { useVisitStore } from '@/src/stores/useVisitStore';
 import { requestLocationPermission, getCurrentPosition } from '@/src/services/location';
@@ -87,6 +87,7 @@ export default function ItineraryDetailScreen() {
 
   const itinerary = getItinerary(id!);
   const startRoute = useRouteStore((s) => s.startRoute);
+  const resumeRoute = useRouteStore((s) => s.resumeRoute);
   const setPermission = useLocationStore((s) => s.setPermission);
   const isHotspotVisited = useVisitStore((s) => s.isHotspotVisited);
   const markItineraryStarted = useVisitStore((s) => s.markItineraryStarted);
@@ -117,8 +118,13 @@ export default function ItineraryDetailScreen() {
         return;
       }
 
-      // Start the route in the store
-      startRoute(itinerary, geojson);
+      // Resume persisted progress or start fresh
+      const session = await loadPersistedSession(itinerary.id);
+      if (session && session.visitedHotspotIds.length > 0) {
+        resumeRoute(itinerary, geojson, session);
+      } else {
+        startRoute(itinerary, geojson);
+      }
       await markItineraryStarted(itinerary.id);
 
       // Check distance to starting point
@@ -168,7 +174,7 @@ export default function ItineraryDetailScreen() {
     } finally {
       setIsStarting(false);
     }
-  }, [itinerary, isStarting, startRoute, setPermission, markItineraryStarted, router, t]);
+  }, [itinerary, isStarting, startRoute, resumeRoute, setPermission, markItineraryStarted, router, t]);
 
   if (!itinerary) {
     return (
