@@ -36,16 +36,28 @@ function copyDirSync(src, dest) {
 }
 
 const withIOSGlyphs = (config) => {
-  // Step 1: Copy glyph PBF files into the iOS native project directory
+  // Step 1a: Copy glyphs into the iOS native project directory
   config = withDangerousMod(config, [
     'ios',
     (config) => {
       const { projectRoot, platformProjectRoot, projectName } = config.modRequest;
-
-      // Primary source: assets/glyphs/ (committed to git, available in EAS archive)
       const src = path.join(projectRoot, 'assets', 'glyphs');
       const dest = path.join(platformProjectRoot, projectName, 'glyphs');
+      const copied = copyDirSync(src, dest);
+      if (copied) {
+        console.log('[withIOSGlyphs] Copied glyphs to', dest);
+      }
+      return config;
+    },
+  ]);
 
+  // Step 1b: Copy glyphs into the Android assets directory (MapLibre resolves asset:// from there)
+  config = withDangerousMod(config, [
+    'android',
+    (config) => {
+      const { projectRoot, platformProjectRoot } = config.modRequest;
+      const src = path.join(projectRoot, 'assets', 'glyphs');
+      const dest = path.join(platformProjectRoot, 'app', 'src', 'main', 'assets', 'glyphs');
       const copied = copyDirSync(src, dest);
       if (copied) {
         console.log('[withIOSGlyphs] Copied glyphs to', dest);
