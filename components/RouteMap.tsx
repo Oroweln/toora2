@@ -13,7 +13,7 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { StyleSheet, View, Platform, ActivityIndicator, Text } from 'react-native';
+import { StyleSheet, View, Platform, ActivityIndicator, Text, Pressable } from 'react-native';
 import { Asset } from 'expo-asset';
 
 import { Brand, RouteColors, Spacing } from '@/constants/theme';
@@ -216,7 +216,7 @@ function HotspotMarker({
       coordinate={[hotspot.longitude, hotspot.latitude]}
       anchor={{ x: 0.5, y: 0.5 }}
     >
-      <View style={markerStyles.hotspotContainer} onTouchEnd={() => onPress(hotspot)}>
+      <Pressable style={markerStyles.hotspotContainer} onPress={() => onPress(hotspot)}>
         <View style={[markerStyles.hotspotCircle, {
           backgroundColor: color,
           borderColor: isUnlocked ? '#FFFFFF' : '#666666',
@@ -229,7 +229,7 @@ function HotspotMarker({
         <Text style={markerStyles.hotspotTitle} numberOfLines={2}>
           {hotspot.title}
         </Text>
-      </View>
+      </Pressable>
     </MapLibreGL.MarkerView>
   );
 }

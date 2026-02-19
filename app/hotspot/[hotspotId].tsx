@@ -17,7 +17,8 @@ import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
 import { Image } from 'expo-image';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Audio, Video, ResizeMode } from 'expo-av';
+import { Audio } from 'expo-av';
+import { VideoView, useVideoPlayer } from 'expo-video';
 import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/themed-text';
@@ -51,6 +52,12 @@ export default function HotspotContentScreen() {
   const currentLocation = useLocationStore((s) => s.currentLocation);
   const hotspotEntryTimestamps = useRouteStore(
     (s) => s.hotspotEntryTimestamps,
+  );
+
+  // useVideoPlayer must be called unconditionally (hook rules) — source resolved
+  // via optional chaining so it gracefully handles hotspots without video.
+  const videoPlayer = useVideoPlayer(
+    hotspot?.content?.video ? { uri: hotspot.content.video } : null,
   );
 
   const [activeTab, setActiveTab] = useState<ContentTab>('text');
@@ -177,6 +184,7 @@ export default function HotspotContentScreen() {
       }
     } else {
       try {
+        await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
         const { sound } = await Audio.Sound.createAsync(
           { uri: content.audioGuide },
           { shouldPlay: true },
@@ -298,11 +306,11 @@ export default function HotspotContentScreen() {
           {/* Video Tab */}
           {activeTab === 'video' && hasVideo && (
             <View style={styles.videoContainer}>
-              <Video
-                source={{ uri: content.video! }}
+              <VideoView
+                player={videoPlayer}
                 style={styles.video}
-                useNativeControls
-                resizeMode={ResizeMode.CONTAIN}
+                contentFit="contain"
+                nativeControls
               />
             </View>
           )}

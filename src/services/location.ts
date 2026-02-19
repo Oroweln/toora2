@@ -43,6 +43,7 @@ export function startForegroundTracking(
   onUpdate: (location: UserLocation) => void,
 ): { remove: () => void } {
   let subscription: Location.LocationSubscription | null = null;
+  let removed = false;
 
   (async () => {
     subscription = await Location.watchPositionAsync(
@@ -55,10 +56,13 @@ export function startForegroundTracking(
         onUpdate(mapExpoLocation(location));
       },
     );
+    // If remove() was called before the subscription resolved, clean up now
+    if (removed) subscription.remove();
   })();
 
   return {
     remove: () => {
+      removed = true;
       subscription?.remove();
     },
   };

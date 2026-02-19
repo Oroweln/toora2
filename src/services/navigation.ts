@@ -4,8 +4,6 @@
 
 import { Linking, Platform } from 'react-native';
 
-export type MapApp = 'apple_maps' | 'google_maps' | 'default';
-
 /**
  * Open native maps app to navigate to a destination.
  * Implements REQ-01: External Navigation to Starting Point.
@@ -18,16 +16,6 @@ export async function openNativeNavigation(
   const platform = Platform.OS;
 
   if (platform === 'ios') {
-    // Try Google Maps first, fall back to Apple Maps
-    const googleUrl = `comgooglemaps://?daddr=${destLat},${destLng}&directionsmode=driving`;
-    const canOpenGoogle = await Linking.canOpenURL(googleUrl);
-
-    if (canOpenGoogle) {
-      await Linking.openURL(googleUrl);
-      return;
-    }
-
-    // Apple Maps
     const appleUrl = `maps://?daddr=${destLat},${destLng}&dirflg=d`;
     await Linking.openURL(appleUrl);
     return;

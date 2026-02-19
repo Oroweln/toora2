@@ -2,7 +2,7 @@
   "expo": {
     "name": "TOORA",
     "slug": "toora2",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "toora",
@@ -15,7 +15,10 @@
         "NSLocationWhenInUseUsageDescription": "TOORA needs your location to guide you along the route and unlock content at hotspots.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "TOORA needs background location access to detect when you arrive at hotspots.",
         "NSLocationAlwaysUsageDescription": "TOORA needs background location access to detect when you arrive at hotspots.",
-        "UIBackgroundModes": ["location", "audio"]
+        "UIBackgroundModes": [
+          "location",
+          "audio"
+        ]
       },
       "config": {
         "usesNonExemptEncryption": false
@@ -35,7 +38,13 @@
         "ACCESS_COARSE_LOCATION",
         "ACCESS_BACKGROUND_LOCATION",
         "FOREGROUND_SERVICE",
-        "FOREGROUND_SERVICE_LOCATION"
+        "FOREGROUND_SERVICE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_LOCATION",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
       ]
     },
     "web": {
@@ -73,7 +82,8 @@
         }
       ],
       "expo-sensors",
-      "@maplibre/maplibre-react-native"
+      "@maplibre/maplibre-react-native",
+      "./plugins/withIOSGlyphs"
     ],
     "experiments": {
       "typedRoutes": true,
@@ -81,8 +91,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "toora-bicycle-tourism"
-      }
+        "projectId": "07dda1a3-2bbc-43c5-913d-e7541cae6716"
+      },
+      "router": {}
     }
   }
 }
