@@ -75,39 +75,36 @@ const withIOSGlyphs = (config) => {
 
     // Avoid adding duplicates on repeated prebuild runs
     const fileRefs = xcodeProject.pbxFileReferenceSection();
+    const glyphsPath = `${projectName}/glyphs`;
     const alreadyAdded = Object.values(fileRefs).some(
-      (ref) => typeof ref === 'object' && ref?.path === 'glyphs',
+      (ref) => typeof ref === 'object' && ref?.path === glyphsPath,
     );
 
     if (alreadyAdded) {
       return config;
     }
 
-    const groupKey =
-      xcodeProject.findPBXGroupKey({ path: projectName }) ||
-      xcodeProject.findPBXGroupKey({ name: projectName });
-
-    if (!groupKey) {
-      console.warn('[withIOSGlyphs] Could not find Xcode group for', projectName, '— skipping');
-      return config;
-    }
-
-    // Generate stable UUIDs
+    // Generate UUIDs
     const fileRefUuid = xcodeProject.generateUuid();
     const buildFileUuid = xcodeProject.generateUuid();
 
-    // Add PBXFileReference entry
+    // Add PBXFileReference using SOURCE_ROOT so the path resolves unambiguously
+    // to ios/TOORA/glyphs regardless of which group it's placed in.
     fileRefs[fileRefUuid] = {
       isa: 'PBXFileReference',
       lastKnownFileType: 'folder',
-      path: 'glyphs',
-      sourceTree: '"<group>"',
+      name: 'glyphs',
+      path: glyphsPath,
+      sourceTree: 'SOURCE_ROOT',
     };
     fileRefs[fileRefUuid + '_comment'] = 'glyphs';
 
-    // Add to the group's children list
+    // Add to whichever top-level group we can find
     const groups = xcodeProject.hash.project.objects['PBXGroup'];
-    if (groups[groupKey]) {
+    const groupKey =
+      xcodeProject.findPBXGroupKey({ path: projectName }) ||
+      xcodeProject.findPBXGroupKey({ name: projectName });
+    if (groupKey && groups[groupKey]) {
       groups[groupKey].children.push({ value: fileRefUuid, comment: 'glyphs' });
     }
 
