@@ -84,8 +84,8 @@ const withIOSGlyphs = (config) => {
     }
 
     const groupKey =
-      xcodeProject.findPBXGroupKey({ name: projectName }) ||
-      xcodeProject.findPBXGroupKey({ path: projectName });
+      xcodeProject.findPBXGroupKey({ path: projectName }) ||
+      xcodeProject.findPBXGroupKey({ name: projectName });
 
     if (!groupKey) {
       console.warn('[withIOSGlyphs] Could not find Xcode group for', projectName, '— skipping');
