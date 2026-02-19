@@ -57,7 +57,7 @@ export default function RouteCompleteScreen() {
       {/* Success Icon */}
       <View style={styles.iconContainer}>
         <View style={styles.iconCircle}>
-          <Ionicons name="trophy" size={64} color={Brand.accent} />
+          <Ionicons name="trophy" size={64} color={Brand.highlight} />
         </View>
       </View>
 
@@ -71,7 +71,7 @@ export default function RouteCompleteScreen() {
       {/* Stats */}
       <View style={styles.statsContainer}>
         <View style={styles.statBox}>
-          <Ionicons name="time-outline" size={24} color={Brand.primary} />
+          <Ionicons name="time-outline" size={24} color={Brand.accent} />
           <ThemedText style={styles.statValue}>{timeStr}</ThemedText>
           <ThemedText style={styles.statLabel}>{t('complete.timeSpent')}</ThemedText>
         </View>
@@ -105,7 +105,7 @@ export default function RouteCompleteScreen() {
             { opacity: pressed ? 0.8 : 1 },
           ]}
         >
-          <Ionicons name="home-outline" size={22} color="#fff" />
+          <Ionicons name="home-outline" size={22} color={Brand.primary} />
           <ThemedText style={styles.homeButtonText}>
             {t('complete.goHome')}
           </ThemedText>
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 60,
-    backgroundColor: Brand.accent + '15',
+    backgroundColor: Brand.highlight + '25',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   routeName: {
     fontSize: 20,
     fontWeight: '600',
-    color: Brand.primary,
+    color: Brand.accent,
     marginBottom: Spacing.xl,
   },
   statsContainer: {
@@ -191,13 +191,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: Spacing.sm,
-    backgroundColor: Brand.primary,
+    backgroundColor: Brand.highlight,
     paddingVertical: Spacing.md,
-    borderRadius: 12,
+    borderRadius: 16,
     minHeight: TouchTarget.minSize,
   },
   homeButtonText: {
-    color: '#fff',
+    color: Brand.primary,
     fontSize: 16,
     fontWeight: '700',
   },

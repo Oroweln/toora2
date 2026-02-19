@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     gap: Spacing.md,
   },
   card: {
-    borderRadius: 12,
+    borderRadius: 20,
     borderWidth: 1,
     overflow: 'hidden',
     shadowColor: '#000',
@@ -176,28 +176,28 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   cardImagePlaceholder: {
-    backgroundColor: Brand.primary + '20',
+    backgroundColor: Brand.accent + '20',
     justifyContent: 'center',
     alignItems: 'center',
   },
   placeholderText: {
     fontSize: 48,
     fontWeight: '700',
-    color: Brand.primary,
+    color: Brand.accent,
   },
   completedOverlay: {
     position: 'absolute',
     top: Spacing.sm,
     right: Spacing.sm,
-    backgroundColor: Brand.success,
+    backgroundColor: Brand.highlight,
     paddingHorizontal: Spacing.sm,
     paddingVertical: Spacing.xs,
     borderRadius: 6,
   },
   completedText: {
-    color: '#fff',
+    color: Brand.primary,
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   cardContent: {
     padding: Spacing.md,
@@ -241,13 +241,13 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   terrainTag: {
-    backgroundColor: Brand.gray100,
+    backgroundColor: Brand.accent + '18',
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 4,
   },
   terrainText: {
     fontSize: 11,
-    color: Brand.gray600,
+    color: Brand.accent,
   },
 });

@@ -1,27 +1,24 @@
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-import { Colors, Brand } from '@/constants/theme';
+import { Brand } from '@/constants/theme';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-  const colors = Colors[colorScheme ?? 'light'];
   const { t } = useTranslation();
 
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Brand.primary,
-        tabBarInactiveTintColor: colors.tabIconDefault,
+        tabBarInactiveTintColor: Brand.gray400,
         tabBarStyle: {
-          backgroundColor: colors.background,
-          borderTopColor: colors.cardBorder,
+          backgroundColor: '#fff',
+          borderTopColor: Brand.gray200,
         },
         headerStyle: {
-          backgroundColor: colors.background,
+          backgroundColor: '#fff',
         },
-        headerTintColor: colors.text,
+        headerTintColor: Brand.primary,
       }}
     >
       <Tabs.Screen
@@ -29,7 +26,7 @@ export default function TabLayout() {
         options={{
           title: t('tabs.itineraries'),
           headerTitle: 'TOORA',
-          headerTitleStyle: { fontWeight: '700', fontSize: 20 },
+          headerTitleStyle: { fontWeight: '700', fontSize: 20, color: Brand.primary },
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="bicycle-outline" size={size} color={color} />
           ),

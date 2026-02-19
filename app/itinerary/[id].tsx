@@ -205,7 +205,7 @@ export default function ItineraryDetailScreen() {
             />
           ) : (
             <View style={[styles.heroImage, styles.heroPlaceholder]}>
-              <Ionicons name="bicycle" size={80} color={Brand.primary + '40'} />
+              <Ionicons name="bicycle" size={80} color={Brand.accent + '60'} />
             </View>
           )}
         </View>
@@ -220,17 +220,17 @@ export default function ItineraryDetailScreen() {
           {/* Stats Row */}
           <View style={styles.statsRow}>
             <View style={styles.statItem}>
-              <Ionicons name="resize-outline" size={18} color={Brand.primary} />
+              <Ionicons name="resize-outline" size={18} color={Brand.accent} />
               <ThemedText style={styles.statValue}>
                 {itinerary.distanceKm} km
               </ThemedText>
             </View>
             <View style={styles.statItem}>
-              <Ionicons name="time-outline" size={18} color={Brand.primary} />
+              <Ionicons name="time-outline" size={18} color={Brand.accent} />
               <ThemedText style={styles.statValue}>{durationStr}</ThemedText>
             </View>
             <View style={styles.statItem}>
-              <Ionicons name="trending-up" size={18} color={Brand.primary} />
+              <Ionicons name="trending-up" size={18} color={Brand.accent} />
               <ThemedText style={styles.statValue}>
                 {itinerary.elevationGainM}m
               </ThemedText>
@@ -317,7 +317,7 @@ export default function ItineraryDetailScreen() {
             },
           ]}
         >
-          <Ionicons name="navigate" size={22} color="#fff" />
+          <Ionicons name="navigate" size={22} color={Brand.primary} />
           <ThemedText style={styles.startButtonText}>
             {isStarting ? t('itinerary.starting') : t('itinerary.startRoute')}
           </ThemedText>
@@ -344,7 +344,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   heroPlaceholder: {
-    backgroundColor: Brand.primary + '15',
+    backgroundColor: Brand.accent + '15',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -482,13 +482,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: Spacing.sm,
-    backgroundColor: Brand.primary,
+    backgroundColor: Brand.highlight,
     paddingVertical: Spacing.md,
-    borderRadius: 12,
+    borderRadius: 16,
     minHeight: TouchTarget.minSize,
   },
   startButtonText: {
-    color: '#fff',
+    color: Brand.primary,
     fontSize: 16,
     fontWeight: '700',
     letterSpacing: 0.5,

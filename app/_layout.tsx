@@ -6,12 +6,10 @@ import 'react-native-reanimated';
 import '@/src/i18n'; // Initialize i18n before anything renders
 import '@/src/services/backgroundTasks'; // Register background task definitions
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useVisitStore } from '@/src/stores/useVisitStore';
 import { useLanguageStore } from '@/src/stores/useLanguageStore';
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
   const loadFromStorage = useVisitStore((s) => s.loadFromStorage);
   const loadLanguage = useLanguageStore((s) => s.loadLanguage);
 
@@ -21,7 +19,7 @@ export default function RootLayout() {
   }, [loadFromStorage, loadLanguage]);
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={DefaultTheme}>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen
@@ -56,6 +54,9 @@ export default function RootLayout() {
             gestureEnabled: false,
           }}
         />
+        <Stack.Screen name="about" options={{ headerShown: true }} />
+        <Stack.Screen name="privacy" options={{ headerShown: true }} />
+        <Stack.Screen name="contact" options={{ headerShown: true }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

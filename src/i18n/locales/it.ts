@@ -132,4 +132,12 @@ export default {
     min: 'min',
     elev: 'elev.',
   },
+
+  // ─── Info / Legal ─────────────────────────────────────────
+  info: {
+    sectionTitle: 'Informazioni',
+    about: 'Chi siamo',
+    privacy: 'Privacy Policy',
+    contact: 'Contatti',
+  },
 } as const;

@@ -1,10 +1,11 @@
 import { Platform } from 'react-native';
 
-// TOORA Brand Colors
+// TOORA Brand Colors — 2026 Design System
 export const Brand = {
-  primary: '#2E75B6', // Route blue
-  primaryDark: '#1A5A96',
-  accent: '#E67E22', // Warm orange
+  primary: '#0F344E',    // Dark navy — main background & UI base
+  primaryDark: '#071F2E', // Deeper navy
+  accent: '#54ADE1',     // Light blue — icons, accents, links
+  highlight: '#FFCE1B',  // Yellow — primary CTAs only
   success: '#27AE60',
   warning: '#F1C40F',
   danger: '#E74C3C',
@@ -24,11 +25,11 @@ export const Brand = {
 
 // Route-specific colors
 export const RouteColors = {
-  routeLine: '#2E75B6',
+  routeLine: '#54ADE1',
   routeLineWidth: 4,
   offRouteWarning: '#E74C3C',
-  userDot: '#4A90D9',
-  hotspotActive: '#E67E22',
+  userDot: '#54ADE1',
+  hotspotActive: '#FFCE1B',
   hotspotVisited: '#27AE60',
   hotspotLocked: '#9CA3AF',
   hotspotWaypoint: '#D1D5DB',
@@ -42,31 +43,28 @@ export const DifficultyColors: Record<string, string> = {
   hard: '#E74C3C',
 };
 
-const tintColorLight = Brand.primary;
-const tintColorDark = '#fff';
-
 export const Colors = {
   light: {
     text: '#11181C',
     background: '#fff',
-    tint: tintColorLight,
+    tint: Brand.primary,
     icon: '#687076',
     tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    tabIconSelected: Brand.primary,
     card: '#FFFFFF',
     cardBorder: '#E5E7EB',
     surface: '#F9FAFB',
   },
   dark: {
     text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-    card: '#1F2937',
-    cardBorder: '#374151',
-    surface: '#111827',
+    background: '#0F344E',
+    tint: Brand.accent,
+    icon: Brand.accent,
+    tabIconDefault: 'rgba(255,255,255,0.45)',
+    tabIconSelected: Brand.accent,
+    card: '#1A3F5C',
+    cardBorder: '#1E4B6E',
+    surface: '#071F2E',
   },
 };
 

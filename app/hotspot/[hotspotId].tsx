@@ -121,7 +121,7 @@ export default function HotspotContentScreen() {
             }
             style={styles.navigateButton}
           >
-            <Ionicons name="navigate" size={20} color="#fff" />
+            <Ionicons name="navigate" size={20} color={Brand.primary} />
             <ThemedText style={styles.navigateButtonText}>
               {t('hotspot.navigateHere')}
             </ThemedText>
@@ -148,7 +148,7 @@ export default function HotspotContentScreen() {
             <ThemedText style={styles.continueButtonText}>
               {t('hotspot.continueNext')}
             </ThemedText>
-            <Ionicons name="arrow-forward" size={20} color={Brand.primary} />
+            <Ionicons name="arrow-forward" size={20} color={Brand.accent} />
           </Pressable>
         </View>
       </ThemedView>
@@ -256,7 +256,7 @@ export default function HotspotContentScreen() {
                   <Ionicons
                     name={tab.icon as any}
                     size={18}
-                    color={activeTab === tab.key ? Brand.primary : Brand.gray500}
+                    color={activeTab === tab.key ? Brand.accent : Brand.gray500}
                   />
                   <ThemedText
                     style={[
@@ -322,7 +322,7 @@ export default function HotspotContentScreen() {
         <View
           style={[styles.audioPlayer, { paddingBottom: insets.bottom + Spacing.sm }]}
         >
-          <Ionicons name="headset" size={20} color={Brand.primary} />
+          <Ionicons name="headset" size={20} color={Brand.accent} />
           <ThemedText style={styles.audioLabel}>{t('hotspot.audioGuide')}</ThemedText>
           <Pressable
             onPress={toggleAudio}
@@ -332,7 +332,7 @@ export default function HotspotContentScreen() {
             <Ionicons
               name={isAudioPlaying ? 'pause' : 'play'}
               size={24}
-              color={Brand.primary}
+              color={Brand.accent}
             />
           </Pressable>
           <View style={styles.audioProgress}>
@@ -400,14 +400,14 @@ const styles = StyleSheet.create({
     borderBottomColor: 'transparent',
   },
   tabActive: {
-    borderBottomColor: Brand.primary,
+    borderBottomColor: Brand.accent,
   },
   tabText: {
     fontSize: 14,
     color: Brand.gray500,
   },
   tabTextActive: {
-    color: Brand.primary,
+    color: Brand.accent,
     fontWeight: '600',
   },
   textContent: {
@@ -456,21 +456,21 @@ const styles = StyleSheet.create({
   lockedDistance: {
     fontSize: 16,
     fontWeight: '600',
-    color: Brand.primary,
+    color: Brand.accent,
   },
   navigateButton: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.sm,
-    backgroundColor: Brand.primary,
+    backgroundColor: Brand.highlight,
     paddingHorizontal: Spacing.lg,
     paddingVertical: Spacing.md,
-    borderRadius: 10,
+    borderRadius: 16,
     minHeight: TouchTarget.minSize,
     marginTop: Spacing.md,
   },
   navigateButtonText: {
-    color: '#fff',
+    color: Brand.primary,
     fontSize: 16,
     fontWeight: '600',
   },
@@ -512,7 +512,7 @@ const styles = StyleSheet.create({
   },
   continueButtonText: {
     fontSize: 16,
-    color: Brand.primary,
+    color: Brand.accent,
     fontWeight: '600',
   },
   // Audio Player
@@ -558,7 +558,7 @@ const styles = StyleSheet.create({
   },
   audioBarFill: {
     height: '100%',
-    backgroundColor: Brand.primary,
+    backgroundColor: Brand.accent,
   },
   audioTime: {
     fontSize: 11,
