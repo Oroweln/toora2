@@ -13,12 +13,12 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { StyleSheet, View, Platform, ActivityIndicator, Text, Pressable } from 'react-native';
+import { StyleSheet, View, Platform, ActivityIndicator, Text } from 'react-native';
 import { Asset } from 'expo-asset';
 
 import { Brand, RouteColors, Spacing } from '@/constants/theme';
 import { ThemedText } from '@/components/themed-text';
-import type { Hotspot, UserLocation } from '@/src/types';
+import type { Hotspot } from '@/src/types';
 
 // MapLibre is native-only — guarded by Platform check at render time.
 let MapLibreGL: typeof import('@maplibre/maplibre-react-native');
@@ -47,8 +47,8 @@ interface RouteMapProps {
   hotspots: Hotspot[];
   unlockedHotspotIds: Set<string>;
   visitedHotspotIds: Set<string>;
-  currentLocation: UserLocation | null;
   onHotspotPress: (hotspot: Hotspot) => void;
+  highlightCoords?: [number, number][];
 }
 
 // ---------------------------------------------------------------------------
@@ -216,7 +216,14 @@ function HotspotMarker({
       coordinate={[hotspot.longitude, hotspot.latitude]}
       anchor={{ x: 0.5, y: 0.5 }}
     >
-      <Pressable style={markerStyles.hotspotContainer} onPress={() => onPress(hotspot)}>
+      {/* onStartShouldSetResponder claims the touch immediately, before the   */}
+      {/* MapLibre native gesture handler can steal it. onResponderRelease fires */}
+      {/* on lift-up only if the view kept the responder (i.e. a real tap).      */}
+      <View
+        onStartShouldSetResponder={() => true}
+        onResponderRelease={() => onPress(hotspot)}
+        style={markerStyles.hotspotContainer}
+      >
         <View style={[markerStyles.hotspotCircle, {
           backgroundColor: color,
           borderColor: isUnlocked ? '#FFFFFF' : '#666666',
@@ -229,7 +236,7 @@ function HotspotMarker({
         <Text style={markerStyles.hotspotTitle} numberOfLines={2}>
           {hotspot.title}
         </Text>
-      </Pressable>
+      </View>
     </MapLibreGL.MarkerView>
   );
 }
@@ -240,7 +247,7 @@ function HotspotMarker({
 
 export function RouteMap({
   routeCoords, hotspots, unlockedHotspotIds, visitedHotspotIds,
-  currentLocation, onHotspotPress,
+  onHotspotPress, highlightCoords,
 }: RouteMapProps) {
   const [mapStyle, setMapStyle] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
@@ -280,20 +287,13 @@ export function RouteMap({
     return computeBounds(routeCoords);
   }, [routeCoords]);
 
-  const userGeoJSON = useMemo((): GeoJSON.FeatureCollection | null => {
-    if (!currentLocation) return null;
-    return {
-      type: 'FeatureCollection',
-      features: [{
-        type: 'Feature',
-        properties: { accuracy: currentLocation.accuracy },
-        geometry: {
-          type: 'Point',
-          coordinates: [currentLocation.longitude, currentLocation.latitude],
-        },
-      }],
-    };
-  }, [currentLocation]);
+  const highlightGeoJSON = useMemo((): GeoJSON.FeatureCollection => ({
+    type: 'FeatureCollection',
+    features: highlightCoords && highlightCoords.length >= 2 ? [{
+      type: 'Feature' as const, properties: {},
+      geometry: { type: 'LineString' as const, coordinates: highlightCoords },
+    }] : [],
+  }), [highlightCoords]);
 
   const fallbackStyle = useMemo(() => ({
     version: 8, sources: {},
@@ -497,6 +497,26 @@ export function RouteMap({
         />
       </MapLibreGL.ShapeSource>
 
+      {/* ── Ahead segment — red highlight from user position to next hotspot ── */}
+      <MapLibreGL.ShapeSource id="highlight-source" shape={highlightGeoJSON}>
+        <MapLibreGL.LineLayer
+          id="highlight-line-casing"
+          style={{
+            lineColor: '#FFFFFF',
+            lineWidth: RouteColors.routeLineWidth + 4,
+            lineJoin: 'round', lineCap: 'round',
+          }}
+        />
+        <MapLibreGL.LineLayer
+          id="highlight-line"
+          style={{
+            lineColor: '#E53935',
+            lineWidth: RouteColors.routeLineWidth + 1,
+            lineJoin: 'round', lineCap: 'round',
+          }}
+        />
+      </MapLibreGL.ShapeSource>
+
       {/* ── Direction dots along route ── */}
       <MapLibreGL.ShapeSource id="dots-source" shape={directionDotsGeoJSON}>
         <MapLibreGL.CircleLayer
@@ -510,29 +530,16 @@ export function RouteMap({
         />
       </MapLibreGL.ShapeSource>
 
-      {/* ── User location dot ── */}
-      {userGeoJSON && (
-        <MapLibreGL.ShapeSource id="user-location-source" shape={userGeoJSON}>
-          <MapLibreGL.CircleLayer
-            id="user-accuracy"
-            style={{
-              circleRadius: 20,
-              circleColor: RouteColors.userDot + '20',
-              circleStrokeColor: RouteColors.userDot + '40',
-              circleStrokeWidth: 1,
-            }}
-          />
-          <MapLibreGL.CircleLayer
-            id="user-dot"
-            style={{
-              circleRadius: 8,
-              circleColor: RouteColors.userDot,
-              circleStrokeColor: '#FFFFFF',
-              circleStrokeWidth: 3,
-            }}
-          />
-        </MapLibreGL.ShapeSource>
-      )}
+      {/* ── User location + compass heading — native Android layer, always live ── */}
+      {/* renderMode="native" runs inside the MapLibre Android SDK, never stale.    */}
+      {/* androidRenderMode="compass" shows a filled triangle pointing the way      */}
+      {/* the phone is physically facing (magnetometer), not just movement bearing. */}
+      <MapLibreGL.UserLocation
+        visible
+        renderMode="native"
+        androidRenderMode="compass"
+        showsUserHeadingIndicator
+      />
 
       {/* ── Hotspot checkpoint markers (native RN views) ── */}
       {hotspots.map((hs) => (
@@ -581,6 +588,8 @@ const markerStyles = StyleSheet.create({
   },
   hotspotContainer: {
     alignItems: 'center', maxWidth: 100,
+    minWidth: 56, minHeight: 56, justifyContent: 'center',
+    padding: 10,
   },
   hotspotCircle: {
     borderWidth: 2, alignItems: 'center', justifyContent: 'center',

@@ -28,7 +28,6 @@ import { getItinerary } from '@/src/data';
 import { useRouteStore } from '@/src/stores/useRouteStore';
 import { useLocationStore } from '@/src/stores/useLocationStore';
 import { isContentAccessible } from '@/src/services/geofence';
-import { openNativeNavigation } from '@/src/services/navigation';
 import { haversineDistance } from '@/src/utils/geo';
 import { formatDistance } from '@/src/services/routeGuidance';
 
@@ -115,17 +114,6 @@ export default function HotspotContentScreen() {
           <ThemedText style={styles.lockedDistance}>
             {t('hotspot.distance', { distance: formatDistance(dist) })}
           </ThemedText>
-          <Pressable
-            onPress={() =>
-              openNativeNavigation(hotspot.latitude, hotspot.longitude)
-            }
-            style={styles.navigateButton}
-          >
-            <Ionicons name="navigate" size={20} color={Brand.primary} />
-            <ThemedText style={styles.navigateButtonText}>
-              {t('hotspot.navigateHere')}
-            </ThemedText>
-          </Pressable>
         </View>
       </ThemedView>
     );
@@ -457,22 +445,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: Brand.accent,
-  },
-  navigateButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.sm,
-    backgroundColor: Brand.highlight,
-    paddingHorizontal: Spacing.lg,
-    paddingVertical: Spacing.md,
-    borderRadius: 16,
-    minHeight: TouchTarget.minSize,
-    marginTop: Spacing.md,
-  },
-  navigateButtonText: {
-    color: Brand.primary,
-    fontSize: 16,
-    fontWeight: '600',
   },
   // Waypoint (inactive hotspot)
   waypointContainer: {

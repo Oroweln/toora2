@@ -7,7 +7,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useKeepAwake } from 'expo-keep-awake';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Alert,
@@ -27,7 +27,7 @@ import {
   isContentAccessible,
 } from '@/src/services/geofence';
 import { registerGeofences, startForegroundTracking, unregisterGeofences } from '@/src/services/location';
-import { navigateToRoutePoint, openNativeNavigation } from '@/src/services/navigation';
+import { navigateToRoutePoint } from '@/src/services/navigation';
 import {
   computeGuidance,
   estimateTimeMinutes,
@@ -37,7 +37,7 @@ import { useLocationStore } from '@/src/stores/useLocationStore';
 import { useRouteStore } from '@/src/stores/useRouteStore';
 import { useVisitStore } from '@/src/stores/useVisitStore';
 import type { Hotspot, UserLocation } from '@/src/types';
-import { haversineDistance } from '@/src/utils/geo';
+import { closestCoordIndex, haversineDistance } from '@/src/utils/geo';
 import { GPSSmoother } from '@/src/utils/kalmanFilter';
 
 export default function RouteMapScreen() {
@@ -243,13 +243,7 @@ export default function RouteMapScreen() {
                 )
               : '?',
           }),
-          [
-            { text: t('route.ok') },
-            {
-              text: t('route.navigateHere'),
-              onPress: () => openNativeNavigation(hs.latitude, hs.longitude),
-            },
-          ],
+          [{ text: t('route.ok') }],
         );
       }
     },
@@ -264,6 +258,20 @@ export default function RouteMapScreen() {
       );
     }
   }, [guidance]);
+
+  // Coords of the ahead path — from current position projected onto the route
+  // to the next hotspot's coord. Rendered as a red highlight on the map.
+  const highlightCoords = useMemo((): [number, number][] => {
+    const nextHs = itinerary?.hotspots[guidance?.nextHotspotIndex ?? currentHotspotIndex];
+    if (!guidance || !nextHs || routeCoords.length === 0) return [];
+    const nearestIdx = guidance.currentSegmentIndex;
+    const hotspotIdx = closestCoordIndex(nextHs.latitude, nextHs.longitude, routeCoords);
+    if (hotspotIdx <= nearestIdx) return [];
+    return [
+      guidance.nearestPointOnRoute,
+      ...routeCoords.slice(nearestIdx + 1, hotspotIdx + 1),
+    ];
+  }, [guidance, itinerary, currentHotspotIndex, routeCoords]);
 
   if (!itinerary) {
     return (
@@ -294,8 +302,8 @@ export default function RouteMapScreen() {
               : unlockedHotspotIds
           }
           visitedHotspotIds={visitedHotspotIds}
-          currentLocation={currentLocation}
           onHotspotPress={handleHotspotTap}
+          highlightCoords={highlightCoords}
         />
       </View>
 
