@@ -12,13 +12,14 @@
  *  - Map geometry overlays use ShapeSource + LineLayer/CircleLayer.
  */
 
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { StyleSheet, View, Platform, ActivityIndicator, Text } from 'react-native';
 import { Asset } from 'expo-asset';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ActivityIndicator, Platform, StyleSheet, Text, View } from 'react-native';
 
-import { Brand, RouteColors, Spacing } from '@/constants/theme';
 import { ThemedText } from '@/components/themed-text';
+import { Brand, RouteColors, Spacing } from '@/constants/theme';
 import type { Hotspot } from '@/src/types';
+import { useLocationStore } from '@/src/stores/useLocationStore';
 
 // MapLibre is native-only — guarded by Platform check at render time.
 let MapLibreGL: typeof import('@maplibre/maplibre-react-native');
@@ -49,6 +50,9 @@ interface RouteMapProps {
   visitedHotspotIds: Set<string>;
   onHotspotPress: (hotspot: Hotspot) => void;
   highlightCoords?: [number, number][];
+  followMode?: boolean;
+  onFollowModeBreak?: () => void;
+  followHeading?: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -247,11 +251,15 @@ function HotspotMarker({
 
 export function RouteMap({
   routeCoords, hotspots, unlockedHotspotIds, visitedHotspotIds,
-  onHotspotPress, highlightCoords,
+  onHotspotPress, highlightCoords, followMode = false, onFollowModeBreak, followHeading,
 }: RouteMapProps) {
   const [mapStyle, setMapStyle] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
   const cameraRef = useRef<any>(null);
+  // True once follow mode has ever been active — suppresses defaultSettings
+  // on the normal Camera after first exit (prevents snapping back to route bounds).
+  const hasFollowedRef = useRef(false);
+  if (followMode) hasFollowedRef.current = true;
 
   useEffect(() => {
     let cancelled = false;
@@ -286,6 +294,45 @@ export function RouteMap({
     if (routeCoords.length === 0) return null;
     return computeBounds(routeCoords);
   }, [routeCoords]);
+
+  // When follow mode ends, the follow Camera unmounts and the normal Camera mounts
+  // fresh (different key = clean native state). Give it one frame to settle, then
+  // reset pitch + heading back to north-up.
+  const prevFollowModeRef = useRef(followMode);
+  useEffect(() => {
+    const wasFollowing = prevFollowModeRef.current;
+    prevFollowModeRef.current = followMode;
+    if (wasFollowing && !followMode) {
+      const t = setTimeout(() => {
+        cameraRef.current?.setCamera({ heading: 0, pitch: 0, animationDuration: 300 });
+      }, 50);
+      return () => clearTimeout(t);
+    }
+  }, [followMode]);
+
+  // In follow mode, drive the camera manually so MapLibreGL.UserLocation owns
+  // the dot + compass arrow independently — no followUserLocation conflicts.
+  const currentLocation = useLocationStore((s) => s.currentLocation);
+  useEffect(() => {
+    if (!followMode || !currentLocation || !cameraRef.current) return;
+    cameraRef.current.setCamera({
+      centerCoordinate: [currentLocation.longitude, currentLocation.latitude],
+      zoomLevel: 16,
+      heading: followHeading ?? 0,
+      pitch: 45,
+      animationMode: 'easeTo',
+      animationDuration: 500,
+    });
+  }, [followMode, currentLocation, followHeading]);
+
+  const navHotspotsGeoJSON = useMemo((): GeoJSON.FeatureCollection => ({
+    type: 'FeatureCollection',
+    features: hotspots.map((hs) => ({
+      type: 'Feature' as const,
+      properties: { id: hs.id },
+      geometry: { type: 'Point' as const, coordinates: [hs.longitude, hs.latitude] },
+    })),
+  }), [hotspots]);
 
   const highlightGeoJSON = useMemo((): GeoJSON.FeatureCollection => ({
     type: 'FeatureCollection',
@@ -334,16 +381,28 @@ export function RouteMap({
       compassEnabled
       compassViewMargins={{ x: 16, y: 100 }}
     >
-      {bounds && (
+      {followMode ? (
+        // Follow camera — plain camera, no followUserLocation.
+        // Position + heading are driven imperatively via setCamera in the
+        // useEffect above, so UserLocation owns the dot arrow with no conflicts.
         <MapLibreGL.Camera
+          key="follow"
           ref={cameraRef}
-          defaultSettings={{
+        />
+      ) : (
+        // Normal camera — defaultSettings only on first ever render (before any
+        // follow session). After a follow session ends, defaultSettings is omitted
+        // so the map stays at the user's last position instead of snapping to bounds.
+        <MapLibreGL.Camera
+          key="normal"
+          ref={cameraRef}
+          defaultSettings={(!hasFollowedRef.current && bounds) ? {
             bounds: {
               ne: bounds.ne, sw: bounds.sw,
               paddingTop: 80, paddingBottom: 200,
               paddingLeft: 40, paddingRight: 40,
             },
-          }}
+          } : undefined}
           animationDuration={0}
         />
       )}
@@ -477,25 +536,27 @@ export function RouteMap({
         </MapLibreGL.ShapeSource>
       )}
 
-      {/* ── Route polyline ── */}
-      <MapLibreGL.ShapeSource id="route-source" shape={routeGeoJSON}>
-        <MapLibreGL.LineLayer
-          id="route-line-casing"
-          style={{
-            lineColor: '#FFFFFF',
-            lineWidth: RouteColors.routeLineWidth + 2,
-            lineJoin: 'round', lineCap: 'round',
-          }}
-        />
-        <MapLibreGL.LineLayer
-          id="route-line"
-          style={{
-            lineColor: RouteColors.routeLine,
-            lineWidth: RouteColors.routeLineWidth,
-            lineJoin: 'round', lineCap: 'round',
-          }}
-        />
-      </MapLibreGL.ShapeSource>
+      {/* ── Route polyline — hidden in follow mode (only red ahead path shown) ── */}
+      {!followMode && (
+        <MapLibreGL.ShapeSource id="route-source" shape={routeGeoJSON}>
+          <MapLibreGL.LineLayer
+            id="route-line-casing"
+            style={{
+              lineColor: '#FFFFFF',
+              lineWidth: RouteColors.routeLineWidth + 2,
+              lineJoin: 'round', lineCap: 'round',
+            }}
+          />
+          <MapLibreGL.LineLayer
+            id="route-line"
+            style={{
+              lineColor: RouteColors.routeLine,
+              lineWidth: RouteColors.routeLineWidth,
+              lineJoin: 'round', lineCap: 'round',
+            }}
+          />
+        </MapLibreGL.ShapeSource>
+      )}
 
       {/* ── Ahead segment — red highlight from user position to next hotspot ── */}
       <MapLibreGL.ShapeSource id="highlight-source" shape={highlightGeoJSON}>
@@ -517,23 +578,24 @@ export function RouteMap({
         />
       </MapLibreGL.ShapeSource>
 
-      {/* ── Direction dots along route ── */}
-      <MapLibreGL.ShapeSource id="dots-source" shape={directionDotsGeoJSON}>
-        <MapLibreGL.CircleLayer
-          id="direction-dots"
-          style={{
-            circleRadius: 4,
-            circleColor: '#1A5A96',
-            circleStrokeColor: '#FFFFFF',
-            circleStrokeWidth: 1.5,
-          }}
-        />
-      </MapLibreGL.ShapeSource>
+      {/* ── Direction dots along route — hidden in follow mode ── */}
+      {!followMode && (
+        <MapLibreGL.ShapeSource id="dots-source" shape={directionDotsGeoJSON}>
+          <MapLibreGL.CircleLayer
+            id="direction-dots"
+            style={{
+              circleRadius: 4,
+              circleColor: '#1A5A96',
+              circleStrokeColor: '#FFFFFF',
+              circleStrokeWidth: 1.5,
+            }}
+          />
+        </MapLibreGL.ShapeSource>
+      )}
 
-      {/* ── User location + compass heading — native Android layer, always live ── */}
-      {/* renderMode="native" runs inside the MapLibre Android SDK, never stale.    */}
-      {/* androidRenderMode="compass" shows a filled triangle pointing the way      */}
-      {/* the phone is physically facing (magnetometer), not just movement bearing. */}
+      {/* ── User location — native Android layer, always live ── */}
+      {/* Normal mode: compass (magnetometer) heading cone.         */}
+      {/* Follow mode: gps (movement bearing) heading cone.        */}
       <MapLibreGL.UserLocation
         visible
         renderMode="native"
@@ -541,22 +603,36 @@ export function RouteMap({
         showsUserHeadingIndicator
       />
 
-      {/* ── Hotspot checkpoint markers (native RN views) ── */}
-      {hotspots.map((hs) => (
-        <HotspotMarker
-          key={hs.id}
-          hotspot={hs}
-          color={hotspotColor(hs, unlockedHotspotIds, visitedHotspotIds)}
-          isUnlocked={unlockedHotspotIds.has(hs.id)}
-          onPress={onHotspotPress}
-        />
-      ))}
-
-      {/* ── Start marker — green "P" (Partenza) ── */}
-      {startCoord && <StartMarker coordinate={startCoord} />}
-
-      {/* ── End marker — red "A" (Arrivo) ── */}
-      {endCoord && <EndMarker coordinate={endCoord} />}
+      {/* ── Hotspot markers — flat red circles in follow mode, tappable in normal ── */}
+      {followMode ? (
+        <MapLibreGL.ShapeSource id="nav-hotspot-source" shape={navHotspotsGeoJSON}>
+          <MapLibreGL.CircleLayer
+            id="nav-hotspot-circles"
+            style={{
+              circleRadius: 10,
+              circleColor: '#E53935',
+              circleStrokeColor: '#FFFFFF',
+              circleStrokeWidth: 2,
+            }}
+          />
+        </MapLibreGL.ShapeSource>
+      ) : (
+        <>
+          {hotspots.map((hs) => (
+            <HotspotMarker
+              key={hs.id}
+              hotspot={hs}
+              color={hotspotColor(hs, unlockedHotspotIds, visitedHotspotIds)}
+              isUnlocked={unlockedHotspotIds.has(hs.id)}
+              onPress={onHotspotPress}
+            />
+          ))}
+          {/* ── Start marker — green "P" (Partenza) ── */}
+          {startCoord && <StartMarker coordinate={startCoord} />}
+          {/* ── End marker — red "A" (Arrivo) ── */}
+          {endCoord && <EndMarker coordinate={endCoord} />}
+        </>
+      )}
     </MapLibreGL.MapView>
   );
 }

@@ -6,6 +6,7 @@
 
 import { Ionicons } from '@expo/vector-icons';
 import { useKeepAwake } from 'expo-keep-awake';
+import * as Location from 'expo-location';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -92,6 +93,9 @@ export default function RouteMapScreen() {
   hotspotEntryTimestampsRef.current = hotspotEntryTimestamps;
 
   const [offRouteSeconds, setOffRouteSeconds] = useState(0);
+  const [followMode, setFollowMode] = useState(false);
+  const followModeRef = useRef(false);
+  const [compassHeading, setCompassHeading] = useState<number | null>(null);
   const smootherRef = useRef(new GPSSmoother());
   const trackingRef = useRef<{ remove: () => void } | null>(null);
 
@@ -174,6 +178,11 @@ export default function RouteMapScreen() {
             if (accessible && !unlockedIds.has(hs.id)) {
               unlockHotspot(hs.id);
               recordHotspotEntry(hs.id);
+              // Exit follow mode so the user can tap the unlocked hotspot marker
+              if (followModeRef.current) {
+                followModeRef.current = false;
+                setFollowMode(false);
+              }
             } else if (!accessible && unlockedIds.has(hs.id)) {
               lockHotspot(hs.id);
             }
@@ -190,6 +199,28 @@ export default function RouteMapScreen() {
     // are accessed via refs above so no re-registration is needed when they change.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itinerary?.id]);
+
+  // Subscribe to magnetometer heading only while follow mode is active.
+  // Uses the same compass sensor that drives the GPS dot arrow in normal mode.
+  useEffect(() => {
+    if (!followMode) {
+      setCompassHeading(null);
+      return;
+    }
+    let sub: Location.LocationSubscription | null = null;
+    let removed = false;
+    (async () => {
+      sub = await Location.watchHeadingAsync((heading) => {
+        const h = heading.trueHeading >= 0 ? heading.trueHeading : heading.magHeading;
+        if (h >= 0) setCompassHeading(h);
+      });
+      if (removed) sub.remove();
+    })();
+    return () => {
+      removed = true;
+      sub?.remove();
+    };
+  }, [followMode]);
 
   // Track off-route time
   useEffect(() => {
@@ -304,7 +335,28 @@ export default function RouteMapScreen() {
           visitedHotspotIds={visitedHotspotIds}
           onHotspotPress={handleHotspotTap}
           highlightCoords={highlightCoords}
+          followMode={followMode}
+          followHeading={compassHeading ?? undefined}
+          onFollowModeBreak={() => {
+            followModeRef.current = false;
+            setFollowMode(false);
+          }}
         />
+        <Pressable
+          onPress={() => {
+            const next = !followMode;
+            followModeRef.current = next;
+            setFollowMode(next);
+          }}
+          style={[styles.followButton, followMode && styles.followButtonActive]}
+          hitSlop={8}
+        >
+          <Ionicons
+            name={followMode ? 'navigate' : 'navigate-outline'}
+            size={24}
+            color={followMode ? '#FFFFFF' : Brand.primary}
+          />
+        </Pressable>
       </View>
 
       {/* Top Bar */}
@@ -594,6 +646,25 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: '700',
+  },
+  followButton: {
+    position: 'absolute',
+    bottom: Spacing.md,
+    right: Spacing.md,
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+  },
+  followButtonActive: {
+    backgroundColor: Brand.primary,
   },
   devBadge: {
     backgroundColor: '#E74C3C',
