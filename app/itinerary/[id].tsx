@@ -3,7 +3,7 @@
  * Shows full details: cover image, stats, hotspot list, map preview, start button.
  */
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -21,7 +21,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Brand, DifficultyColors, Spacing, TouchTarget } from '@/constants/theme';
 import { getItinerary, getRouteGeoJSON } from '@/src/data';
-import { useRouteStore, loadPersistedSession } from '@/src/stores/useRouteStore';
+import { useRouteStore, loadPersistedSession, clearPersistedSession } from '@/src/stores/useRouteStore';
 import { useLocationStore } from '@/src/stores/useLocationStore';
 import { useVisitStore } from '@/src/stores/useVisitStore';
 import { requestLocationPermission, getCurrentPosition } from '@/src/services/location';
@@ -92,6 +92,20 @@ export default function ItineraryDetailScreen() {
   const isHotspotVisited = useVisitStore((s) => s.isHotspotVisited);
   const markItineraryStarted = useVisitStore((s) => s.markItineraryStarted);
   const [isStarting, setIsStarting] = useState(false);
+  const [hasSession, setHasSession] = useState(false);
+
+  useEffect(() => {
+    if (!itinerary) return;
+    loadPersistedSession(itinerary.id).then((session) => {
+      setHasSession(session !== null && session.visitedHotspotIds.length > 0);
+    });
+  }, [itinerary?.id]);
+
+  const handleClearSession = useCallback(async () => {
+    if (!itinerary || !hasSession) return;
+    await clearPersistedSession(itinerary.id);
+    setHasSession(false);
+  }, [itinerary, hasSession]);
 
   const handleStartRoute = useCallback(async () => {
     if (!itinerary || isStarting) return;
@@ -307,6 +321,20 @@ export default function ItineraryDetailScreen() {
         ]}
       >
         <Pressable
+          onPress={handleClearSession}
+          disabled={!hasSession}
+          style={({ pressed }) => [
+            styles.clearButton,
+            !hasSession && styles.clearButtonDisabled,
+            { opacity: pressed && hasSession ? 0.7 : 1 },
+          ]}
+        >
+          <Ionicons name="trash-outline" size={16} color={hasSession ? '#C0392B' : Brand.gray400} />
+          <ThemedText style={[styles.clearButtonText, !hasSession && styles.clearButtonTextDisabled]}>
+            {t('itinerary.clearSession', 'Clear saved progress')}
+          </ThemedText>
+        </Pressable>
+        <Pressable
           onPress={handleStartRoute}
           disabled={isStarting}
           style={({ pressed }) => [
@@ -492,5 +520,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
     letterSpacing: 0.5,
+  },
+  clearButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: Spacing.sm,
+    marginBottom: Spacing.sm,
+  },
+  clearButtonDisabled: {
+    opacity: 0.4,
+  },
+  clearButtonText: {
+    fontSize: 13,
+    color: '#C0392B',
+    fontWeight: '500',
+  },
+  clearButtonTextDisabled: {
+    color: Brand.gray400,
   },
 });

@@ -91,6 +91,10 @@ export async function loadPersistedSession(
   }
 }
 
+export async function clearPersistedSession(itineraryId: string): Promise<void> {
+  await AsyncStorage.removeItem(storageKey(itineraryId));
+}
+
 export const useRouteStore = create<RouteState>((set, get) => ({
   activeItinerary: null,
   routeGeoJSON: null,

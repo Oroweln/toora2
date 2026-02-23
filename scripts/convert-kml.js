@@ -224,6 +224,17 @@ const routeDefinitions = [
     terrain: ['paved', 'gravel', 'trail'],
     tags: ['history', 'roman', 'archaeology', 'nature'],
   },
+  {
+    id: 'itinerary_11',
+    slug: 'test-belgrade2',
+    title: 'Test Route 2 - Belgrade',
+    description:
+      'Second test route through Belgrade, Serbia. Directions from Pante Tutundžića to Nikole Dobrovića 34.',
+    kmlFile: path.join(__dirname, '..', 'assets', 'toora routes', 'testroute2.kml'),
+    difficulty: 'easy',
+    terrain: ['paved'],
+    tags: ['test'],
+  },
 ];
 
 // ─── Photo mapping (compressed photos → hotspot names) ──────────────────

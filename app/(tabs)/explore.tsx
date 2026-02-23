@@ -2,16 +2,16 @@
  * Explore Screen — Map overview of all routes in the Benevento area.
  */
 
-import { ScrollView, StyleSheet, View, Pressable } from 'react-native';
-import { useRouter } from 'expo-router';
-import { useTranslation } from 'react-i18next';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Brand, Spacing } from '@/constants/theme';
 import { getItineraries } from '@/src/data';
-import { Ionicons } from '@expo/vector-icons';
 import { useLanguageStore } from '@/src/stores/useLanguageStore';
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function ExploreScreen() {
   const { t } = useTranslation();
@@ -26,7 +26,8 @@ export default function ExploreScreen() {
   const { language, setLanguage } = useLanguageStore();
 
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView 
+      style={styles.container}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + Spacing.lg }]}
@@ -40,7 +41,10 @@ export default function ExploreScreen() {
 
         <View style={styles.statsGrid}>
           <View style={styles.statBox}>
-            <Ionicons name="bicycle" size={28} color={Brand.accent} />
+            <View style={styles.statsGrid2}>
+              <Ionicons name="walk" size={28} color={Brand.accent} />
+              <Ionicons name="bicycle" size={28} color={Brand.accent} />
+            </View>
             <ThemedText style={styles.statNumber}>{itineraries.length}</ThemedText>
             <ThemedText style={styles.statLabel}>{t('explore.itineraries')}</ThemedText>
           </View>
@@ -87,7 +91,7 @@ export default function ExploreScreen() {
         </View>
 
         <View style={styles.offlineNotice}>
-          <Ionicons name="wifi-outline" size={20} color={Brand.gray500} />
+          <Ionicons name="wifi-outline" size={20} color={Brand.highlight} />
           <ThemedText style={styles.offlineText}>
             {t('explore.offlineNotice')}
           </ThemedText>
@@ -199,9 +203,14 @@ const styles = StyleSheet.create({
     gap: Spacing.sm,
     marginBottom: Spacing.lg,
   },
+    statsGrid2: {
+    flexDirection: 'row',
+    gap: Spacing.sm,
+    marginBottom: 2,
+  },
   statBox: {
     flex: 1,
-    backgroundColor: Brand.accent + '15',
+    backgroundColor: Brand.accent + '-200',
     borderRadius: 12,
     padding: Spacing.md,
     alignItems: 'center',
@@ -214,7 +223,7 @@ const styles = StyleSheet.create({
   },
   statLabel: {
     fontSize: 12,
-    color: Brand.gray500,
+    color: Brand.accent,
   },
   infoSection: {
     marginBottom: Spacing.lg,
@@ -239,14 +248,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.sm,
-    backgroundColor: Brand.gray100,
+    backgroundColor: Brand.primary,
     padding: Spacing.md,
     borderRadius: 8,
     marginBottom: Spacing.lg,
   },
   offlineText: {
     fontSize: 13,
-    color: Brand.gray500,
+    color: Brand.white,
     flex: 1,
   },
   languageSection: {

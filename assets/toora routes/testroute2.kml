@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Directions from Pante Tutundžića, Belgrade to Nikole Dobrovića 34, Beograd, Serbia</name>
+    <Style id="icon-1899-DB4436-nodesc-normal">
+      <IconStyle>
+        <color>ff3644db</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-DB4436-nodesc-highlight">
+      <IconStyle>
+        <color>ff3644db</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-DB4436-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-DB4436-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-DB4436-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-1267FF-5000-nodesc-normal">
+      <LineStyle>
+        <color>ffff6712</color>
+        <width>5</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-1267FF-5000-nodesc-highlight">
+      <LineStyle>
+        <color>ffff6712</color>
+        <width>7.5</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-1267FF-5000-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-1267FF-5000-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-1267FF-5000-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>Directions from Pante Tutundžića, Belgrade to Nikole Dobrovića 34, Beograd, Serbia</name>
+      <styleUrl>#line-1267FF-5000-nodesc</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          20.38575,44.81583,0
+          20.38548,44.81615,0
+          20.38524,44.81635,0
+          20.38499,44.81652,0
+          20.38483,44.81658,0
+          20.38461,44.81666,0
+          20.38437,44.81674,0
+          20.38426,44.81677,0
+          20.38436,44.81693,0
+          20.38447,44.81709,0
+          20.38454,44.8172,0
+          20.38462,44.81726,0
+          20.38493,44.81764,0
+          20.38507,44.81787,0
+          20.38522,44.81812,0
+          20.38529,44.8182,0
+          20.38538,44.81834,0
+          20.38547,44.81831,0
+          20.38548,44.81831,0
+          20.38553,44.81828,0
+          20.38555,44.81836,0
+          20.38567,44.81832,0
+          20.38764,44.81747,0
+          20.38765,44.81747,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Pante Tutundžića, Belgrade</name>
+      <styleUrl>#icon-1899-DB4436-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          20.3857487,44.8158291,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Partizanske avijacije 45, Beograd, Serbia</name>
+      <styleUrl>#icon-1899-DB4436-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          20.3843672,44.8167391,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Nikole Dobrovića 25b, Beograd 11070, Serbia</name>
+      <styleUrl>#icon-1899-DB4436-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          20.3854759,44.8183056,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Nikole Dobrovića 34, Beograd, Serbia</name>
+      <styleUrl>#icon-1899-DB4436-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          20.387646,44.8174698,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

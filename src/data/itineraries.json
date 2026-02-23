@@ -1525,6 +1525,97 @@
           "content": null
         }
       ]
+    },
+    {
+      "id": "itinerary_11",
+      "slug": "test-belgrade2",
+      "title": "Test Route 2 - Belgrade",
+      "description": "Second test route through Belgrade, Serbia. Directions from Pante Tutundžića to Nikole Dobrovića 34.",
+      "coverImage": null,
+      "difficulty": "easy",
+      "distanceKm": 0.57,
+      "estimatedDurationMinutes": 33,
+      "elevationGainM": 0,
+      "terrain": ["paved"],
+      "tags": ["test"],
+      "routeGeoJSON": "routes/test-belgrade2.json",
+      "startingPoint": {
+        "latitude": 44.8158291,
+        "longitude": 20.3857487,
+        "geofenceRadiusM": 30,
+        "name": "Pante Tutundžića, Belgrade",
+        "navigationAddress": "Pante Tutundžića, Belgrade, Serbia"
+      },
+      "hotspots": [
+        {
+          "id": "hs_11_01",
+          "sequence": 1,
+          "isActive": true,
+          "title": "Pante Tutundžića, Belgrade",
+          "shortDescription": "Tappa 1 del percorso Test Route 2 - Belgrade.",
+          "latitude": 44.8158291,
+          "longitude": 20.3857487,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_11_02",
+          "sequence": 2,
+          "isActive": true,
+          "title": "Partizanske avijacije 45, Beograd",
+          "shortDescription": "Tappa 2 del percorso Test Route 2 - Belgrade.",
+          "latitude": 44.8167391,
+          "longitude": 20.3843672,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_11_03",
+          "sequence": 3,
+          "isActive": true,
+          "title": "Nikole Dobrovića 25b, Beograd",
+          "shortDescription": "Tappa 3 del percorso Test Route 2 - Belgrade.",
+          "latitude": 44.8183056,
+          "longitude": 20.3854759,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        },
+        {
+          "id": "hs_11_04",
+          "sequence": 4,
+          "isActive": true,
+          "title": "Nikole Dobrovića 34, Beograd",
+          "shortDescription": "Tappa 4 del percorso Test Route 2 - Belgrade.",
+          "latitude": 44.8174698,
+          "longitude": 20.387646,
+          "geofenceRadiusM": 25,
+          "content": {
+            "heroImage": null,
+            "gallery": [],
+            "text": null,
+            "audioGuide": null,
+            "video": null
+          }
+        }
+      ]
     }
   ]
 }
