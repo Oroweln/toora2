@@ -81,6 +81,8 @@ export default {
     nextStop: 'Next stop:',
     stopsProgress: '{{visited}}/{{total}} stops',
     routeCompleted: 'Route completed!',
+    continue: 'Continue',
+    viewContent: 'View Content',
   },
 
   // ─── Hotspot Content Screen ───────────────────────────────

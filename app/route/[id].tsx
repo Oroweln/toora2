@@ -12,6 +12,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Alert,
+  Modal,
   Pressable,
   StyleSheet,
   View,
@@ -96,6 +97,10 @@ export default function RouteMapScreen() {
   const [followMode, setFollowMode] = useState(false);
   const followModeRef = useRef(false);
   const [compassHeading, setCompassHeading] = useState<number | null>(null);
+  const [hotspotPopup, setHotspotPopup] = useState<Hotspot | null>(null);
+  // Tracks which hotspots have already shown a popup this session — prevents
+  // repeated GPS ticks from re-triggering the same popup.
+  const shownPopupIdsRef = useRef(new Set<string>());
   const smootherRef = useRef(new GPSSmoother());
   const trackingRef = useRef<{ remove: () => void } | null>(null);
 
@@ -178,10 +183,10 @@ export default function RouteMapScreen() {
             if (accessible && !unlockedIds.has(hs.id)) {
               unlockHotspot(hs.id);
               recordHotspotEntry(hs.id);
-              // Exit follow mode so the user can tap the unlocked hotspot marker
-              if (followModeRef.current) {
-                followModeRef.current = false;
-                setFollowMode(false);
+              // Show popup — stay in follow mode, user dismisses to continue.
+              if (!shownPopupIdsRef.current.has(hs.id)) {
+                shownPopupIdsRef.current.add(hs.id);
+                setHotspotPopup(hs);
               }
             } else if (!accessible && unlockedIds.has(hs.id)) {
               lockHotspot(hs.id);
@@ -293,8 +298,17 @@ export default function RouteMapScreen() {
   // Coords of the ahead path — from current position projected onto the route
   // to the next hotspot's coord. Rendered as a red highlight on the map.
   const highlightCoords = useMemo((): [number, number][] => {
-    const nextHs = itinerary?.hotspots[guidance?.nextHotspotIndex ?? currentHotspotIndex];
-    if (!guidance || !nextHs || routeCoords.length === 0) return [];
+    if (!guidance || !itinerary || routeCoords.length === 0) return [];
+    // guidance.nextHotspotIndex already skips visited hotspots.
+    // Also skip any currently-unlocked hotspot (user is physically standing at it)
+    // so the line points ahead to the next unvisited, unreached target.
+    const hotspots = itinerary.hotspots;
+    let nextIdx = guidance.nextHotspotIndex;
+    while (nextIdx < hotspots.length && unlockedHotspotIds.has(hotspots[nextIdx].id)) {
+      nextIdx++;
+    }
+    if (nextIdx >= hotspots.length) return [];
+    const nextHs = hotspots[nextIdx];
     const nearestIdx = guidance.currentSegmentIndex;
     const hotspotIdx = closestCoordIndex(nextHs.latitude, nextHs.longitude, routeCoords);
     if (hotspotIdx <= nearestIdx) return [];
@@ -302,7 +316,7 @@ export default function RouteMapScreen() {
       guidance.nearestPointOnRoute,
       ...routeCoords.slice(nearestIdx + 1, hotspotIdx + 1),
     ];
-  }, [guidance, itinerary, currentHotspotIndex, routeCoords]);
+  }, [guidance, itinerary, routeCoords, unlockedHotspotIds]);
 
   if (!itinerary) {
     return (
@@ -469,6 +483,56 @@ export default function RouteMapScreen() {
           </Pressable>
         )}
       </View>
+
+      {/* ── Hotspot arrival popup — shows automatically on geofence entry ── */}
+      <Modal
+        visible={hotspotPopup !== null}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setHotspotPopup(null)}
+      >
+        <View style={styles.popupOverlay}>
+          <View style={styles.popupCard}>
+            <View style={styles.popupBadge}>
+              <ThemedText style={styles.popupBadgeText}>
+                {hotspotPopup?.sequence}
+              </ThemedText>
+            </View>
+            <ThemedText style={styles.popupTitle} numberOfLines={2}>
+              {hotspotPopup?.title}
+            </ThemedText>
+            {hotspotPopup?.shortDescription ? (
+              <ThemedText style={styles.popupDesc} numberOfLines={3}>
+                {hotspotPopup.shortDescription}
+              </ThemedText>
+            ) : null}
+            <View style={styles.popupButtons}>
+              <Pressable
+                style={styles.popupButtonSecondary}
+                onPress={() => setHotspotPopup(null)}
+              >
+                <ThemedText style={styles.popupButtonSecondaryText}>
+                  {t('route.continue')}
+                </ThemedText>
+              </Pressable>
+              <Pressable
+                style={styles.popupButtonPrimary}
+                onPress={() => {
+                  const hs = hotspotPopup!;
+                  markHotspotVisited(hs.id);
+                  markVisited(hs.id);
+                  setHotspotPopup(null);
+                  router.push(`/hotspot/${hs.id}?itineraryId=${itinerary.id}`);
+                }}
+              >
+                <ThemedText style={styles.popupButtonPrimaryText}>
+                  {t('route.viewContent')}
+                </ThemedText>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -676,5 +740,85 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 10,
     fontWeight: '700',
+  },
+  popupOverlay: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    backgroundColor: 'rgba(0,0,0,0.45)',
+  },
+  popupCard: {
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    paddingHorizontal: Spacing.lg,
+    paddingTop: Spacing.lg,
+    paddingBottom: Spacing.xl,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 10,
+  },
+  popupBadge: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: Brand.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: Spacing.sm,
+  },
+  popupBadgeText: {
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: 18,
+  },
+  popupTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    textAlign: 'center',
+    marginBottom: Spacing.sm,
+  },
+  popupDesc: {
+    fontSize: 14,
+    color: Brand.gray600,
+    textAlign: 'center',
+    marginBottom: Spacing.lg,
+    lineHeight: 20,
+  },
+  popupButtons: {
+    flexDirection: 'row',
+    gap: Spacing.sm,
+    width: '100%',
+  },
+  popupButtonSecondary: {
+    flex: 1,
+    paddingVertical: Spacing.md,
+    borderRadius: 12,
+    borderWidth: 1.5,
+    borderColor: Brand.gray300,
+    alignItems: 'center',
+    minHeight: TouchTarget.minSize,
+    justifyContent: 'center',
+  },
+  popupButtonSecondaryText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: Brand.gray600,
+  },
+  popupButtonPrimary: {
+    flex: 1,
+    paddingVertical: Spacing.md,
+    borderRadius: 12,
+    backgroundColor: Brand.primary,
+    alignItems: 'center',
+    minHeight: TouchTarget.minSize,
+    justifyContent: 'center',
+  },
+  popupButtonPrimaryText: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: '#fff',
   },
 });

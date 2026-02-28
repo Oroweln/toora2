@@ -317,7 +317,7 @@ export function RouteMap({
     if (!followMode || !currentLocation || !cameraRef.current) return;
     cameraRef.current.setCamera({
       centerCoordinate: [currentLocation.longitude, currentLocation.latitude],
-      zoomLevel: 16,
+      zoomLevel: 17,
       heading: followHeading ?? 0,
       pitch: 45,
       animationMode: 'easeTo',

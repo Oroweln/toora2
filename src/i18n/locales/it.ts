@@ -81,6 +81,8 @@ export default {
     nextStop: 'Prossima tappa:',
     stopsProgress: '{{visited}}/{{total}} tappe',
     routeCompleted: 'Percorso completato!',
+    continue: 'Continua',
+    viewContent: 'Vedi contenuti',
   },
 
   // ─── Hotspot Content Screen ───────────────────────────────
